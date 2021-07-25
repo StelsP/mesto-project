@@ -1,7 +1,7 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts.css);
 
-body {
+.root {
   max-width: 1280px;
   background-color: black;
   color: white;
@@ -15,13 +15,22 @@ body {
   padding-top: 45px;
   padding-bottom: 36px;
 
-  max-width: 320px;
+  max-width: 880px;
 }
+
 .header__logo {
   max-width: 103px;
   margin-left: 27px;
   margin-bottom: 41px;
 }
+
+@media (min-width: 880px) {
+  .header__logo {
+    max-width: 142px;
+    margin-left: 0;
+  }
+}
+
 .header__line {
   border-bottom: 1px solid #545454;
   opacity: 0.7;
@@ -38,22 +47,17 @@ body {
     max-width: 880px;
 
   }
-  .profile__add-button {
-    margin: 0;
-    width: 150px;
-  }
 }
 
 .profile__container {
   margin-bottom: 36px;
 }
+
 @media (min-width: 1024px) {
   .profile__container{
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-
   }
 }
 
@@ -62,18 +66,21 @@ body {
   padding: 0;
   margin-bottom: 14px;
 
-  font-size: 42px;
+  font-size: 27px;
   font-style: normal;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 33px;
   letter-spacing: 0em;
   text-align: center;
 }
 
 @media (min-width: 1024px) {
-  .profile__name{
-    text-align: left;
+  .profile__name {
     margin-bottom: 16px;
+
+    font-size: 42px;
+    line-height: 48px;
+    text-align: left;
   }
 }
 
@@ -81,16 +88,18 @@ body {
   margin: 0;
   padding: 0;
 
-  font-size: 18px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 17px;
   letter-spacing: 0em;
   text-align: center;
 }
 
 @media (min-width: 1024px) {
-  .profile__quote{
+  .profile__quote {
+    font-size: 18px;
+    line-height: 22px;
     text-align: left;
   }
 }
@@ -102,28 +111,33 @@ body {
   display: block;
   margin: 0 auto 20px;
 }
+
 @media (min-width: 1024px) {
-  .profile__photo{
+  .profile__photo {
     margin-right: 20px;
   }
 }
 
 .profile__add-button {
-  background-image: url(../images/add_button_cross.svg);
-  background-position: center;
-  background-repeat: no-repeat;
-
+  display: block;
   margin: 0 auto;
   padding: 0;
 
   width: 282px;
   height: 50px;
+
   border: 2px solid #FFFFFF;
-  box-sizing: border-box;
   border-radius: 2px;
+  box-sizing: border-box;
+
+  background-image: url(../images/add_button_cross.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
 
   transition: opacity .3s linear;
 }
+
 .profile__add-button:hover {
   opacity: .6;
 }
@@ -131,16 +145,28 @@ body {
 @media (min-width: 1024px) {
   .profile__add-button {
     margin: 0;
-    width: 150px;
+    max-width: 150px;
   }
 }
 
 .profile__edit-button {
+  margin: 0;
+  padding: 0;
+
+  width: 24px;
+  height: 24px;
+  border: none;
+
+  background-image: url(../images/edit_button.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+
   transition: opacity .3s linear;
 }
 .profile__edit-button:hover {
   opacity: .6;
-}
+  }
 
 .elements {
   padding-top: 36px;
@@ -187,13 +213,23 @@ body {
 }
 
 .elements__like-button {
-  max-width: 22px;
-  max-height: 19px;
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  width: 22px;
+  height: 19px;
+  border: none;
+
+  background-image: url(../images/like_button.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: white;
 
   transition: opacity .3s linear;
 }
 .elements__like-button:hover {
-  opacity: .6;
+  opacity: .5;
 }
 
 .elements__name {
@@ -212,6 +248,190 @@ body {
   line-height: 29px;
   letter-spacing: 0em;
   text-align: left;
+}
+
+.footer {
+  margin: 0 auto;
+  padding: 0;
+  padding-top: 48px;
+  padding-bottom: 36px;
+
+  max-width: 282px;
+}
+@media (min-width: 768px) {
+  .footer {
+    max-width: 584px;
+    padding-top: 67px;
+    padding-bottom: 60px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    max-width: 886px;
+  }
+}
+
+.footer__copyright {
+  margin: 0;
+  padding: 0;
+
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  color: #545454;
+}
+
+.popup {
+
+  height: 100%;
+  width: 100%;
+
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup::before {
+  background-color: #000000;
+  opacity: 0.5;
+  content: '';
+
+}
+
+.popup__container {
+  margin: 0 auto;
+  padding: 0;
+
+  width: 282px;
+  min-height: 322px;
+
+  background: #FFFFFF;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  position: relative;
+}
+
+.popup__close-button {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../images/cloge_icon.svg);
+  background-color: transparent;
+
+  border: none;
+
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -28px;
+  right: -28px;
+
+  transition: all .3s linear;
+}
+
+.popup__close-button:hover {
+  opacity: 0.6;
+  transform: rotate(90deg);
+}
+
+
+.popup__heading {
+  margin: 25px auto 75px;
+  padding: 0;
+  width: 238px;
+
+
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  color: black;
+}
+
+.popup__name-input {
+  display: block;
+
+  margin: 0 auto 30px;
+  padding: 0;
+  padding-bottom: 14px;
+
+  width: 238px;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+
+.popup__quote-input {
+  display: block;
+
+  margin: 0 auto 45px;
+  padding: 0;
+  padding-bottom: 14px;
+
+  width: 238px;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+
+.popup__submit-button {
+  display: block;
+
+  margin: 0 auto 25px;
+  padding: 0;
+
+  width: 238px;
+  min-height: 46px;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+
+  color: #FFFFFF;
+  background-color: black;
+
+  border: none;
+  border-radius: 2px;
+
+  transition: opacity .3s linear;
+}
+
+.popup__submit-button:hover {
+  opacity: .8;
+
 }
 
 
