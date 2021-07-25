@@ -287,6 +287,7 @@
 }
 
 .popup {
+  display: none;
 
   height: 100%;
   width: 100%;
@@ -296,19 +297,24 @@
   top: 50%;
   transform: translate(-50%, -50%);
 
-
-  padding: 0;
-
-  display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .popup::before {
-  background-color: #000000;
-  opacity: 0.5;
   content: '';
+  background-color: #000000;
+  opacity: .5;
 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.popup_opened {
+  display: flex;
 }
 
 .popup__container {
@@ -324,6 +330,13 @@
   position: relative;
 }
 
+@media (min-width: 768px) {
+  .popup__container {
+    width: 430px;
+    min-height: 330px;
+  }
+}
+
 .popup__close-button {
   background-size: cover;
   background-repeat: no-repeat;
@@ -336,8 +349,8 @@
   width: 20px;
   height: 20px;
   position: absolute;
-  top: -28px;
-  right: -28px;
+  top: -36px;
+  right: 0;
 
   transition: all .3s linear;
 }
@@ -345,6 +358,16 @@
 .popup__close-button:hover {
   opacity: 0.6;
   transform: rotate(90deg);
+}
+
+@media (min-width: 768px) {
+  .popup__close-button {
+    width: 32px;
+    height: 32px;
+
+    top: -40px;
+    right: -40px;
+  }
 }
 
 
@@ -364,12 +387,47 @@
   color: black;
 }
 
+@media (min-width: 768px) {
+  .popup__heading {
+    margin: 34px auto 54px;
+    width: 358px;
+
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
 .popup__name-input {
   display: block;
 
   margin: 0 auto 30px;
   padding: 0;
-  padding-bottom: 14px;
+  padding-bottom: 13px;
+
+  width: 238px;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+@media (min-width: 768px) {
+  .popup__name-input {
+    width: 358px;
+  }
+}
+
+.popup__quote-input {
+  display: block;
+
+  margin: 0 auto 45px;
+  padding: 0;
+  padding-bottom: 13px;
 
   width: 238px;
 
@@ -384,24 +442,11 @@
   border-bottom: 1px solid #000000;
 }
 
-.popup__quote-input {
-  display: block;
-
-  margin: 0 auto 45px;
-  padding: 0;
-  padding-bottom: 14px;
-
-  width: 238px;
-
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 17px;
-  letter-spacing: 0em;
-  text-align: left;
-
-  border: none;
-  border-bottom: 1px solid #000000;
+@media (min-width: 768px) {
+  .popup__quote-input {
+    margin-bottom: 45px;
+    width: 358px;
+  }
 }
 
 .popup__submit-button {
@@ -432,6 +477,16 @@
 .popup__submit-button:hover {
   opacity: .8;
 
+}
+
+@media (min-width: 768px) {
+  .popup__submit-button {
+    margin-bottom: 37px;
+    width: 358px;
+
+    font-size: 18px;
+    line-height: 22px;
+  }
 }
 
 
