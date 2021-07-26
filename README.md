@@ -1,6 +1,6 @@
 # Проект: Место
 
-yandex-praktikum/russian-travel
+yandex-praktikum/mesto-project
 
 2-ая проектная работа 2-го спринта на курсе "Веб-разработчик плюс"
 
