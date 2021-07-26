@@ -1,0 +1,19 @@
+.profile__quote {
+  margin: 0;
+  padding: 0;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .profile__quote {
+    font-size: 18px;
+    line-height: 22px;
+    text-align: left;
+  }
+}
