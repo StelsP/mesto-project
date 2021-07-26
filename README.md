@@ -11,4 +11,4 @@ cписок технологий:
   <li>css</li>
 </ul>
 
-GitHub Pages: 
+GitHub Pages: https://stelsp.github.io/mesto-project/
