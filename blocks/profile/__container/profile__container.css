@@ -3,7 +3,9 @@
 }
 
 @media (min-width: 1024px) {
-  .profile__container{
+  .profile__container {
+    margin-bottom: 0;
+
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -1,6 +1,7 @@
 .profile__image {
   border-radius: 50%;
   max-width: 169px;
+  max-height: 127px;
 
   display: block;
   margin: 0 auto 20px;
@@ -8,6 +9,7 @@
 
 @media (min-width: 1024px) {
   .profile__image {
+    margin-bottom: 0;
     margin-right: 20px;
   }
 }

@@ -1,19 +1,11 @@
 .elements {
   padding-top: 36px;
-
-  display: grid;
-  justify-content: center;
-  gap: 20px;
-}
-
-@media (min-width: 768px) {
-  .elements {
-    grid-template-columns: repeat(2, 282px);
-  }
 }
 
 @media (min-width: 1024px) {
   .elements {
-    grid-template-columns: repeat(3, 282px);
+    padding-top: 47px;
   }
 }
+
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +18,8 @@
 
     <section class="profile">
       <div class="profile__container">
-        <img src="./images/profile__photo.jpg" alt="#" class="profile__image">
-        <div class="test">
+        <img src="./images/profile__photo.jpg" alt="Фото Жак-Ив Кусто" class="profile__image">
+        <div class="profile__text-container">
           <h1 class="profile__name">Жак-Ив Кусто <button class="profile__edit-button"></button></h1>
           <p class="profile__quote">Исследователь океана</p>
         </div>
@@ -29,53 +29,57 @@
 
     <section class="elements">
 
-      <div class="elements__cell">
-        <img src="./images/elements__photo-1.jpg" alt="#" class="elements__image">
-        <div class="elements__cell-container">
-          <p class="elements__name">Карачаево-Черкесия</p>
-          <button class="elements__like-button"></button>
-        </div>
-      </div>
+      <ul class="elements__list">
 
-      <div class="elements__cell">
-        <img src="./images/elements__photo-2.jpg" alt="#" class="elements__image">
-        <div class="elements__cell-container">
-          <p class="elements__name">Гора Эльбрус</p>
-          <button class="elements__like-button"></button>
-        </div>
-      </div>
+        <li class="elements__cell">
+          <img src="./images/elements__photo-1.jpg" alt="фото Карачаево-Черкесия" class="elements__image">
+          <div class="elements__cell-container">
+            <p class="elements__name">Карачаево-Черкесия</p>
+            <button class="elements__like-button"></button>
+          </div>
+        </li>
 
-      <div class="elements__cell">
-        <img src="./images/elements__photo-3.jpg" alt="#" class="elements__image">
-        <div class="elements__cell-container">
-          <p class="elements__name">Домбай</p>
-          <button class="elements__like-button"></button>
-        </div>
-      </div>
+        <li class="elements__cell">
+          <img src="./images/elements__photo-2.jpg" alt="фото Гора Эльбрус" class="elements__image">
+          <div class="elements__cell-container">
+            <p class="elements__name">Гора Эльбрус</p>
+            <button class="elements__like-button"></button>
+          </div>
+        </li>
 
-      <div class="elements__cell">
-        <img src="./images/elements__photo-1.jpg" alt="#" class="elements__image">
-        <div class="elements__cell-container">
-          <p class="elements__name">Карачаево-Черкесия</p>
-          <button class="elements__like-button"></button>
-        </div>
-      </div>
+        <li class="elements__cell">
+          <img src="./images/elements__photo-3.jpg" alt="фото Домбай" class="elements__image">
+          <div class="elements__cell-container">
+            <p class="elements__name">Домбай</p>
+            <button class="elements__like-button"></button>
+          </div>
+        </li>
 
-      <div class="elements__cell">
-        <img src="./images/elements__photo-2.jpg" alt="#" class="elements__image">
-        <div class="elements__cell-container">
-          <p class="elements__name">Гора Эльбрус</p>
-          <button class="elements__like-button"></button>
-        </div>
-      </div>
+        <li class="elements__cell">
+          <img src="./images/elements__photo-1.jpg" alt="фото Карачаево-Черкесия" class="elements__image">
+          <div class="elements__cell-container">
+            <p class="elements__name">Карачаево-Черкесия</p>
+            <button class="elements__like-button"></button>
+          </div>
+        </li>
 
-      <div class="elements__cell">
-        <img src="./images/elements__photo-3.jpg" alt="#" class="elements__image">
-        <div class="elements__cell-container">
-          <p class="elements__name">Домбай</p>
-          <button class="elements__like-button"></button>
-        </div>
-      </div>
+        <li class="elements__cell">
+          <img src="./images/elements__photo-2.jpg" alt="фото Гора Эльбрус" class="elements__image">
+          <div class="elements__cell-container">
+            <p class="elements__name">Гора Эльбрус</p>
+            <button class="elements__like-button"></button>
+          </div>
+        </li>
+
+        <li class="elements__cell">
+          <img src="./images/elements__photo-3.jpg" alt="фото Домбай" class="elements__image">
+          <div class="elements__cell-container">
+            <p class="elements__name">Домбай</p>
+            <button class="elements__like-button"></button>
+          </div>
+        </li>
+
+      </ul>
 
     </section>
 
@@ -85,7 +89,7 @@
     <p class="footer__copyright">© 2021 Mesto Russia</p>
   </footer>
 
-  <section class="popup popup_opened">
+  <section class="popup">
     <div class="popup__container">
       <button class="popup__close-button"></button>
       <p class="popup__heading">Редактировать профиль</p>
