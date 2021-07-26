@@ -1,0 +1,11 @@
+.elements__cell {
+  margin: 0 auto;
+
+  max-width: 282px;
+  max-height: 361px;
+
+  background-color: #FFFFFF;
+  color: #000000;
+
+  border-radius: 10px;
+}
