@@ -16,6 +16,7 @@
 
 .profile__edit-button:hover {
   opacity: .6;
+  cursor: pointer;
 }
 
 @media (min-width: 1024px) {

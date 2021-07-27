@@ -14,16 +14,19 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: black;
+  background-size: 16px;
 
   transition: opacity .3s linear;
 }
 
 .profile__add-button:hover {
   opacity: .6;
+  cursor: pointer;
 }
 
 @media (min-width: 1024px) {
   .profile__add-button {
+    background-size: 22px;
     margin: 0;
     max-width: 150px;
   }

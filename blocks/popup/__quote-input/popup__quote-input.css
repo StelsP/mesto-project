@@ -1,9 +1,9 @@
 .popup__quote-input {
   display: block;
-
-  margin: 0 auto 45px;
+  margin: 0;
   padding: 0;
-  padding-bottom: 13px;
+  padding-bottom: 9px;
+  margin: 0 auto 44px;
 
   min-width: 238px;
 
@@ -16,11 +16,13 @@
 
   border: none;
   border-bottom: 1px solid #000000;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
   .popup__quote-input {
-    margin-bottom: 45px;
+    margin-bottom: 47px;
+
     min-width: 358px;
   }
 }

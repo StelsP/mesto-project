@@ -1,3 +1,7 @@
+.profile {
+  padding-top: 38px;
+}
+
 @media (min-width: 1024px) {
   .profile {
     margin: 0 auto;
@@ -6,5 +10,21 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+.profile__name-container {
+  margin: 0 38px 10px 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .profile__name-container {
+    margin: 0;
+    margin-bottom: 7px;
+
   }
 }
