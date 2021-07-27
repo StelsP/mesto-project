@@ -5,7 +5,8 @@
 
   display: grid;
   justify-content: center;
-  gap: 20px;
+  column-gap: 17px;
+  row-gap: 20px;
 }
 
 @media (min-width: 768px) {

@@ -1,28 +1,23 @@
-.popup__quote-input {
+.popup__input {
   display: block;
-  margin: 0;
   padding: 0;
   padding-bottom: 9px;
-  margin: 0 auto 44px;
-
   min-width: 238px;
-
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 17px;
   letter-spacing: 0em;
   text-align: left;
-
   border: none;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
   box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
-  .popup__quote-input {
-    margin-bottom: 47px;
-
+  .popup__input {
     min-width: 358px;
   }
 }
+
+
