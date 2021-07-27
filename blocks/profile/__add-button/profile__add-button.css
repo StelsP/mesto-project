@@ -2,20 +2,16 @@
   display: block;
   margin: 0 auto;
   padding: 0;
-
   width: 282px;
   height: 50px;
-
   border: 2px solid #FFFFFF;
   border-radius: 2px;
   box-sizing: border-box;
-
   background-image: url(../../../images/add_button_cross.svg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: black;
   background-size: 16px;
-
   transition: opacity .3s linear;
 }
 

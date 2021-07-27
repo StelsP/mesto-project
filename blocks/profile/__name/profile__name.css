@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   margin-right: 10px;
-
   font-size: 27px;
   font-style: normal;
   font-weight: 500;
@@ -14,7 +13,6 @@
 @media (min-width: 1024px) {
   .profile__name {
     margin-right: 18px;
-
     font-size: 42px;
     line-height: 48px;
     text-align: left;

@@ -1,14 +1,11 @@
 .popup {
   display: none;
-
   height: 100%;
   width: 100%;
-
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-
   align-items: center;
   justify-content: center;
 }
@@ -17,7 +14,6 @@
   content: '';
   background-color: #000000;
   opacity: .5;
-
   position: absolute;
   top: 0;
   left: 0;

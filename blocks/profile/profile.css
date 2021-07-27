@@ -15,7 +15,6 @@
 
 .profile__name-container {
   margin: 0 38px 10px 65px;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,6 +24,5 @@
   .profile__name-container {
     margin: 0;
     margin-bottom: 7px;
-
   }
 }

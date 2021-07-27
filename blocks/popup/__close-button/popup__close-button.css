@@ -4,15 +4,12 @@
   background-position: center;
   background-image: url(../../../images/cloge_icon.svg);
   background-color: transparent;
-
   border: none;
-
   width: 20px;
   height: 20px;
   position: absolute;
   top: -36px;
   right: 0;
-
   transition: all .3s linear;
 }
 
@@ -26,7 +23,6 @@
   .popup__close-button {
     width: 32px;
     height: 32px;
-
     top: -40px;
     right: -40px;
   }

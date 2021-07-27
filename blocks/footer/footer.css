@@ -3,7 +3,6 @@
   padding: 0;
   padding-top: 48px;
   padding-bottom: 36px;
-
   max-width: 282px;
 }
 
@@ -11,7 +10,6 @@
   .footer {
     padding-top: 67px;
     padding-bottom: 60px;
-
     max-width: 584px;
   }
 }
