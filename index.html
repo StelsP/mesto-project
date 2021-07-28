@@ -10,7 +10,6 @@
 <body class="root">
   <header class="header">
     <img src="./images/logo_light.svg" alt="Проект Место" class="header__logo">
-    <div class="header__line"></div>
   </header>
   <main class="main">
     <section class="profile">
@@ -76,15 +75,15 @@
   <footer class="footer">
     <p class="footer__copyright">© 2021 Mesto Russia</p>
   </footer>
-  <section class="popup">
+  <section class="popup popup_opened">
     <div class="popup__container">
       <button type="button" class="popup__close-button"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
       <form name="popup__form">
-        <input type="text" placeholder="Жак-Ив Кусто" class="popup__input popup__input_name">
-        <input type="text" placeholder="Исследователь океана" class="popup__input popup__input_quote">
+        <input name="input_name" type="text" placeholder="Жак-Ив Кусто" class="popup__input popup__input_type_name">
+        <input name="input_quote" type="text" placeholder="Исследователь океана" class="popup__input popup__input_type_quote">
+        <button type="submit" class="popup__submit-button">Сохранить</button>
       </form>
-      <button type="button" class="popup__submit-button">Сохранить</button>
     </div>
   </section>
 </body>
