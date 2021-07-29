@@ -1,9 +1,0 @@
-.popup__input_type_quote {
-  margin: 0 auto 44px;
-}
-
-@media (min-width: 768px) {
-  .popup__input_type_quote {
-    margin-bottom: 47px;
-  }
-}
