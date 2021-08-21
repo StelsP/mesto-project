@@ -23,8 +23,8 @@ closeButtonPopup.addEventListener('click', () => {
 
 submitButtonPopup.addEventListener('click', () => {
   popup.classList.remove('popup_opened');
-  profileName.innerHTML = (inputName.value);
-  profileQuote.innerHTML = (inputQuote.value);
+  profileName.textContent = (inputName.value);
+  profileQuote.textContent = (inputQuote.value);
 });
 
 
