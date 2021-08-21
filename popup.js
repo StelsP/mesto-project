@@ -37,6 +37,9 @@ submitButtonPopup.addEventListener('click', () => {
   inputQuote.value = ('');
   inputName.placeholder = profileName.textContent;
   inputQuote.placeholder = profileQuote.textContent;
+
+
+
 });
 
 
