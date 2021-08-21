@@ -24,13 +24,19 @@ function buttons () {
   });
 
   submitButtonPopup.addEventListener('click', () => {
-    popup.classList.remove('popup_opened');
-    profileName.textContent = (inputName.value);
-    profileQuote.textContent = (inputQuote.value);
-    inputName.value = ('');
-    inputQuote.value = ('');
-    inputName.placeholder = profileName.textContent;
-    inputQuote.placeholder = profileQuote.textContent;
+    if (inputName.value === ('')) {
+
+    } else if (inputQuote.value === ('')) {
+
+    } else {
+      popup.classList.remove('popup_opened');
+      profileName.textContent = inputName.value;
+      profileQuote.textContent = inputQuote.value;
+      inputName.value = ('');
+      inputQuote.value = ('');
+      inputName.placeholder = profileName.textContent;
+      inputQuote.placeholder = profileQuote.textContent;
+    }
   });
 }
 
