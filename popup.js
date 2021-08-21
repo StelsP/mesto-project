@@ -13,8 +13,6 @@ let inputName = document.querySelector('.popup__input_type_name');
 let inputQuote = document.querySelector('.popup__input_type_quote');
 
 
-
-
 editButton.addEventListener('click', () => {
   popup.classList.add('popup_opened');
 });
