@@ -37,6 +37,8 @@ function buttons () {
 
 }
 
+buttons ();
+
 
 
 
