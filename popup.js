@@ -1,8 +1,6 @@
-
 let editButton = document.querySelector('.profile__edit-button');
 let closeButtonPopup = document.querySelector('.popup__close-button');
 let submitButtonPopup = document.querySelector('.popup__submit-button');
-
 
 let popup = document.querySelector('.popup');
 
