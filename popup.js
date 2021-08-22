@@ -12,6 +12,8 @@ function clearProfilePlaceholder () {
   inputQuote.value = '';
   inputName.placeholder = profileName.textContent;
   inputQuote.placeholder = profileQuote.textContent;
+  inputName.classList.remove('popup__input_red');
+  inputQuote.classList.remove('popup__input_red');
 }
 
 function addProfileInfo () {
@@ -33,6 +35,9 @@ submitButtonPopup.addEventListener('click', () => {
     popup.classList.remove('popup_opened');
     addProfileInfo ();
     clearProfilePlaceholder();
+  } else {
+    inputName.classList.add('popup__input_red');
+    inputQuote.classList.add('popup__input_red');
   }
 });
 

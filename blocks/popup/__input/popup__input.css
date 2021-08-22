@@ -15,6 +15,10 @@
   box-sizing: border-box;
 }
 
+.popup__input_red::placeholder {
+  color: red;
+}
+
 .popup__input:last-child {
   margin: 0 auto 44px;
 }
