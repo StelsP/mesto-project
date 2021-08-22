@@ -1,11 +1,11 @@
-let editButton = document.querySelector('.profile__edit-button');
-let closeButtonPopup = document.querySelector('.popup__close-button');
-let submitButtonPopup = document.querySelector('.popup__submit-button');
-let popup = document.querySelector('.popup');
-let profileName = document.querySelector('.profile__name');
-let profileQuote = document.querySelector('.profile__quote');
-let inputName = document.querySelector('.popup__input_type_name');
-let inputQuote = document.querySelector('.popup__input_type_quote');
+const editButton = document.querySelector('.profile__edit-button');
+const closeButtonPopup = document.querySelector('.popup__close-button');
+const submitButtonPopup = document.querySelector('.popup__submit-button');
+const popup = document.querySelector('.popup');
+const profileName = document.querySelector('.profile__name');
+const profileQuote = document.querySelector('.profile__quote');
+const inputName = document.querySelector('.popup__input_type_name');
+const inputQuote = document.querySelector('.popup__input_type_quote');
 
 function clearProfilePlaceholder () {
   inputName.value = '';
