@@ -17,6 +17,11 @@
     inputQuote.placeholder = profileQuote.textContent;
   }
 
+  function addProfileInfo () {
+    profileName.textContent = inputName.value;
+    profileQuote.textContent = inputQuote.value;
+  }
+
   editButton.addEventListener('click', () => {
     popup.classList.add('popup_opened');
   });
@@ -29,8 +34,7 @@
   submitButtonPopup.addEventListener('click', () => {
     if (inputName.value !== '' && inputQuote.value !== '') {
       popup.classList.remove('popup_opened');
-      profileName.textContent = inputName.value;
-      profileQuote.textContent = inputQuote.value;
+      addProfileInfo ();
       clearProfilePlaceholder();
     }
   });
