@@ -1,4 +1,3 @@
-function buttons () {
   let editButton = document.querySelector('.profile__edit-button');
   let closeButtonPopup = document.querySelector('.popup__close-button');
   let submitButtonPopup = document.querySelector('.popup__submit-button');
@@ -11,36 +10,31 @@ function buttons () {
   let inputName = document.querySelector('.popup__input_type_name');
   let inputQuote = document.querySelector('.popup__input_type_quote');
 
+  function clearProfilePlaceholder () {
+    inputName.value = '';
+    inputQuote.value = '';
+    inputName.placeholder = profileName.textContent;
+    inputQuote.placeholder = profileQuote.textContent;
+  }
+
   editButton.addEventListener('click', () => {
     popup.classList.add('popup_opened');
   });
 
   closeButtonPopup.addEventListener('click', () => {
     popup.classList.remove('popup_opened');
-    inputName.value = ('');
-    inputQuote.value = ('');
-    inputName.placeholder = profileName.textContent;
-    inputQuote.placeholder = profileQuote.textContent;
+    clearProfilePlaceholder();
   });
 
   submitButtonPopup.addEventListener('click', () => {
-    if (inputName.value === ('')) {
-
-    } else if (inputQuote.value === ('')) {
-
-    } else {
+    if (inputName.value !== '' && inputQuote.value !== '') {
       popup.classList.remove('popup_opened');
       profileName.textContent = inputName.value;
       profileQuote.textContent = inputQuote.value;
-      inputName.value = ('');
-      inputQuote.value = ('');
-      inputName.placeholder = profileName.textContent;
-      inputQuote.placeholder = profileQuote.textContent;
+      clearProfilePlaceholder();
     }
   });
-}
 
-buttons ();
 
 
 
