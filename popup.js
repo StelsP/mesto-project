@@ -1,47 +1,39 @@
-  let editButton = document.querySelector('.profile__edit-button');
-  let closeButtonPopup = document.querySelector('.popup__close-button');
-  let submitButtonPopup = document.querySelector('.popup__submit-button');
+let editButton = document.querySelector('.profile__edit-button');
+let closeButtonPopup = document.querySelector('.popup__close-button');
+let submitButtonPopup = document.querySelector('.popup__submit-button');
+let popup = document.querySelector('.popup');
+let profileName = document.querySelector('.profile__name');
+let profileQuote = document.querySelector('.profile__quote');
+let inputName = document.querySelector('.popup__input_type_name');
+let inputQuote = document.querySelector('.popup__input_type_quote');
 
-  let popup = document.querySelector('.popup');
+function clearProfilePlaceholder () {
+  inputName.value = '';
+  inputQuote.value = '';
+  inputName.placeholder = profileName.textContent;
+  inputQuote.placeholder = profileQuote.textContent;
+}
 
-  let profileName = document.querySelector('.profile__name');
-  let profileQuote = document.querySelector('.profile__quote');
+function addProfileInfo () {
+  profileName.textContent = inputName.value;
+  profileQuote.textContent = inputQuote.value;
+}
 
-  let inputName = document.querySelector('.popup__input_type_name');
-  let inputQuote = document.querySelector('.popup__input_type_quote');
+editButton.addEventListener('click', () => {
+  popup.classList.add('popup_opened');
+});
 
-  function clearProfilePlaceholder () {
-    inputName.value = '';
-    inputQuote.value = '';
-    inputName.placeholder = profileName.textContent;
-    inputQuote.placeholder = profileQuote.textContent;
-  }
+closeButtonPopup.addEventListener('click', () => {
+  popup.classList.remove('popup_opened');
+  clearProfilePlaceholder();
+});
 
-  function addProfileInfo () {
-    profileName.textContent = inputName.value;
-    profileQuote.textContent = inputQuote.value;
-  }
-
-  editButton.addEventListener('click', () => {
-    popup.classList.add('popup_opened');
-  });
-
-  closeButtonPopup.addEventListener('click', () => {
+submitButtonPopup.addEventListener('click', () => {
+  if (inputName.value !== '' && inputQuote.value !== '') {
     popup.classList.remove('popup_opened');
+    addProfileInfo ();
     clearProfilePlaceholder();
-  });
-
-  submitButtonPopup.addEventListener('click', () => {
-    if (inputName.value !== '' && inputQuote.value !== '') {
-      popup.classList.remove('popup_opened');
-      addProfileInfo ();
-      clearProfilePlaceholder();
-    }
-  });
-
-
-
-
-
+  }
+});
 
 
