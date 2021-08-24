@@ -8,10 +8,6 @@ const inputName = document.querySelector('.popup__input_type_name');
 const inputQuote = document.querySelector('.popup__input_type_quote');
 
 
-function submitButtonError() {
-  inputName.classList.add('popup__input_error');
-  inputQuote.classList.add('popup__input_error');
-}
 function clearProfilePlaceholder() {
   inputName.value = '';
   inputQuote.value = '';
@@ -38,7 +34,8 @@ function profileButtons() {
       profileQuote.textContent = inputQuote.value;
       clearProfilePlaceholder();
     } else {
-      submitButtonError();
+      inputName.classList.add('popup__input_error');
+      inputQuote.classList.add('popup__input_error');
     }
   });
 }
@@ -68,7 +65,7 @@ function addElementsCell() {
   const inputImage = document.querySelector('.popup__input_type_image');
 
   submitButtonElements.addEventListener('click', () => {
-    if (inputTitle.value !== '' && inputImage.value !== '') {
+    if (inputTitle.value !== '') {
       popupElements.classList.remove('popup_opened');
       elementsList.insertAdjacentHTML('afterbegin', `
         <li class="elements__cell">
