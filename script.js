@@ -11,8 +11,6 @@ const inputQuote = document.querySelector('.popup__input_type_quote');
 function submitButtonError() {
   inputName.classList.add('popup__input_error');
   inputQuote.classList.add('popup__input_error');
-  inputTitle.classList.add('popup__input_error');
-  inputImage.classList.add('popup__input_error');
 }
 function clearProfilePlaceholder() {
   inputName.value = '';
@@ -88,9 +86,12 @@ function addElementsCell() {
         </li>
       `);
       inputTitle.value = '';
+      inputImage.value = '';
       inputTitle.classList.remove('popup__input_error');
+      inputImage.classList.remove('popup__input_error');
     } else {
       inputTitle.classList.add('popup__input_error');
+      inputImage.classList.add('popup__input_error');
     }
   });
 }
