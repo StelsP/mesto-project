@@ -1,6 +1,21 @@
 .elements__image {
+  display: block;
   border-radius: 10px 10px 0px 0px;
   width: 282px;
   height: 282px;
   object-fit: cover;
+  cursor: pointer;
 }
+
+.elements__image:hover {
+  opacity: .6;
+}
+
+.elements__image-popup {
+  position: relative;
+  z-index: 1;
+  border-radius: 0;
+  width: 75vw;
+  height: 75vh;
+}
+

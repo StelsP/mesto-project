@@ -51,18 +51,18 @@ closeButtonElements.addEventListener('click', () => {
   popupElements.classList.remove('popup_opened');
 });
 
-function addElementsCell() {
-  const elementsList = document.querySelector('.elements__list');
-  const submitButtonElements = document.querySelector('.popup__submit-button-cell');
-  const inputTitle = document.querySelector('.popup__input_type_title');
-  const inputImage = document.querySelector('.popup__input_type_image');
+const elementsList = document.querySelector('.elements__list');
+const submitButtonElements = document.querySelector('.popup__submit-button-cell');
+const inputTitle = document.querySelector('.popup__input_type_title');
+const inputImage = document.querySelector('.popup__input_type_image');
 
+function addElementsCell() {
   submitButtonElements.addEventListener('click', () => {
     if (inputTitle.value !== '' & inputImage.value !== '') {
       popupElements.classList.remove('popup_opened');
       elementsList.insertAdjacentHTML('afterbegin', `
         <li class="elements__cell">
-          <img src="${inputImage.value}" alt="фото Домбай" class="elements__image">
+          <img src="${inputImage.value}" alt="Фото" class=" elements__image-popup-link elements__image">
           <div class="elements__cell-container">
             <p class="elements__name">${inputTitle.value}</p>
             <button type="button" class="elements__like-button"></button>
@@ -70,7 +70,6 @@ function addElementsCell() {
         </li>
       `);
       inputTitle.value = '';
-      inputImage.value = '';
       inputTitle.classList.remove('popup__input_error');
       inputImage.classList.remove('popup__input_error');
     } else {
@@ -80,3 +79,16 @@ function addElementsCell() {
   });
 }
 addElementsCell();
+
+function openImagePopup() {
+  const imagePopupLink = document.querySelector('.elements__image-popup-link');
+
+  imagePopupLink.addEventListener('click', () => {
+    elementsList.insertAdjacentHTML('afterbegin', `
+          <section class="popup popup_opened">
+          <img src="${inputImage.value}" alt="Фото" class="elements__image elements__image-popup">
+          </section>
+      `); // ТУТ НУЖКЕ SRC VALUE НАВЕРНО
+  });
+}
+openImagePopup();
