@@ -21,13 +21,6 @@ function clearProfilePlaceholder() {
   inputQuote.classList.remove('popup__input_error');
 }
 
-
-
-function addProfileInfo() {
-  profileName.textContent = inputName.value;
-  profileQuote.textContent = inputQuote.value;
-}
-
 function profileButtons() {
   editButton.addEventListener('click', () => {
     popup.classList.add('popup_opened');
@@ -41,7 +34,8 @@ function profileButtons() {
   submitButtonPopup.addEventListener('click', () => {
     if (inputName.value !== '' && inputQuote.value !== '') {
       popup.classList.remove('popup_opened');
-      addProfileInfo();
+      profileName.textContent = inputName.value;
+      profileQuote.textContent = inputQuote.value;
       clearProfilePlaceholder();
     } else {
       submitButtonError();
@@ -74,7 +68,7 @@ function addElementsCell() {
   const inputImage = document.querySelector('.popup__input_type_image');
 
   submitButtonElements.addEventListener('click', () => {
-    if (inputTitle.value !== '') {
+    if (inputTitle.value !== '' && inputImage.value !== '') {
       popupElements.classList.remove('popup_opened');
       elementsList.insertAdjacentHTML('afterbegin', `
         <li class="elements__cell">
