@@ -41,4 +41,23 @@ submitButtonPopup.addEventListener('click', () => {
   }
 });
 
+function addElementsCell() {
 
+  const elementsList = document.querySelector('.elements__list');
+  const addElementsCellButton = document.querySelector('.profile__add-button');
+
+  addElementsCellButton.addEventListener('click', () => {
+
+    elementsList.insertAdjacentHTML('afterbegin', `
+      <li class="elements__cell">
+        <img src="./images/elements__photo-3.jpg" alt="фото Домбай" class="elements__image">
+        <div class="elements__cell-container">
+          <p class="elements__name">Домбай</p>
+          <button type="button" class="elements__like-button"></button>
+        </div>
+      </li>
+    `);
+  });
+}
+
+addElementsCell();
