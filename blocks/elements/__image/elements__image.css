@@ -7,15 +7,20 @@
   cursor: pointer;
 }
 
-.elements__image:hover {
-  opacity: .6;
-}
-
 .elements__image-popup {
-  position: relative;
-  z-index: 1;
   border-radius: 0;
   width: 75vw;
   height: 75vh;
+  cursor: auto;
+}
+
+.elements__name-popup {
+  color: white;
+}
+.popup__image-pos {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
