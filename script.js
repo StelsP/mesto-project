@@ -1,3 +1,6 @@
+
+//В elements__image.CSS НУЖНО РАСКИДАТЬ ЛИШНИИ СТИЛИ ПО БЭМ
+
 const editButtonProfile = document.querySelector('.profile__edit-button');
 const closeButtonProfile = document.querySelector('.popup__close-button');
 const submitButtonProfile = document.querySelector('.popup__submit-button');
