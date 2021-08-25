@@ -27,17 +27,26 @@ closeButtonProfile.addEventListener('click', () => {
   clearProfilePlaceholder();
 });
 
-submitButtonProfile.addEventListener('click', () => {
+function formSubmitHandler (evt) {
+  evt.preventDefault();
+
   if (inputName.value !== '' && inputQuote.value !== '') {
     popup.classList.remove('popup_opened');
     profileName.textContent = inputName.value;
     profileQuote.textContent = inputQuote.value;
     clearProfilePlaceholder();
-  } else {
-    inputName.classList.add('popup__input_error');
-    inputQuote.classList.add('popup__input_error');
-  }
-});
+    } else {
+      inputName.classList.add('popup__input_error');
+      inputQuote.classList.add('popup__input_error');
+    }
+}
+popup.addEventListener('submit', formSubmitHandler);
+
+
+
+
+
+
 
 const popupElements = document.querySelector('.popup__elements');
 const addButtonElements = document.querySelector('.profile__add-button');
@@ -92,3 +101,14 @@ function openImagePopup() {
   });
 }
 openImagePopup();
+
+
+
+
+
+
+
+
+
+
+
