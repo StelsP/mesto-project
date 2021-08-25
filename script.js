@@ -1,9 +1,8 @@
 
 //В elements__image.CSS НУЖНО РАСКИДАТЬ ЛИШНИИ СТИЛИ ПО БЭМ
-
+const root = document.querySelector('.root');
 const editButtonProfile = document.querySelector('.profile__edit-button');
 const closeButtonProfile = document.querySelector('.popup__close-button');
-const submitButtonProfile = document.querySelector('.popup__submit-button');
 
 const popup = document.querySelector('.popup');
 
@@ -16,13 +15,12 @@ const popupElements = document.querySelector('.popup__elements');
 
 const addButtonElements = document.querySelector('.profile__add-button');
 const closeButtonElements = document.querySelector('.popup__close-button-cell');
-const submitButtonElements = document.querySelector('.popup__submit-button-cell');
 const elementsList = document.querySelector('.elements__list');
 
 const inputTitle = document.querySelector('.popup__input_type_title');
 const inputImage = document.querySelector('.popup__input_type_image');
 
-const imagePopupLink = document.querySelector('.elements__image-popup-link');
+
 
 const initialCards = [
   {
@@ -54,19 +52,16 @@ const initialCards = [
 // CREATE 6 CARDS
 function addDefaultElementsCell() {
   for (let i = 0; i < initialCards.length; i++) {
-    console.log( initialCards[i].name);
-    console.log( initialCards[i].link);
-
-  elementsList.insertAdjacentHTML('afterbegin', `
-        <li class="elements__cell">
-          <img src="${initialCards[i].link}" alt="Фото" class="elements__image-popup-link elements__image">
-          <div class="elements__cell-container">
-            <p class="elements__name">${initialCards[i].name}</p>
-            <button type="button" class="elements__like-button"></button>
-          </div>
-        </li>
-      `);
-    }
+    elementsList.insertAdjacentHTML('afterbegin', `
+      <li class="elements__cell">
+        <img src="${initialCards[i].link}" alt="Фото" class="elements__image-popup-link elements__image">
+        <div class="elements__cell-container">
+          <p class="elements__name">${initialCards[i].name}</p>
+          <button type="button" class="elements__like-button"></button>
+        </div>
+      </li>
+    `);
+  }
 }
 addDefaultElementsCell();
 
@@ -138,19 +133,27 @@ function formSubmitHandlerElements (evt) {
 }
 popupElements.addEventListener('submit', formSubmitHandlerElements);
 
+const imagePopupLink = document.querySelector('.elements__image-popup-link');
+// // ТУТ ОТКРЫТИЕ ПОПАП КАРТИНКИ ЕЛЕМЕНТА ПРИ КЛИКЕ
+// function openImagePopup() {
 
-// ТУТ ОТКРЫТИЕ ПОПАП КАРТИНКИ ЕЛЕМЕНТА ПРИ КЛИКЕ
-function openImagePopup() {
+// }
+// imagePopupLink.addEventListener('click', openImagePopup());
 
-    elementsList.insertAdjacentHTML('afterbegin', `
-          <section class="popup popup_opened">
-          <img src="${inputImage.value}" alt="Фото" class="elements__image-popup-link elements__image elements__image-popup">
-          <p class="elements__name elements__name-popup">${inputTitle.value}</p>
-          </section>
-      `); // ТУТ НУЖКЕ SRC VALUE НАВЕРНО
-}
-imagePopupLink.addEventListener('click', openImagePopup);
 
+imagePopupLink.addEventListener('click', () => {
+  const img = document.querySelector('.elements__image');
+  const name = document.querySelector('.elements__name');
+
+  root.insertAdjacentHTML('afterbegin', `
+  <section class="popup popup_opened ">
+    <div class="popup__image-pos">
+    <img src="${img.src}" alt="Фото" class="elements__image-popup-link elements__image elements__image-popup">
+    <p class="elements__name elements__name-popup">${name.textContent}</p>
+    </div>
+    </section>
+`); // ТУТ НУЖКЕ SRC VALUE НАВЕРНО
+});
 
 
 
