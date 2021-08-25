@@ -142,8 +142,9 @@ const imagePopupLink = document.querySelector('.elements__image-popup-link');
 
 
 imagePopupLink.addEventListener('click', () => {
-  const img = document.querySelector('.elements__image');
+
   const name = document.querySelector('.elements__name');
+
 
   root.insertAdjacentHTML('afterbegin', `
   <section class="popup popup_opened ">
@@ -154,7 +155,6 @@ imagePopupLink.addEventListener('click', () => {
     </section>
 `); // ТУТ НУЖКЕ SRC VALUE НАВЕРНО
 });
-
 
 
 

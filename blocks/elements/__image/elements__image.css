@@ -4,13 +4,14 @@
   width: 282px;
   height: 282px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .elements__image-popup {
-
   border-radius: 0;
   width: 75vw;
   height: 75vh;
+  cursor: auto;
 }
 
 .elements__name-popup {
