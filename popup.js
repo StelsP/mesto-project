@@ -119,24 +119,26 @@ if (titleInput.value !== '' && imageInput.value !== '') {
 let elementsCellList = document.querySelectorAll('.elements__cell');
 
 for (let i = 0; i < elementsCellList.length; i++) {
-const root = document.querySelector('.root');
-const elementsPopupImage = document.querySelectorAll('.elements__image');
-const elementsPopupName = document.querySelectorAll('.elements__name');
 
-const img = elementsPopupImage[i].getAttribute('src', 'string');
-const name = elementsPopupName[i].textContent;
+  const root = document.querySelector('.root');
+  const elementsPopupImage = document.querySelectorAll('.elements__image');
+  const elementsPopupName = document.querySelectorAll('.elements__name');
 
-elementsCellList[i].addEventListener('click', () => {
-  root.insertAdjacentHTML('afterbegin', `
-    <section class="popup popup_opened">
-      <div class="popup__image-popup">
-      <img src="${img}" alt="Фото" class="elements__image elements__image-popup">
-      <p class="elements__name elements__name-popup">${name}</p>
-      </div>
-    </section>
-  `);
-});
+  const img = elementsPopupImage[i].getAttribute('src', 'string');
+  const name = elementsPopupName[i].textContent;
+
+  elementsCellList[i].addEventListener('click', () => {
+    root.insertAdjacentHTML('afterbegin', `
+      <section class="popup popup_opened">
+        <div class="popup__image-popup">
+        <img src="${img}" alt="Фото" class="elements__image elements__image-popup">
+        <p class="elements__name elements__name-popup">${name}</p>
+        </div>
+      </section>
+    `);
+  });
 }
+
 
 
 
