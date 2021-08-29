@@ -1,6 +1,6 @@
 // ADD START 6 CARDS
 
-  const initialCards = [
+const initialCards = [
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -25,16 +25,16 @@
       name: 'Байкал',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
-  ];
-  const elementsTemplate = document.querySelector('#elements__template').content;
-  const elementsList = document.querySelector('.elements__list');
+];
+const elementsTemplate = document.querySelector('#elements__template').content;
+const elementsList = document.querySelector('.elements__list');
 
-  for (let i = 0; i < initialCards.length; i++) {
-    const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
-    elementsCell.querySelector('.elements__image').src = initialCards[i].link;
-    elementsCell.querySelector('.elements__name').textContent = initialCards[i].name;
-    elementsList.append(elementsCell);
-  }
+for (let i = 0; i < initialCards.length; i++) {
+  const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
+  elementsCell.querySelector('.elements__image').src = initialCards[i].link;
+  elementsCell.querySelector('.elements__name').textContent = initialCards[i].name;
+  elementsList.append(elementsCell);
+}
 
 // PROFILE EDIT
 
@@ -75,7 +75,7 @@ profileEditForm.addEventListener('submit', (evt) => {
     }
 });
 
-// ADD CARDS
+// ADD NEW CARDS
 
 const elementsAddForm = document.querySelector('#popup-el');
 const elementsAddButton = document.querySelector('.profile__add-button');
@@ -84,11 +84,16 @@ const elementsCloseButton = document.querySelector('#popup-el-close-btn');
 const titleInput = document.querySelector('.popup__input_type_title');
 const imageInput = document.querySelector('.popup__input_type_image');
 
+function clearElementsPlaceholder() {
+  titleInput.value = '';
+  imageInput.value = '';
+}
 elementsAddButton.addEventListener('click', () => {
   elementsAddForm.classList.add('popup_opened');
 });
 elementsCloseButton.addEventListener('click', () => {
   elementsAddForm.classList.remove('popup_opened');
+  clearElementsPlaceholder();
 });
 elementsAddForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
@@ -100,7 +105,7 @@ elementsAddForm.addEventListener('submit', (evt) => {
     elementsCell.querySelector('.elements__name').textContent = titleInput.value;
     elementsList.prepend(elementsCell);
 
-    titleInput.value = '';
+    clearElementsPlaceholder();
     titleInput.classList.remove('popup__input_error');
     imageInput.classList.remove('popup__input_error');
   } else {
