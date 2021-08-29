@@ -116,9 +116,9 @@ elementsAddForm.addEventListener('submit', (evt) => {
 
 // OPEN IMAGE POPUP
 // но добавленные через кнопку карточки не открываются =_=
-let elementsCell = document.querySelectorAll('.elements__cell');
+let elementsCellList = document.querySelectorAll('.elements__cell');
 
-for (let i = 0; i < elementsCell.length; i++) {
+for (let i = 0; i < elementsCellList.length; i++) {
   const root = document.querySelector('.root');
   const elementsPopupImage = document.querySelectorAll('.elements__image');
   const elementsPopupName = document.querySelectorAll('.elements__name');
@@ -126,17 +126,16 @@ for (let i = 0; i < elementsCell.length; i++) {
   const img = elementsPopupImage[i].getAttribute('src', 'string');
   const name = elementsPopupName[i].textContent;
 
-  elementsCell[i].addEventListener('click', () => {
-
-  root.insertAdjacentHTML('afterbegin', `
-  <section class="popup popup_opened">
-    <div class="popup__image-popup">
-    <img src="${img}" alt="Фото" class="elements__image elements__image-popup">
-    <p class="elements__name elements__name-popup">${name}</p>
-    </div>
-  </section>
-`);
-});
+  elementsCellList[i].addEventListener('click', () => {
+    root.insertAdjacentHTML('afterbegin', `
+      <section class="popup popup_opened">
+        <div class="popup__image-popup">
+        <img src="${img}" alt="Фото" class="elements__image elements__image-popup">
+        <p class="elements__name elements__name-popup">${name}</p>
+        </div>
+      </section>
+    `);
+  });
 }
 
 
