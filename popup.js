@@ -87,6 +87,8 @@ const imageInput = document.querySelector('.popup__input_type_image');
 function clearElementsPlaceholder() {
   titleInput.value = '';
   imageInput.value = '';
+  titleInput.classList.remove('popup__input_error');
+  imageInput.classList.remove('popup__input_error');
 }
 elementsAddButton.addEventListener('click', () => {
   elementsAddForm.classList.add('popup_opened');
@@ -106,8 +108,6 @@ elementsAddForm.addEventListener('submit', (evt) => {
     elementsList.prepend(elementsCell);
 
     clearElementsPlaceholder();
-    titleInput.classList.remove('popup__input_error');
-    imageInput.classList.remove('popup__input_error');
   } else {
     titleInput.classList.add('popup__input_error');
     imageInput.classList.add('popup__input_error');
