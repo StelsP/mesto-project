@@ -22,6 +22,7 @@ const inputImage = document.querySelector('.popup__input_type_image');
 
 
 
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -64,7 +65,6 @@ function addDefaultElementsCell() {
   }
 }
 addDefaultElementsCell();
-
 // МОЖЕТ ЭТО НЕ НУЖНО
 // (clear inputs + input.placeholder = profile.name + clear red alert)
 function clearProfilePlaceholder() {
@@ -133,28 +133,26 @@ function formSubmitHandlerElements (evt) {
 }
 popupElements.addEventListener('submit', formSubmitHandlerElements);
 
-const imagePopupLink = document.querySelector('.elements__image-popup-link');
+
 // // ТУТ ОТКРЫТИЕ ПОПАП КАРТИНКИ ЕЛЕМЕНТА ПРИ КЛИКЕ
-// function openImagePopup() {
-
-// }
-// imagePopupLink.addEventListener('click', openImagePopup());
-
-
-imagePopupLink.addEventListener('click', () => {
-
-  const name = document.querySelector('.elements__name');
-
-
+function openImagePopup() {
   root.insertAdjacentHTML('afterbegin', `
   <section class="popup popup_opened ">
     <div class="popup__image-pos">
-    <img src="${img.src}" alt="Фото" class="elements__image-popup-link elements__image elements__image-popup">
-    <p class="elements__name elements__name-popup">${name.textContent}</p>
+    <img src="${inputImage.value}" alt="Фото" class="elements__image-popup-link elements__image elements__image-popup">
+    <p class="elements__name elements__name-popup">${inputTitle.value}</p>
     </div>
     </section>
-`); // ТУТ НУЖКЕ SRC VALUE НАВЕРНО
-});
+`);
+
+}
+// openImagePopup();
+const imagePopupLink = document.querySelectorAll('.elements__image-popup-link');
+console.log(imagePopupLink);
+for (let i = 0; i < imagePopupLink.length; i++) {
+imagePopupLink[i].addEventListener('click', openImagePopup);
+}
+
 
 
 
