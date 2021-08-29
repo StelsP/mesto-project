@@ -133,27 +133,19 @@ function formSubmitHandlerElements (evt) {
 }
 popupElements.addEventListener('submit', formSubmitHandlerElements);
 
-const imagePopupLink = document.querySelector('.elements__image-popup-link');
-// // ТУТ ОТКРЫТИЕ ПОПАП КАРТИНКИ ЕЛЕМЕНТА ПРИ КЛИКЕ
-// function openImagePopup() {
-
-// }
-// imagePopupLink.addEventListener('click', openImagePopup());
-
+const imagePopupLink = document.querySelector('.elements__image');
+const root = document.querySelector('.root');
 
 imagePopupLink.addEventListener('click', () => {
 
-  const name = document.querySelector('.elements__name');
-
-
   root.insertAdjacentHTML('afterbegin', `
-  <section class="popup popup_opened ">
-    <div class="popup__image-pos">
-    <img src="${img.src}" alt="Фото" class="elements__image-popup-link elements__image elements__image-popup">
+  <section class="popup popup_opened">
+    <div class="popup__image-popup">
+    <img src="${img.src}" alt="Фото" class="elements__image elements__image-popup">
     <p class="elements__name elements__name-popup">${name.textContent}</p>
     </div>
-    </section>
-`); // ТУТ НУЖКЕ SRC VALUE НАВЕРНО
+  </section>
+`);
 });
 
 
