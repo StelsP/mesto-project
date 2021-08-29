@@ -17,7 +17,7 @@
 .elements__name-popup {
   color: white;
 }
-.popup__image-pos {
+.popup__image-popup {
   display: flex;
   flex-direction: column;
   position: relative;

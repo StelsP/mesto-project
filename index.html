@@ -44,17 +44,26 @@
       </form>
     </div>
   </section>
-  <section class="popup popup__elements">
+  <section class="popup" id="popup-el">
     <div class="popup__container">
-      <button type="button" class="popup__close-button popup__close-button-cell"></button>
+      <button type="button" class="popup__close-button" id="popup-el-close-btn"></button>
       <h2 class="popup__heading">Новое место</h2>
       <form name="popup__form">
-        <input name="input_name" type="text" placeholder="Название" class="popup__input popup__input_type_title">
+        <input name="input_title" type="text" placeholder="Название" class="popup__input popup__input_type_title">
         <input name="input_image" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_image">
-        <button type="submit" class="popup__submit-button popup__submit-button-cell">Создать</button>
+        <button type="submit" class="popup__submit-button">Создать</button>
       </form>
     </div>
   </section>
+  <template id="elements__template">
+    <li class="elements__cell">
+      <img src="#" alt="Фото" class="elements__image">
+      <div class="elements__cell-container">
+        <p class="elements__name"></p>
+        <button type="button" class="elements__like-button"></button>
+      </div>
+    </li>
+  </template>
   <script src="./popup.js"></script>
 </body>
 </html>
