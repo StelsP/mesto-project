@@ -27,7 +27,15 @@
     </section>
     <section class="elements">
       <ul class="elements__list">
-
+        <template id="elements__template">
+          <li class="elements__cell">
+            <img src="#" alt="Фото" class="elements__image">
+            <div class="elements__cell-container">
+              <p class="elements__name"></p>
+              <button type="button" class="elements__like-button"></button>
+            </div>
+          </li>
+        </template>
       </ul>
     </section>
   </main>
@@ -45,9 +53,9 @@
       </form>
     </div>
   </section>
-  <section class="popup">
+  <section class="popup" id="popup-el">
     <div class="popup__container">
-      <button type="button" class="popup__close-button"></button>
+      <button type="button" class="popup__close-button" id="popup-el-close-btn"></button>
       <h2 class="popup__heading">Новое место</h2>
       <form name="popup__form">
         <input name="input_title" type="text" placeholder="Название" class="popup__input popup__input_type_title">
