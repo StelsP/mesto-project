@@ -1,4 +1,5 @@
 // ADD START 6 CARDS
+
   const initialCards = [
     {
       name: 'Архыз',
@@ -28,15 +29,12 @@
   const elementsTemplate = document.querySelector('#elements__template').content;
   const elementsList = document.querySelector('.elements__list');
 
-
-
   for (let i = 0; i < initialCards.length; i++) {
     const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
     elementsCell.querySelector('.elements__image').src = initialCards[i].link;
     elementsCell.querySelector('.elements__name').textContent = initialCards[i].name;
     elementsList.append(elementsCell);
   }
-
 
 // PROFILE EDIT
 
@@ -110,6 +108,7 @@ elementsAddForm.addEventListener('submit', (evt) => {
     imageInput.classList.add('popup__input_error');
   }
 });
+
 
 
 
