@@ -137,6 +137,7 @@ for (let i = 0; i < elementsCellList.length; i++) {
       </section>
     `);
   });
+
 }
 
 
