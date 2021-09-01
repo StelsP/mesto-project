@@ -1,3 +1,8 @@
+
+
+
+
+
 // ADD START 6 CARDS
 
 const initialCards = [
@@ -90,29 +95,33 @@ imageInput.value = '';
 titleInput.classList.remove('popup__input_error');
 imageInput.classList.remove('popup__input_error');
 }
+
 elementsAddButton.addEventListener('click', () => {
 elementsAddForm.classList.add('popup_opened');
 });
+
 elementsCloseButton.addEventListener('click', () => {
 elementsAddForm.classList.remove('popup_opened');
 clearElementsPlaceholder();
 });
+
 elementsAddForm.addEventListener('submit', (evt) => {
 evt.preventDefault();
-if (titleInput.value !== '' && imageInput.value !== '') {
-  elementsAddForm.classList.remove('popup_opened');
+  if (titleInput.value !== '' && imageInput.value !== '') {
+    elementsAddForm.classList.remove('popup_opened');
 
-  const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
-  elementsCell.querySelector('.elements__image').src = imageInput.value;
-  elementsCell.querySelector('.elements__name').textContent = titleInput.value;
-  elementsList.prepend(elementsCell);
+    const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
+    elementsCell.querySelector('.elements__image').src = imageInput.value;
+    elementsCell.querySelector('.elements__name').textContent = titleInput.value;
+    elementsList.prepend(elementsCell);
 
-  clearElementsPlaceholder();
-} else {
-  titleInput.classList.add('popup__input_error');
-  imageInput.classList.add('popup__input_error');
-}
+    clearElementsPlaceholder();
+  } else {
+    titleInput.classList.add('popup__input_error');
+    imageInput.classList.add('popup__input_error');
+  }
 });
+
 
 // OPEN IMAGE POPUP
 // но добавленные через кнопку карточки не открываются =_=
@@ -137,8 +146,10 @@ for (let i = 0; i < elementsCellList.length; i++) {
       </section>
     `);
   });
-
 }
+
+
+
 
 
 
