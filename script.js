@@ -37,6 +37,7 @@ const elementsList = document.querySelector('.elements__list');
 for (let i = 0; i < initialCards.length; i++) {
 const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
 elementsCell.querySelector('.elements__image').src = initialCards[i].link;
+elementsCell.querySelector('.elements__image').alt = `Фото ${initialCards[i].name}`;
 elementsCell.querySelector('.elements__name').textContent = initialCards[i].name;
 elementsList.append(elementsCell);
 }
@@ -109,11 +110,12 @@ elementsAddForm.addEventListener('submit', (evt) => {
 evt.preventDefault();
   if (titleInput.value !== '' && imageInput.value !== '') {
     elementsAddForm.classList.remove('popup_opened');
-
     const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
     elementsCell.querySelector('.elements__image').src = imageInput.value;
+    elementsCell.querySelector('.elements__image').alt = `Фото ${titleInput.value}`;
     elementsCell.querySelector('.elements__name').textContent = titleInput.value;
     elementsList.prepend(elementsCell);
+
 
     clearElementsPlaceholder();
   } else {
@@ -122,9 +124,9 @@ evt.preventDefault();
   }
 });
 
-
 // OPEN IMAGE POPUP
 // но добавленные через кнопку карточки не открываются =_=
+
 let elementsCellList = document.querySelectorAll('.elements__cell');
 
 for (let i = 0; i < elementsCellList.length; i++) {
@@ -147,6 +149,9 @@ for (let i = 0; i < elementsCellList.length; i++) {
     `);
   });
 }
+
+
+
 
 
 
