@@ -100,6 +100,7 @@ elementsCloseButton.addEventListener('click', () => {
 elementsAddForm.classList.remove('popup_opened');
 clearElementsPlaceholder();
 });
+const elementsDeleteButton = document.querySelectorAll('.elements__delete-button');
 
 elementsAddForm.addEventListener('submit', (evt) => {
 evt.preventDefault();
@@ -117,6 +118,21 @@ evt.preventDefault();
     imageInput.classList.add('popup__input_error');
   }
 });
+
+
+
+for (let i = 0; i < elementsDeleteButton.length; i++) {
+  elementsDeleteButton[i].addEventListener('click', () => {
+    const elementsCell = elementsDeleteButton[i].closest('.elements__cell');
+    elementsCell.remove();
+    console.log('lol');
+    useCapure = true;
+  });
+}
+
+
+
+
 
 // OPEN IMAGE POPUP
 // но добавленные через кнопку карточки не открываются =_=
