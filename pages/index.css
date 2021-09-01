@@ -20,6 +20,7 @@
 @import url(../blocks/elements/__cell/elements__cell.css);
 @import url(../blocks/elements/__cell-container/elements__cell-container.css);
 @import url(../blocks/elements/__like-button/elements__like-button.css);
+@import url(../blocks/elements/__delete-button/elements__delete-button.css);
 @import url(../blocks/elements/__image/elements__image.css);
 @import url(../blocks/elements/__name/elements__name.css);
 

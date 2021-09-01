@@ -4,10 +4,15 @@
   width: 282px;
   height: 282px;
   object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.elements__image:hover {
   cursor: pointer;
 }
 
-.elements__image-popup {
+/* .elements__image-popup {
   border-radius: 0;
   width: 75vw;
   height: 75vh;
@@ -22,5 +27,5 @@
   flex-direction: column;
   position: relative;
   z-index: 1;
-}
+} */
 
