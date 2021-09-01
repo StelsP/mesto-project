@@ -116,7 +116,6 @@ evt.preventDefault();
     elementsCell.querySelector('.elements__name').textContent = titleInput.value;
     elementsList.prepend(elementsCell);
 
-
     clearElementsPlaceholder();
   } else {
     titleInput.classList.add('popup__input_error');
