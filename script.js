@@ -19,18 +19,18 @@ function clearProfilePlaceholder() {
 }
 
 profileEditButton.addEventListener('click', () => {
-  profileEditForm.classList.add('popup_opened');
+  openPopup(profileEditForm);
 });
 
 profileCloseButton.addEventListener('click', () => {
-  profileEditForm.classList.remove('popup_opened');
+  closePopup(profileEditForm);
   clearProfilePlaceholder();
 });
 
 profileEditForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   if (nameInput.value !== '' && quoteInput.value !== '') {
-    profileEditForm.classList.remove('popup_opened');
+    closePopup(profileEditForm);
     profileName.textContent = nameInput.value;
     profileQuote.textContent = quoteInput.value;
     clearProfilePlaceholder();
@@ -42,6 +42,10 @@ profileEditForm.addEventListener('submit', (evt) => {
 
 function openPopup(popup) {
   popup.classlist.add('popup_opened');
+}
+
+function closePopup(popup) {
+  popup.classlist.remove('popup_opened');
 }
 
 // ADD START 6 CARDS
@@ -106,18 +110,18 @@ function clearElementsPlaceholder() {
 }
 
 elementsAddButton.addEventListener('click', () => {
-  elementsAddForm.classList.add('popup_opened');
+  openPopup(elementsAddForm);
 });
 
 elementsCloseButton.addEventListener('click', () => {
-  elementsAddForm.classList.remove('popup_opened');
+  closePopup(elementsAddForm);
   clearElementsPlaceholder();
 });
 
 elementsAddForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
   if (titleInput.value !== '' && imageInput.value !== '') {
-    elementsAddForm.classList.remove('popup_opened');
+    closePopup(elementsAddForm);
     addCard(titleInput.value, imageInput.value);
     clearElementsPlaceholder();
     } else {
