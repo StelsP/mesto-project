@@ -1,3 +1,7 @@
+
+
+
+
 // PROFILE EDIT
 
 const profileEditForm = document.querySelector('.popup');
@@ -88,6 +92,7 @@ function addCard(name, link) {
   elementsCell.querySelector('.elements__image').alt = 'Фото' + name;
   elementsCell.querySelector('.elements__name').textContent = name;
   elementsList.prepend(elementsCell);
+  deleteCard(elementsCell);
 }
 
 // ADD NEW CARDS
@@ -130,11 +135,13 @@ elementsAddForm.addEventListener('submit', (evt) => {
 
 // DELETE CARDS
 
-const elementsDeleteButton = document.querySelector('.elements__delete-button');
-const cards = Array.from(document.querySelectorAll('.elements__cell'));
-cards.forEach(function (elementsDeleteButton) {
-  elementsDeleteButton.addEventListener('click', () => {
-    const listItem = elementsDeleteButton.closest('.elements__cell');
-    listItem.remove();
+function deleteCard(card) {
+  const elementsDeleteButton = Array.from(document.querySelectorAll('.elements__delete-button'));
+  elementsDeleteButton.forEach(function (elementsDeleteButton) {
+    elementsDeleteButton.addEventListener('click', () => {
+      card.remove();
+    });
   });
-});
+}
+
+// LIKE BUTTON
