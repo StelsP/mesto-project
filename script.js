@@ -1,7 +1,3 @@
-
-
-
-
 // PROFILE EDIT
 
 const profileEditForm = document.querySelector('.popup');
@@ -137,30 +133,17 @@ elementsAddForm.addEventListener('submit', (evt) => {
 // DELETE CARDS
 
 function deleteCard(card) {
-  const elementsDeleteButton = Array.from(document.querySelectorAll('.elements__delete-button'));
-  elementsDeleteButton.forEach(function (elementsDeleteButton) {
-    elementsDeleteButton.addEventListener('click', () => {
-      card.remove();
-    });
+  const elementsDeleteButton = card.querySelector('.elements__delete-button');
+  elementsDeleteButton.addEventListener('click', () => {
+    card.remove();
   });
 }
 
-// LIKE BUTTON
+// LIKE CARDS
 
 function likeCard(card) {
-  const elementsLikeButton = Array.from(document.querySelectorAll('.elements__like-button'));
-  elementsLikeButton.forEach(function (elementsLikeButton) {
-    elementsLikeButton.addEventListener('click', () => {
-      elementsLikeButton.classList.toggle('.elements__like-button_active');
-    });
+  const elementsLikeButton = card.querySelector('.elements__like-button')
+  elementsLikeButton.addEventListener('click', () => {
+    elementsLikeButton.classList.toggle('elements__like-button_active');
   });
 }
-
-
-
-
-
-//     elementsAddButton.addEventListener('click', () => {
-//       elementsLikeButton.classList.add('elements__like-button_active');
-
-//     });
