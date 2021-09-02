@@ -92,6 +92,7 @@ function addCard(name, link) {
   likeCard(elementsCell);
 }
 
+
 // ADD NEW CARDS
 
 const elementsAddForm = document.querySelector('#popup-el');
@@ -147,7 +148,6 @@ function likeCard(card) {
     elementsLikeButton.classList.toggle('elements__like-button_active');
   });
 }
-
 
 //IMAGE POPUP
 
