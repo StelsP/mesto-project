@@ -147,3 +147,7 @@ function likeCard(card) {
     elementsLikeButton.classList.toggle('elements__like-button_active');
   });
 }
+
+
+//IMAGE POPUP
+

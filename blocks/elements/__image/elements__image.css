@@ -12,9 +12,9 @@
   cursor: pointer;
 }
 
-/* .elements__image-popup {
+.elements__image-popup {
   border-radius: 0;
-  width: 75vw;
+  object-fit: none;
   height: 75vh;
   cursor: auto;
 }
@@ -22,10 +22,10 @@
 .elements__name-popup {
   color: white;
 }
-.popup__image-popup {
+.popup__image {
   display: flex;
   flex-direction: column;
   position: relative;
   z-index: 1;
-} */
+}
 
