@@ -74,9 +74,9 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
 const elementsTemplate = document.querySelector('#elements__template').content;
 const elementsList = document.querySelector('.elements__list');
-
 
 for (let i = 0; i < initialCards.length; i++) {
   addCard(initialCards[i].name, initialCards[i].link);
@@ -84,6 +84,7 @@ for (let i = 0; i < initialCards.length; i++) {
 
 function addCard(name, link) {
   const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
+
   elementsCell.querySelector('.elements__image').src = link;
   elementsCell.querySelector('.elements__image').alt = 'Фото' + ' ' + name;
   elementsCell.querySelector('.elements__name').textContent = name;
@@ -91,6 +92,19 @@ function addCard(name, link) {
   deleteCard(elementsCell);
   likeCard(elementsCell);
 }
+
+const imageLink = document.querySelector('.elements__image');
+const imageTemplate = document.querySelector('#image__template');
+
+function openImagePopup(title, pic) {
+  const image = imageTemplate.querySelector('.image').cloneNode(true);
+  image.querySelector('.image__pic').src = pic;
+  image.querySelector('.image__title').textContent = title;
+
+  elementsList.append(image);
+}
+
+openImagePopup();
 
 // ADD NEW CARDS
 
