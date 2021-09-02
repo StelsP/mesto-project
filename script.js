@@ -1,3 +1,51 @@
+// PROFILE EDIT
+
+const profileEditForm = document.querySelector('.popup');
+const profileEditButton = document.querySelector('.profile__edit-button');
+const profileCloseButton = document.querySelector('.popup__close-button');
+
+const nameInput = document.querySelector('.popup__input_type_name');
+const quoteInput = document.querySelector('.popup__input_type_quote');
+const profileName = document.querySelector('.profile__name');
+const profileQuote = document.querySelector('.profile__quote');
+
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
+function clearProfilePlaceholder() {
+  nameInput.placeholder = profileName.textContent;
+  quoteInput.placeholder = profileQuote.textContent;
+  nameInput.classList.remove('popup__input_error');
+  quoteInput.classList.remove('popup__input_error');
+}
+
+profileEditButton.addEventListener('click', () => {
+  openPopup(profileEditForm);
+});
+
+profileCloseButton.addEventListener('click', () => {
+  closePopup(profileEditForm);
+  clearProfilePlaceholder();
+});
+
+profileEditForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  if (nameInput.value !== '' && quoteInput.value !== '') {
+    closePopup(profileEditForm);
+    profileName.textContent = nameInput.value;
+    profileQuote.textContent = quoteInput.value;
+    clearProfilePlaceholder();
+    } else {
+      nameInput.classList.add('popup__input_error');
+      quoteInput.classList.add('popup__input_error');
+  }
+});
+
 // ADD START 6 CARDS
 
 const initialCards = [
@@ -26,59 +74,42 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
 const elementsTemplate = document.querySelector('#elements__template').content;
 const elementsList = document.querySelector('.elements__list');
 
 for (let i = 0; i < initialCards.length; i++) {
-const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
-elementsCell.querySelector('.elements__image').src = initialCards[i].link;
-elementsCell.querySelector('.elements__image').alt = `Фото ${initialCards[i].name}`;
-elementsCell.querySelector('.elements__name').textContent = initialCards[i].name;
-elementsList.append(elementsCell);
+  addCard(initialCards[i].name, initialCards[i].link);
 }
 
-// PROFILE EDIT
+function addCard(name, link) {
+  const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
 
-const profileEditForm = document.querySelector('.popup');
-const profileEditButton = document.querySelector('.profile__edit-button');
-const profileCloseButton = document.querySelector('.popup__close-button');
-
-const nameInput = document.querySelector('.popup__input_type_name');
-const quoteInput = document.querySelector('.popup__input_type_quote');
-const profileName = document.querySelector('.profile__name');
-const profileQuote = document.querySelector('.profile__quote');
-
-function clearProfilePlaceholder() {
-nameInput.value = '';
-quoteInput.value = '';
-nameInput.placeholder = profileName.textContent;
-quoteInput.placeholder = profileQuote.textContent;
-nameInput.classList.remove('popup__input_error');
-quoteInput.classList.remove('popup__input_error');
+  elementsCell.querySelector('.elements__image').src = link;
+  elementsCell.querySelector('.elements__image').alt = 'Фото' + ' ' + name;
+  elementsCell.querySelector('.elements__name').textContent = name;
+  elementsList.prepend(elementsCell);
+  deleteCard(elementsCell);
+  likeCard(elementsCell);
 }
-profileEditButton.addEventListener('click', () => {
-profileEditForm.classList.add('popup_opened');
-});
-profileCloseButton.addEventListener('click', () => {
-profileEditForm.classList.remove('popup_opened');
-clearProfilePlaceholder();
-});
-profileEditForm.addEventListener('submit', (evt) => {
-evt.preventDefault();
-if (nameInput.value !== '' && quoteInput.value !== '') {
-  profileEditForm.classList.remove('popup_opened');
-  profileName.textContent = nameInput.value;
-  profileQuote.textContent = quoteInput.value;
-  clearProfilePlaceholder();
-  } else {
-    nameInput.classList.add('popup__input_error');
-    quoteInput.classList.add('popup__input_error');
-  }
-});
+
+const imageLink = document.querySelector('.elements__image');
+const imageTemplate = document.querySelector('#image__template');
+
+function openImagePopup(title, pic) {
+  const image = imageTemplate.querySelector('.image').cloneNode(true);
+  image.querySelector('.image__pic').src = pic;
+  image.querySelector('.image__title').textContent = title;
+
+  elementsList.append(image);
+}
+
+openImagePopup();
 
 // ADD NEW CARDS
 
 const elementsAddForm = document.querySelector('#popup-el');
+
 const elementsAddButton = document.querySelector('.profile__add-button');
 const elementsCloseButton = document.querySelector('#popup-el-close-btn');
 
@@ -86,90 +117,50 @@ const imageInput = document.querySelector('.popup__input_type_image');
 const titleInput = document.querySelector('.popup__input_type_title');
 
 function clearElementsPlaceholder() {
-titleInput.value = '';
-imageInput.value = '';
-titleInput.classList.remove('popup__input_error');
-imageInput.classList.remove('popup__input_error');
+  titleInput.value = '';
+  imageInput.value = '';
+  titleInput.classList.remove('popup__input_error');
+  imageInput.classList.remove('popup__input_error');
 }
 
 elementsAddButton.addEventListener('click', () => {
-elementsAddForm.classList.add('popup_opened');
+  openPopup(elementsAddForm);
 });
 
 elementsCloseButton.addEventListener('click', () => {
-elementsAddForm.classList.remove('popup_opened');
-clearElementsPlaceholder();
+  closePopup(elementsAddForm);
+  clearElementsPlaceholder();
 });
-const elementsDeleteButton = document.querySelectorAll('.elements__delete-button');
 
 elementsAddForm.addEventListener('submit', (evt) => {
-evt.preventDefault();
+  evt.preventDefault();
   if (titleInput.value !== '' && imageInput.value !== '') {
-    elementsAddForm.classList.remove('popup_opened');
-    const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
-    elementsCell.querySelector('.elements__image').src = imageInput.value;
-    elementsCell.querySelector('.elements__image').alt = `Фото ${titleInput.value}`;
-    elementsCell.querySelector('.elements__name').textContent = titleInput.value;
-    elementsList.prepend(elementsCell);
-
+    closePopup(elementsAddForm);
+    addCard(titleInput.value, imageInput.value);
     clearElementsPlaceholder();
-  } else {
-    titleInput.classList.add('popup__input_error');
-    imageInput.classList.add('popup__input_error');
+    } else {
+      titleInput.classList.add('popup__input_error');
+      imageInput.classList.add('popup__input_error');
   }
 });
 
+// DELETE CARDS
 
-
-for (let i = 0; i < elementsDeleteButton.length; i++) {
-  elementsDeleteButton[i].addEventListener('click', () => {
-    const elementsCell = elementsDeleteButton[i].closest('.elements__cell');
-    elementsCell.remove();
-    console.log('lol');
-    useCapure = true;
+function deleteCard(card) {
+  const elementsDeleteButton = card.querySelector('.elements__delete-button');
+  elementsDeleteButton.addEventListener('click', () => {
+    card.remove();
   });
 }
 
+// LIKE CARDS
 
+function likeCard(card) {
+  const elementsLikeButton = card.querySelector('.elements__like-button')
+  elementsLikeButton.addEventListener('click', () => {
+    elementsLikeButton.classList.toggle('elements__like-button_active');
+  });
+}
 
-
-
-// OPEN IMAGE POPUP
-// но добавленные через кнопку карточки не открываются =_=
-
-// let elementsCellList = document.querySelectorAll('.elements__cell');
-
-// for (let i = 0; i < elementsCellList.length; i++) {
-
-//   const root = document.querySelector('.root');
-//   const elementsPopupImage = document.querySelectorAll('.elements__image');
-//   const elementsPopupName = document.querySelectorAll('.elements__name');
-
-//   const img = elementsPopupImage[i].getAttribute('src', 'string');
-//   const name = elementsPopupName[i].textContent;
-
-//   elementsCellList[i].addEventListener('click', () => {
-//     root.insertAdjacentHTML('afterbegin', `
-//       <section class="popup popup_opened">
-//         <div class="popup__image-popup">
-//         <img src="${img}" alt="Фото" class="elements__image elements__image-popup">
-//         <p class="elements__name elements__name-popup">${name}</p>
-//         </div>
-//       </section>
-//     `);
-//   });
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
+//IMAGE POPUP
 
