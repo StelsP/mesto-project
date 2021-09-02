@@ -91,6 +91,7 @@ function addCard(name, link) {
 function openImage(title, pic) {
   const image = elementsTemplate.querySelector('.image').cloneNode(true);
   image.querySelector('.image__pic').src = pic;
+  image.querySelector('.image__pic').alt = 'Фото' + ' ' + title;
   image.querySelector('.image__title').textContent = title;
 
   const imageLink = document.querySelector('.elements__image');
