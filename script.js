@@ -9,6 +9,14 @@ const quoteInput = document.querySelector('.popup__input_type_quote');
 const profileName = document.querySelector('.profile__name');
 const profileQuote = document.querySelector('.profile__quote');
 
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
 function clearProfilePlaceholder() {
   nameInput.value = '';
   quoteInput.value = '';
@@ -39,14 +47,6 @@ profileEditForm.addEventListener('submit', (evt) => {
       quoteInput.classList.add('popup__input_error');
   }
 });
-
-function openPopup(popup) {
-  popup.classlist.add('popup_opened');
-}
-
-function closePopup(popup) {
-  popup.classlist.remove('popup_opened');
-}
 
 // ADD START 6 CARDS
 
