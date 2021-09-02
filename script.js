@@ -134,7 +134,7 @@ const elementsDeleteButton = document.querySelector('.elements__delete-button');
 const cards = Array.from(document.querySelectorAll('.elements__cell'));
 cards.forEach(function (elementsDeleteButton) {
   elementsDeleteButton.addEventListener('click', () => {
-
+    const listItem = elementsDeleteButton.closest('.elements__cell');
+    listItem.remove();
   });
 });
-
