@@ -93,6 +93,7 @@ function addCard(name, link) {
   elementsCell.querySelector('.elements__name').textContent = name;
   elementsList.prepend(elementsCell);
   deleteCard(elementsCell);
+  likeCard(elementsCell);
 }
 
 // ADD NEW CARDS
@@ -145,3 +146,21 @@ function deleteCard(card) {
 }
 
 // LIKE BUTTON
+
+function likeCard(card) {
+  const elementsLikeButton = Array.from(document.querySelectorAll('.elements__like-button'));
+  elementsLikeButton.forEach(function (elementsLikeButton) {
+    elementsLikeButton.addEventListener('click', () => {
+      elementsLikeButton.classList.toggle('.elements__like-button_active');
+    });
+  });
+}
+
+
+
+
+
+//     elementsAddButton.addEventListener('click', () => {
+//       elementsLikeButton.classList.add('elements__like-button_active');
+
+//     });
