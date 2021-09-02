@@ -1,3 +1,49 @@
+// PROFILE EDIT
+
+const profileEditForm = document.querySelector('.popup');
+const profileEditButton = document.querySelector('.profile__edit-button');
+const profileCloseButton = document.querySelector('.popup__close-button');
+
+const nameInput = document.querySelector('.popup__input_type_name');
+const quoteInput = document.querySelector('.popup__input_type_quote');
+const profileName = document.querySelector('.profile__name');
+const profileQuote = document.querySelector('.profile__quote');
+
+function clearProfilePlaceholder() {
+  nameInput.value = '';
+  quoteInput.value = '';
+  nameInput.placeholder = profileName.textContent;
+  quoteInput.placeholder = profileQuote.textContent;
+  nameInput.classList.remove('popup__input_error');
+  quoteInput.classList.remove('popup__input_error');
+}
+
+profileEditButton.addEventListener('click', () => {
+  profileEditForm.classList.add('popup_opened');
+});
+
+profileCloseButton.addEventListener('click', () => {
+  profileEditForm.classList.remove('popup_opened');
+  clearProfilePlaceholder();
+});
+
+profileEditForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  if (nameInput.value !== '' && quoteInput.value !== '') {
+    profileEditForm.classList.remove('popup_opened');
+    profileName.textContent = nameInput.value;
+    profileQuote.textContent = quoteInput.value;
+    clearProfilePlaceholder();
+    } else {
+      nameInput.classList.add('popup__input_error');
+      quoteInput.classList.add('popup__input_error');
+  }
+});
+
+function openPopup(popup) {
+  popup.classlist.add('popup_opened');
+}
+
 // ADD START 6 CARDS
 
 const initialCards = [
@@ -41,48 +87,6 @@ function addCard(name, link) {
   elementsList.prepend(elementsCell);
 }
 
-// PROFILE EDIT
-
-const profileEditForm = document.querySelector('.popup');
-const profileEditButton = document.querySelector('.profile__edit-button');
-const profileCloseButton = document.querySelector('.popup__close-button');
-
-const nameInput = document.querySelector('.popup__input_type_name');
-const quoteInput = document.querySelector('.popup__input_type_quote');
-const profileName = document.querySelector('.profile__name');
-const profileQuote = document.querySelector('.profile__quote');
-
-function clearProfilePlaceholder() {
-  nameInput.value = '';
-  quoteInput.value = '';
-  nameInput.placeholder = profileName.textContent;
-  quoteInput.placeholder = profileQuote.textContent;
-  nameInput.classList.remove('popup__input_error');
-  quoteInput.classList.remove('popup__input_error');
-}
-
-profileEditButton.addEventListener('click', () => {
-  profileEditForm.classList.add('popup_opened');
-});
-
-profileCloseButton.addEventListener('click', () => {
-  profileEditForm.classList.remove('popup_opened');
-  clearProfilePlaceholder();
-});
-
-profileEditForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  if (nameInput.value !== '' && quoteInput.value !== '') {
-    profileEditForm.classList.remove('popup_opened');
-    profileName.textContent = nameInput.value;
-    profileQuote.textContent = quoteInput.value;
-    clearProfilePlaceholder();
-    } else {
-      nameInput.classList.add('popup__input_error');
-      quoteInput.classList.add('popup__input_error');
-    }
-});
-
 // ADD NEW CARDS
 
 const elementsAddForm = document.querySelector('#popup-el');
@@ -111,14 +115,14 @@ elementsCloseButton.addEventListener('click', () => {
 });
 
 elementsAddForm.addEventListener('submit', (evt) => {
-evt.preventDefault();
+  evt.preventDefault();
   if (titleInput.value !== '' && imageInput.value !== '') {
     elementsAddForm.classList.remove('popup_opened');
     addCard(titleInput.value, imageInput.value);
     clearElementsPlaceholder();
-  } else {
-    titleInput.classList.add('popup__input_error');
-    imageInput.classList.add('popup__input_error');
+    } else {
+      titleInput.classList.add('popup__input_error');
+      imageInput.classList.add('popup__input_error');
   }
 });
 
