@@ -94,7 +94,7 @@ function addCard(name, link) {
   openImagePopup(name, link);
 }
 
-
+//IMAGE POPUP
 
 function openImagePopup(title, pic) {
   const image = elementsTemplate.querySelector('.image').cloneNode(true);
@@ -105,8 +105,15 @@ function openImagePopup(title, pic) {
   imageLink.addEventListener('click', () => {
     elementsList.append(image);
   });
+  closeImagePopup(image);
 }
 
+function closeImagePopup(image) {
+  const imageCloseButton = image.querySelector('.image__close-button');
+  imageCloseButton.addEventListener('click', () => {
+    image.remove();
+  });
+}
 
 // ADD NEW CARDS
 
@@ -164,5 +171,5 @@ function likeCard(card) {
   });
 }
 
-//IMAGE POPUP
+
 
