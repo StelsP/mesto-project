@@ -39,5 +39,9 @@
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 
 @import url(../blocks/image/image.css);
+@import url(../blocks/image/__container/image__container.css);
+@import url(../blocks/image/__close-button/image__close-button.css);
+@import url(../blocks/image/__pic/image__pic.css);
+@import url(../blocks/image/__title/image__title.css);
 
 
