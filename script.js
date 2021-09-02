@@ -91,20 +91,22 @@ function addCard(name, link) {
   elementsList.prepend(elementsCell);
   deleteCard(elementsCell);
   likeCard(elementsCell);
+  openImagePopup(name, link);
 }
 
-const imageLink = document.querySelector('.elements__image');
-const imageTemplate = document.querySelector('#image__template');
+
 
 function openImagePopup(title, pic) {
-  const image = imageTemplate.querySelector('.image').cloneNode(true);
+  const image = elementsTemplate.querySelector('.image').cloneNode(true);
   image.querySelector('.image__pic').src = pic;
   image.querySelector('.image__title').textContent = title;
+  const imageLink = document.querySelector('.elements__image');
 
-  elementsList.append(image);
+  imageLink.addEventListener('click', () => {
+    elementsList.append(image);
+  });
 }
 
-openImagePopup();
 
 // ADD NEW CARDS
 
