@@ -12,23 +12,79 @@
   cursor: pointer;
 }
 
-.elements__image-popup {
+
+
+
+.image {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.image::before {
+  content: '';
+  background-color: #000000;
+  opacity: .5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image__pic {
+  display: block;
   border-radius: 0;
-  object-fit: none;
   width: auto;
   height: auto;
   max-width: 75vw;
   max-height: 75vh;
-  cursor: auto;
 }
 
-.elements__name-popup {
+.image__name {
   color: white;
+  margin: 0;
+  padding: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 190px;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 29px;
+  letter-spacing: 0em;
+  text-align: left;
 }
-.popup__image {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 1;
+
+.image__close-button {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../../../images/cloge_icon.svg);
+  background-color: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  transition: all .3s linear;
 }
+
+.image__close-button:hover {
+  opacity: 0.6;
+  transform: rotate(90deg);
+  cursor: pointer;
+}
+
 

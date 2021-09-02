@@ -92,18 +92,6 @@ function addCard(name, link) {
   likeCard(elementsCell);
 }
 
-const imageLink = document.querySelector('.elements__image');
-function openImagePopup() {
-  const imagePopupTemplate = document.querySelector('#popup-image__template');
-  const imagePopup = imagePopupTemplate.querySelector('#popup-img').cloneNode(true);
-
-  const imageName = document.querySelector('.elements__name');
-  elementsList.append(imagePopup);
-
-}
-imageLink.addEventListener('click', openImagePopup());
-
-
 // ADD NEW CARDS
 
 const elementsAddForm = document.querySelector('#popup-el');
