@@ -85,12 +85,23 @@ for (let i = 0; i < initialCards.length; i++) {
 function addCard(name, link) {
   const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
   elementsCell.querySelector('.elements__image').src = link;
-  elementsCell.querySelector('.elements__image').alt = 'Фото' + name;
+  elementsCell.querySelector('.elements__image').alt = 'Фото' + ' ' + name;
   elementsCell.querySelector('.elements__name').textContent = name;
   elementsList.prepend(elementsCell);
   deleteCard(elementsCell);
   likeCard(elementsCell);
 }
+
+const imageLink = document.querySelector('.elements__image');
+function openImagePopup() {
+  const imagePopupTemplate = document.querySelector('#popup-image__template');
+  const imagePopup = imagePopupTemplate.querySelector('#popup-img').cloneNode(true);
+
+  const imageName = document.querySelector('.elements__name');
+  elementsList.append(imagePopup);
+
+}
+imageLink.addEventListener('click', openImagePopup());
 
 
 // ADD NEW CARDS

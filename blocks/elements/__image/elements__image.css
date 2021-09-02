@@ -15,7 +15,10 @@
 .elements__image-popup {
   border-radius: 0;
   object-fit: none;
-  height: 75vh;
+  width: auto;
+  height: auto;
+  max-width: 75vw;
+  max-height: 75vh;
   cursor: auto;
 }
 
