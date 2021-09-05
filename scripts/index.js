@@ -50,8 +50,6 @@ function createCard(name, link) {
   elementsList.prepend(elementsCell);
 }
 
-
-
 // OPEN/CLOSE CARD IMAGE
 
 function setImageClickEventListener(title, pic, card) {
