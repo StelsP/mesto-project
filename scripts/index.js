@@ -71,19 +71,15 @@ function createCard(name, link) {
   elementsCell.querySelector('.elements__name').textContent = name;
   elementsList.prepend(elementsCell);
 
-setDeleteCardEventListener(elementsCell);
-setLikeCardEventListener(elementsCell);
-setImageClickEventListener(name, link);
+  setDeleteCardEventListener(elementsCell);
+  setLikeCardEventListener(elementsCell);
+  setImageClickEventListener(name, link);
 }
 
-function addCard(elementsCell) {
-
-
-}
 // OPEN/CLOSE CARD IMAGE
 
 function setImageClickEventListener(title, pic) {
-  const image = elementsTemplate.querySelector('.image').cloneNode(true);
+  const image = elementsTemplate.querySelector('.image');
   image.querySelector('.image__pic').src = pic;
   image.querySelector('.image__pic').alt = 'Фото' + ' ' + title;
   image.querySelector('.image__title').textContent = title;
