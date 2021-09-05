@@ -81,6 +81,7 @@ function addCard(name, link) {
   elementsCell.querySelector('.elements__image').alt = 'Фото' + ' ' + name;
   elementsCell.querySelector('.elements__name').textContent = name;
   elementsList.prepend(elementsCell);
+
   deleteCard(elementsCell);
   likeCard(elementsCell);
   openImage(name, link);
