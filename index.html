@@ -33,9 +33,9 @@
   <footer class="footer">
     <p class="footer__copyright">© 2021 Mesto Russia</p>
   </footer>
-  <section class="popup">
+  <section class="popup popup_type_profile">
     <div class="popup__container">
-      <button type="button" class="popup__close-button"></button>
+      <button type="button" class="popup__close-button popup__close-button_type_profile"></button>
       <h2 class="popup__heading">Редактировать профиль</h2>
       <form name="popup__form">
         <input name="input_name" type="text" required placeholder="Жак-Ив Кусто" class="popup__input popup__input_type_name">
@@ -44,9 +44,9 @@
       </form>
     </div>
   </section>
-  <section class="popup" id="popup-el">
+  <section class="popup popup_type_card-add">
     <div class="popup__container">
-      <button type="button" class="popup__close-button" id="popup-el-close-btn"></button>
+      <button type="button" class="popup__close-button popup__close-button_type_card-add"></button>
       <h2 class="popup__heading">Новое место</h2>
       <form name="popup__form">
         <input name="input_title" type="text" required placeholder="Название" class="popup__input popup__input_type_title">
@@ -55,9 +55,9 @@
       </form>
     </div>
   </section>
-  <section class="popup image">
+  <section class="popup image popup_type_picture">
     <div class="image__container">
-      <button type="button" class="image__close-button"></button>
+      <button type="button" class="popup__close-button popup__close-button_type_picture"></button>
       <img src="#" alt="#" class="image__pic">
       <p class="image__title"></p>
     </div>
