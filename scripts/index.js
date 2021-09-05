@@ -9,33 +9,21 @@ const quoteInput = document.querySelector('.popup__input_type_quote');
 const profileName = document.querySelector('.profile__name');
 const profileQuote = document.querySelector('.profile__quote');
 
-function clearProfilePlaceholder() {
-  nameInput.placeholder = profileName.textContent;
-  quoteInput.placeholder = profileQuote.textContent;
-  nameInput.classList.remove('popup__input_error');
-  quoteInput.classList.remove('popup__input_error');
-}
-
 profileEditButton.addEventListener('click', () => {
+  nameInput.value = profileName.textContent;
+  quoteInput.value = profileQuote.textContent;
   openPopup(profileEditForm);
 });
 
 profileCloseButton.addEventListener('click', () => {
   closePopup(profileEditForm);
-  clearProfilePlaceholder();
 });
 
 profileEditForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  if (nameInput.value !== '' && quoteInput.value !== '') {
     closePopup(profileEditForm);
     profileName.textContent = nameInput.value;
     profileQuote.textContent = quoteInput.value;
-    clearProfilePlaceholder();
-    } else {
-      nameInput.classList.add('popup__input_error');
-      quoteInput.classList.add('popup__input_error');
-  }
 });
 
 // ADD START 6 CARDS
@@ -71,10 +59,11 @@ const elementsTemplate = document.querySelector('#elements__template').content;
 const elementsList = document.querySelector('.elements__list');
 
 for (let i = 0; i < initialCards.length; i++) {
-  addCard(initialCards[i].name, initialCards[i].link);
+  createCard(initialCards[i].name, initialCards[i].link);
+  // addCard();
 }
 
-function addCard(name, link) {
+function createCard(name, link) {
   const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
 
   elementsCell.querySelector('.elements__image').src = link;
@@ -82,14 +71,18 @@ function addCard(name, link) {
   elementsCell.querySelector('.elements__name').textContent = name;
   elementsList.prepend(elementsCell);
 
-  deleteCard(elementsCell);
-  likeCard(elementsCell);
-  openImage(name, link);
+setDeleteCardEventListener(elementsCell);
+setLikeCardEventListener(elementsCell);
+setImageClickEventListener(name, link);
 }
 
+function addCard(elementsCell) {
+
+
+}
 // OPEN/CLOSE CARD IMAGE
 
-function openImage(title, pic) {
+function setImageClickEventListener(title, pic) {
   const image = elementsTemplate.querySelector('.image').cloneNode(true);
   image.querySelector('.image__pic').src = pic;
   image.querySelector('.image__pic').alt = 'Фото' + ' ' + title;
@@ -99,10 +92,10 @@ function openImage(title, pic) {
   imageLink.addEventListener('click', () => {
     elementsList.append(image);
   });
-  closeImage(image);
+  removeImageClickEventListener(image);
 }
 
-function closeImage(image) {
+function removeImageClickEventListener(image) {
   const imageCloseButton = image.querySelector('.image__close-button');
   imageCloseButton.addEventListener('click', () => {
     image.remove();
@@ -119,11 +112,9 @@ const elementsCloseButton = document.querySelector('#popup-el-close-btn');
 const imageInput = document.querySelector('.popup__input_type_image');
 const titleInput = document.querySelector('.popup__input_type_title');
 
-function clearElementsPlaceholder() {
+function clearAddFormInputs() {
   titleInput.value = '';
   imageInput.value = '';
-  titleInput.classList.remove('popup__input_error');
-  imageInput.classList.remove('popup__input_error');
 }
 
 elementsAddButton.addEventListener('click', () => {
@@ -132,24 +123,18 @@ elementsAddButton.addEventListener('click', () => {
 
 elementsCloseButton.addEventListener('click', () => {
   closePopup(elementsAddForm);
-  clearElementsPlaceholder();
 });
 
 elementsAddForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  if (titleInput.value !== '' && imageInput.value !== '') {
     closePopup(elementsAddForm);
-    addCard(titleInput.value, imageInput.value);
-    clearElementsPlaceholder();
-    } else {
-      titleInput.classList.add('popup__input_error');
-      imageInput.classList.add('popup__input_error');
-  }
+    createCard(titleInput.value, imageInput.value);
+    clearAddFormInputs();
 });
 
 // DELETE CARDS
 
-function deleteCard(card) {
+function setDeleteCardEventListener(card) {
   const elementsDeleteButton = card.querySelector('.elements__delete-button');
   elementsDeleteButton.addEventListener('click', () => {
     card.remove();
@@ -158,7 +143,7 @@ function deleteCard(card) {
 
 // LIKE CARDS
 
-function likeCard(card) {
+function setLikeCardEventListener(card) {
   const elementsLikeButton = card.querySelector('.elements__like-button')
   elementsLikeButton.addEventListener('click', () => {
     elementsLikeButton.classList.toggle('elements__like-button_active');
