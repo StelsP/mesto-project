@@ -42,12 +42,15 @@ function createCard(name, link) {
   elementsCell.querySelector('.elements__image').src = link;
   elementsCell.querySelector('.elements__image').alt = 'Фото' + ' ' + name;
   elementsCell.querySelector('.elements__name').textContent = name;
-  elementsList.prepend(elementsCell);
 
   setDeleteCardEventListener(elementsCell);
   setLikeCardEventListener(elementsCell);
   setImageClickEventListener(name, link, elementsCell);
+
+  elementsList.prepend(elementsCell);
 }
+
+
 
 // OPEN/CLOSE CARD IMAGE
 
