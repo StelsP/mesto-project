@@ -32,22 +32,26 @@ const elementsTemplate = document.querySelector('#elements__template').content;
 const elementsList = document.querySelector('.elements__list');
 const image = document.querySelector('.popup_type_picture');
 
-for (let i = 0; i < initialCards.length; i++) {
-  createCard(initialCards[i].name, initialCards[i].link);
-}
+const cardData = {};
 
-function createCard(name, link) {
+initialCards.forEach(function(item, i, initialCards) {
+  cardData.name = initialCards[i].name;
+  cardData.link = initialCards[i].link;
+  elementsList.prepend(createCard(cardData));
+});
+
+function createCard(cardData) {
   const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
-
-  elementsCell.querySelector('.elements__image').src = link;
-  elementsCell.querySelector('.elements__image').alt = 'Фото' + ' ' + name;
-  elementsCell.querySelector('.elements__name').textContent = name;
+  
+  elementsCell.querySelector('.elements__image').src = cardData.link;
+  elementsCell.querySelector('.elements__image').alt = 'Фото' + ' ' + cardData.name;
+  elementsCell.querySelector('.elements__name').textContent = cardData.name;
 
   setDeleteCardEventListener(elementsCell);
   setLikeCardEventListener(elementsCell);
-  setImageClickEventListener(name, link, elementsCell);
-
-  elementsList.prepend(elementsCell);
+  setImageClickEventListener(cardData.name, cardData.link, elementsCell);
+   
+  return elementsCell;
 }
 
 // OPEN/CLOSE CARD IMAGE
@@ -93,7 +97,9 @@ elementsCloseButton.addEventListener('click', () => {
 elementsAddForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
     closePopup(elementsAddForm);
-    createCard(titleInput.value, imageInput.value);
+    cardData.name = titleInput.value;
+    cardData.link = imageInput.value;
+    elementsList.prepend(createCard(cardData));
     clearAddFormInputs();
 });
 
