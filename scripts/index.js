@@ -34,15 +34,13 @@ const image = document.querySelector('.popup_type_picture');
 
 const cardData = {};
 
-initialCards.forEach(function(item, i, initialCards) {
-  cardData.name = initialCards[i].name;
-  cardData.link = initialCards[i].link;
-  elementsList.prepend(createCard(cardData));
+initialCards.forEach(function(item) {
+  elementsList.prepend(createCard(item));
 });
 
 function createCard(cardData) {
   const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
-  
+
   elementsCell.querySelector('.elements__image').src = cardData.link;
   elementsCell.querySelector('.elements__image').alt = 'Фото' + ' ' + cardData.name;
   elementsCell.querySelector('.elements__name').textContent = cardData.name;
@@ -50,7 +48,7 @@ function createCard(cardData) {
   setDeleteCardEventListener(elementsCell);
   setLikeCardEventListener(elementsCell);
   setImageClickEventListener(cardData.name, cardData.link, elementsCell);
-   
+
   return elementsCell;
 }
 
@@ -81,11 +79,6 @@ const elementsCloseButton = document.querySelector('.popup__close-button_type_ca
 const imageInput = document.querySelector('.popup__input_type_image');
 const titleInput = document.querySelector('.popup__input_type_title');
 
-function clearAddFormInputs() {
-  titleInput.value = '';
-  imageInput.value = '';
-}
-
 elementsAddButton.addEventListener('click', () => {
   openPopup(elementsAddForm);
 });
@@ -99,8 +92,11 @@ elementsAddForm.addEventListener('submit', (evt) => {
     closePopup(elementsAddForm);
     cardData.name = titleInput.value;
     cardData.link = imageInput.value;
-    elementsList.prepend(createCard(cardData));
-    clearAddFormInputs();
+    elementsList.prepend(createCard({
+      name: titleInput.value,
+      link: imageInput.value
+    }));
+  document.querySelector('#popup__form_type_card-add').reset();
 });
 
 // DELETE CARDS
