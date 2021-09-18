@@ -24,6 +24,7 @@ profileEditForm.addEventListener('submit', (evt) => {
     closePopup(profileEditForm);
     profileName.textContent = nameInput.value;
     profileQuote.textContent = quoteInput.value;
+
 });
 
 // ADD START 6 CARDS
