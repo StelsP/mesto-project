@@ -121,7 +121,7 @@ function openPopup(popup) {
 
 function closePopup(popup, btn, event) {
   const isCloseButtonClicked = event.target.contains(btn);
-  const isOverlayClicked = event.target.classList.contains('popup');
+  const isOverlayClicked = event.target.contains(popup);
 
   if (isCloseButtonClicked || isOverlayClicked) {
     submitPopup(popup);
