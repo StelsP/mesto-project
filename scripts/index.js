@@ -1,5 +1,4 @@
 // PROFILE EDIT
-
 const profileEditForm = document.querySelector('.popup_type_profile');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileCloseButton = document.querySelector('.popup__close-button_type_profile');
@@ -15,13 +14,13 @@ profileEditButton.addEventListener('click', () => {
   openPopup(profileEditForm);
 });
 
-profileCloseButton.addEventListener('click', () => {
-  closePopup(profileEditForm);
+profileEditForm.addEventListener('click', (event) => {
+  closePopup(profileEditForm, profileCloseButton, event);
 });
 
 profileEditForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-    closePopup(profileEditForm);
+    submitPopup(profileEditForm);
     profileName.textContent = nameInput.value;
     profileQuote.textContent = quoteInput.value;
 });
@@ -63,8 +62,9 @@ function setImageClickEventListener(name, link, card) {
 }
 
 const imageCloseButton = document.querySelector('.popup__close-button_type_picture');
-imageCloseButton.addEventListener('click', () => {
-  closePopup(image);
+
+image.addEventListener('click', (event) => {
+  closePopup(image, imageCloseButton, event);
 });
 
 // ADD NEW CARDS
@@ -81,13 +81,13 @@ elementsAddButton.addEventListener('click', () => {
   openPopup(elementsAddForm);
 });
 
-elementsCloseButton.addEventListener('click', () => {
-  closePopup(elementsAddForm);
+elementsAddForm.addEventListener('click', (event) => {
+  closePopup(elementsAddForm, elementsCloseButton, event);
 });
 
 elementsAddForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-    closePopup(elementsAddForm);
+    submitPopup(elementsAddForm);
     elementsList.prepend(createCard({
       name: titleInput.value,
       link: imageInput.value
@@ -113,13 +113,23 @@ function setLikeCardEventListener(card) {
   });
 }
 
-// OPEN/CLOSE POPUP
+// OPEN/CLOSE/SUBMIT POPUP
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
 
-function closePopup(popup) {
+function closePopup(popup, btn, event) {
+  const isCloseButtonClicked = event.target.contains(btn);
+  const isOverlayClicked = event.target.classList.contains('popup');
+
+  if (isCloseButtonClicked || isOverlayClicked) {
+    submitPopup(popup);
+  }
+}
+
+function submitPopup(popup) {
   popup.classList.remove('popup_opened');
 }
+
 
