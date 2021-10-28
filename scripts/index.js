@@ -99,6 +99,7 @@ function setDeleteCardEventListener(card) {
   });
 }
 
+
 // LIKE CARDS
 
 function setLikeCardEventListener(card) {
