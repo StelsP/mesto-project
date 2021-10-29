@@ -1,3 +1,25 @@
+// PROFILE PHOTO EDIT
+const profilePhotoEditForm = document.querySelector('.popup_type_photo');
+const profilePhotoEditButton = document.querySelector('.profile__image');
+
+const photoInput = document.querySelector('.popup__input_type_photo');
+
+profilePhotoEditButton.addEventListener('click', () => {
+  openPopup(profilePhotoEditForm);
+});
+
+profilePhotoEditForm.addEventListener('click', (event) => {
+  closePopup(profilePhotoEditForm, `${'popup__close-button_type_photo'}`, event);
+});
+
+profilePhotoEditForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+    submitPopup(profilePhotoEditForm);
+    profilePhotoEditButton.src = photoInput.value;
+});
+
+
+
 // PROFILE EDIT
 
 const profileEditForm = document.querySelector('.popup_type_profile');

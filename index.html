@@ -33,6 +33,16 @@
   <footer class="footer">
     <p class="footer__copyright">© 2021 Mesto Russia</p>
   </footer>
+  <section class="popup popup_type_photo">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button popup__close-button_type_photo"></button>
+      <h2 class="popup__heading">Редактировать профиль</h2>
+      <form name="popup__form" id="popup__form_type_photo">
+        <input name="input_photo" type="url" required placeholder="ссылка на фотографию" class="popup__input popup__input_type_photo">
+        <button type="submit" class="popup__submit-button">Сохранить</button>
+      </form>
+    </div>
+  </section>
   <section class="popup popup_type_profile">
     <div class="popup__container">
       <button type="button" class="popup__close-button popup__close-button_type_profile"></button>

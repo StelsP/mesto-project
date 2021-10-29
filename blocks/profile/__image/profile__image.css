@@ -1,8 +1,16 @@
 .profile__image {
   border-radius: 50%;
-  max-width: 120px;
+  width: 120px;
+  height: 120px;
   display: block;
   margin: 0 auto 26px;
+  cursor: pointer;
+  transition: opacity .3s;
+}
+
+.profile__image:hover {
+  opacity: .6;
+  background-image: url(../../../images/edit_button.svg);
 }
 
 @media (min-width: 1024px) {
