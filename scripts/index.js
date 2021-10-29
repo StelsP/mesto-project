@@ -1,6 +1,6 @@
 // PROFILE PHOTO EDIT
 const profilePhotoEditForm = document.querySelector('.popup_type_photo');
-const profilePhotoEditButton = document.querySelector('.profile__image');
+const profilePhotoEditButton = document.querySelector('.profile__photo');
 
 const photoInput = document.querySelector('.popup__input_type_photo');
 
