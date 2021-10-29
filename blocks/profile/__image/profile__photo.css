@@ -10,7 +10,6 @@
 
 .profile__photo:hover {
   opacity: .6;
-  background-image: url(../../../images/edit_button.svg);
 }
 
 @media (min-width: 1024px) {

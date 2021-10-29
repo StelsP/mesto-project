@@ -1,4 +1,7 @@
+const popup = document.querySelector('.popup');
+
 // PROFILE PHOTO EDIT
+
 const profilePhotoEditForm = document.querySelector('.popup_type_photo');
 const profilePhotoEditButton = document.querySelector('.profile__photo');
 
@@ -18,7 +21,31 @@ profilePhotoEditForm.addEventListener('submit', (evt) => {
     profilePhotoEditButton.src = photoInput.value;
 });
 
+// ESC CLOSE POPUP (тут точно надо переделать);
 
+document.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
+    submitPopup(profilePhotoEditForm);
+  }
+});
+
+document.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
+    submitPopup(profileEditForm);
+  }
+});
+
+document.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
+    submitPopup(elementsAddForm);
+  }
+});
+
+document.addEventListener('keydown', function (evt) {
+  if (evt.key === 'Escape') {
+    submitPopup(image);
+  }
+});
 
 // PROFILE EDIT
 
@@ -145,7 +172,7 @@ function closePopup(popup, btn, event) {
     submitPopup(popup);
   }
 }
-
+// (тут точно надо переименовывать или переделывать);
 function submitPopup(popup) {
   popup.classList.remove('popup_opened');
 }
