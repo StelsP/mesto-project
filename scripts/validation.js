@@ -1,15 +1,22 @@
+console.log('test');
+
 const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   buttonSelector: '.popup__submit-button',
-}
+};
 
 const hideInputError = (inputElement) => {
+  const errorElement = document.querySelector(`#${inputElement.name}-error`);
 
+  errorElement.textContent = '';
 };
 
 const showInputError = (inputElement) => {
+  const errorElement = document.querySelector(`#${inputElement.name}-error`);
+  console.log(errorElement);
 
+  errorElement.textContent = 'Some Error';
 };
 
 const toggleButtonState = (buttonElement, inputList) => {
@@ -18,7 +25,7 @@ const toggleButtonState = (buttonElement, inputList) => {
 
 const checkInputValidity = (inputElement) => {
   // if valid, hide error else show error
-  if (!inputElement.validity.valid) {
+  if (inputElement.validity.valid) {
     // hide error
     hideInputError(inputElement);
   } else {
@@ -62,6 +69,7 @@ const enableValidation = () => {
   });
 
 };
+
 
 
 
