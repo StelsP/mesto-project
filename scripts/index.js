@@ -1,3 +1,5 @@
+enableValidation();
+
 // PROFILE PHOTO EDIT
 
 const profilePhotoEditForm = document.querySelector('.popup_type_photo');
