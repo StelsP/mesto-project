@@ -43,6 +43,7 @@
       <form name="popup__form" id="popup__form_type_photo" novalidate>
         <fieldset class="popup__set">
           <input type="url" name="input_photo" placeholder="Cсылка на фотографию" class="popup__input popup__input_type_photo" required>
+          <span class="popup__input-error"></span>
           <button type="submit" class="popup__submit-button">Сохранить</button>
         </fieldset>
       </form>
@@ -56,7 +57,9 @@
       <form name="popup__form" id="popup__form_type_profile" novalidate>
         <fieldset class="popup__set">
           <input type="text" name="input_name" placeholder="Жак-Ив Кусто" class="popup__input popup__input_type_name" minlength="2" maxlength="40" required>
+          <span class="popup__input-error"></span>
           <input type="text" name="input_quote" placeholder="Исследователь океана" class="popup__input popup__input_type_quote" minlength="2" maxlength="200" required>
+          <span class="popup__input-error"></span>
           <button type="submit" class="popup__submit-button">Сохранить</button>
         </fieldset>
       </form>
@@ -70,7 +73,9 @@
       <form name="popup__form" id="popup__form_type_card-add" novalidate>
         <fieldset class="popup__set">
           <input type="text" name="input_title" placeholder="Название" class="popup__input popup__input_type_title" minlength="2" maxlength="30" required>
+          <span class="popup__input-error"></span>
           <input type="url" name="input_image" placeholder="Ссылка на картинку" class="popup__input popup__input_type_image" required>
+          <span class="popup__input-error"></span>
           <button type="submit" class="popup__submit-button">Создать</button>
         </fieldset>
       </form>
