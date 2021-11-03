@@ -27,7 +27,13 @@ const showInputError = (inputElement) => {
 
 const toggleButtonState = (buttonElement, inputList) => {
   // if form valid enable submit button else disable
-
+  if (isFormvalid(inputList)) {
+    // enable button
+    buttonElement.disabled = false;
+  } else {
+    // disable button
+    buttonElement.disabled = true;
+  }
 };
 
 const checkInputValidity = (inputElement) => {
