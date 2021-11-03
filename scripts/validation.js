@@ -4,23 +4,29 @@ const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   buttonSelector: '.popup__submit-button',
+  inputErrorClass: 'popup__input_error',
+};
+
+const isFormvalid = (inputList) => {
+  return valid = inputList.every(inputElement => inputElement.validity.valid);
 };
 
 const hideInputError = (inputElement) => {
   const errorElement = document.querySelector(`#${inputElement.name}-error`);
-  console.log(errorElement);
 
   errorElement.textContent = '';
+  inputElement.classList.remove(config.inputErrorClass);
 };
 
 const showInputError = (inputElement) => {
   const errorElement = document.querySelector(`#${inputElement.name}-error`);
-  console.log(errorElement);
 
-  errorElement.textContent = 'Some Error';
+  errorElement.textContent = inputElement.validationMessage;
+  inputElement.classList.add(config.inputErrorClass);
 };
 
 const toggleButtonState = (buttonElement, inputList) => {
+  // if form valid enable submit button else disable
 
 };
 
@@ -61,6 +67,7 @@ const setEventListeners = (formElement) => {
 };
 
 const enableValidation = () => {
+
   // find all forms
   const formList = Array.from(document.querySelectorAll(config.formSelector));
 

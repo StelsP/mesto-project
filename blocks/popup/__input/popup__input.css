@@ -2,7 +2,7 @@
   display: block;
   padding: 0;
   padding-bottom: 9px;
-  margin: 0 auto 30px;
+  margin: 0 auto;
   min-width: 238px;
   font-size: 14px;
   font-style: normal;
@@ -15,17 +15,9 @@
   box-sizing: border-box;
 }
 
-.popup__input:last-child {
-  margin: 0 auto 44px;
-}
-
 @media (min-width: 768px) {
   .popup__input {
     min-width: 358px;
-  }
-
-  .popup__input:last-child {
-    margin-bottom: 47px;
   }
 }
 
