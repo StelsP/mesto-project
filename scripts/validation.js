@@ -8,6 +8,7 @@ const config = {
 
 const hideInputError = (inputElement) => {
   const errorElement = document.querySelector(`#${inputElement.name}-error`);
+  console.log(errorElement);
 
   errorElement.textContent = '';
 };
