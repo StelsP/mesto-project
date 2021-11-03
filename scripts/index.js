@@ -1,5 +1,6 @@
+// import { initialCards } from './initial-cards.js';
+// import { enableValidation } from './validate.js';
 enableValidation();
-
 // PROFILE PHOTO EDIT
 
 const profilePhotoEditForm = document.querySelector('.popup_type_photo');
