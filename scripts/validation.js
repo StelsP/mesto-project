@@ -7,8 +7,8 @@ const config = {
   inputErrorClass: 'popup__input_error',
 };
 
-const isFormvalid = (inputList) => {
-  return valid = inputList.every(inputElement => inputElement.validity.valid);
+const isFormValid = (inputList) => {
+  return inputList.every(inputElement => inputElement.validity.valid);
 };
 
 const hideInputError = (inputElement) => {
@@ -26,8 +26,8 @@ const showInputError = (inputElement) => {
 };
 
 const toggleButtonState = (buttonElement, inputList) => {
-  // if form valid enable submit button else disable
-  if (isFormvalid(inputList)) {
+  // if form valid enable button else disable
+  if (isFormValid(inputList)) {
     // enable button
     buttonElement.disabled = false;
   } else {
@@ -54,10 +54,10 @@ const setEventListeners = (formElement) => {
   });
 
   // find all inputs
-  const inputList = Array.from(document.querySelectorAll(config.inputSelector));
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
 
   // find submit button
-  const submitButton = document.querySelector(config.buttonSelector);
+  const submitButton = formElement.querySelector(config.buttonSelector);
 
   inputList.forEach(inputElement => {
     // add event listeners for each input
