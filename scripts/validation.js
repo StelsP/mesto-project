@@ -52,10 +52,8 @@ const setEventListeners = (formElement) => {
   formElement.addEventListener('submit', e => {
     e.preventDefault();
   });
-
   // find all inputs
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-
   // find submit button
   const submitButton = formElement.querySelector(config.buttonSelector);
 
@@ -64,26 +62,21 @@ const setEventListeners = (formElement) => {
     inputElement.addEventListener('input', () => {
       // check each input is valid
       checkInputValidity(inputElement);
-
       // toggle button state
       toggleButtonState(submitButton, inputList);
     });
-
     // set initial button state
     toggleButtonState(submitButton, inputList);
   });
 };
 
 const enableValidation = () => {
-
   // find all forms
   const formList = Array.from(document.querySelectorAll(config.formSelector));
-
   // set event listeners for each form
   formList.forEach(formElement => {
     setEventListeners(formElement);
   });
-
 };
 
 
