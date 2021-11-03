@@ -24,10 +24,3 @@
   height: 100%;
 }
 
-.popup__input-error {
-  margin: 0;
-  padding: 0;
-  color: red;
-  position: relative;
-  z-index: 10;
-}
