@@ -68,8 +68,10 @@ const setEventListeners = (formElement) => {
       // toggle button state
       toggleButtonState(submitButton, inputList);
     });
-  });
 
+    // set initial button state
+    toggleButtonState(submitButton, inputList);
+  });
 };
 
 const enableValidation = () => {

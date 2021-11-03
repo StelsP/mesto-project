@@ -19,6 +19,8 @@ profilePhotoEditForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
     submitPopup(profilePhotoEditForm);
     profilePhotoEditButton.src = photoInput.value;
+    document.querySelector('#popup__form_type_photo').reset();
+
 });
 
 // ESC CLOSE POPUP (тут точно надо переделать);
