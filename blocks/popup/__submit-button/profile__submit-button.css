@@ -1,7 +1,7 @@
 .popup__submit-button {
   display: block;
   padding: 0;
-  margin: 0 auto 25px;
+  margin: 21px auto 25px;
   min-width: 238px;
   min-height: 46px;
   font-size: 14px;
@@ -24,7 +24,7 @@
 }
 
 .popup__submit-button:disabled {
-  opacity: .3;
+  opacity: .4;
   cursor: not-allowed;
   background-color: white;
   color: black;
@@ -34,6 +34,7 @@
 @media (min-width: 768px) {
   .popup__submit-button {
     margin-bottom: 37px;
+    margin-top: 31px;
     min-width: 358px;
     min-height: 50px;
     font-size: 18px;

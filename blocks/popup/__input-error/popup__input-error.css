@@ -1,9 +1,10 @@
 .popup__input-error {
   display: block;
-  margin: 10px auto 30px;
+  margin: 5px auto 13px;
   padding: 0;
   color: red;
   max-width: 238px;
+  min-height: 14px;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -12,16 +13,8 @@
   text-align: left;
 }
 
-.popup__input-error:last-child {
-  margin: 10px auto 44px;
-}
-
 @media (min-width: 768px) {
   .popup__input-error {
     max-width: 358px;
-  }
-
-  .popup__input-error:last-child {
-    margin-bottom: 47px;
   }
 }
