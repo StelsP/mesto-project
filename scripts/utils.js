@@ -1,4 +1,4 @@
-// OPEN/CLOSE/SUBMIT POPUP
+// OPEN/CLOSE POPUP
 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');

@@ -18,7 +18,7 @@ profilePhotoEditForm.addEventListener('submit', (evt) => {
     document.querySelector('#popup__form_type_photo').reset();
 });
 
-// PROFILE EDIT FROM
+// PROFILE EDIT FORM
 
 import { profileEditForm, profileEditButton, profileCloseButton, nameInput, quoteInput, profileName, profileQuote} from './variables.js';
 
@@ -39,7 +39,7 @@ profileEditForm.addEventListener('submit', (evt) => {
     profileQuote.textContent = quoteInput.value;
 });
 
-// ADD NEW CARDS FROM
+// ADD NEW CARDS FORM
 
 import { elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput} from './variables.js';
 

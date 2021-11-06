@@ -3,7 +3,6 @@
 export const profilePhotoEditForm = document.querySelector('.popup_type_photo');
 export const profilePhotoEditButton = document.querySelector('.profile__photo');
 export const profilePhotoCloseButton = document.querySelector('.popup__close-button_type_photo');
-
 export const photoInput = document.querySelector('.popup__input_type_photo');
 
 // PROFILE EDIT

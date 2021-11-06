@@ -24,8 +24,11 @@
 }
 
 .popup__submit-button:disabled {
-  opacity: .6;
+  opacity: .3;
   cursor: not-allowed;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }
 
 @media (min-width: 768px) {

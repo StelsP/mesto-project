@@ -1,7 +1,7 @@
 // ADD START 6 CARDS
 
 import { initialCards } from './initial-cards.js';
-import { elementsTemplate, elementsList} from './variables.js';
+import { elementsTemplate, elementsList } from './variables.js';
 import { openPopup, closePopup } from './utils.js'
 
 initialCards.forEach(function(item) {
