@@ -4,7 +4,8 @@
   "description": "mesto-project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rd /s /q dist && webpack",
+    "dev": "webpack serve"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,14 @@
   },
   "homepage": "https://github.com/StelsP/mesto-project#readme",
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "babel-loader": "^8.2.3",
     "webpack": "^5.62.1",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0"
+  },
+  "dependencies": {
+    "core-js": "^3.19.1"
   }
 }
