@@ -20,7 +20,6 @@ const closePopupWidthEscape = (e) => {
 }
 
 const closePopupWidthOverlayClick = (e) => {
-
   if (e.target.classList.contains('popup')) {
     closePopup(e.target);
   }
