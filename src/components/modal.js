@@ -12,8 +12,8 @@ config.profilePhotoCloseButton.addEventListener('click', () => {
   closePopup(config.profilePhotoEditForm);
 });
 
-config.profilePhotoEditForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
+config.profilePhotoEditForm.addEventListener('submit', (e) => {
+  e.preventDefault();
     closePopup(config.profilePhotoEditForm);
     config.profilePhotoEditButton.src = config.photoInput.value;
     document.querySelector('#popup__form_type_photo').reset();
@@ -31,8 +31,8 @@ config.profileCloseButton.addEventListener('click', () => {
   closePopup(config.profileEditForm);
 });
 
-config.profileEditForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
+config.profileEditForm.addEventListener('submit', (e) => {
+  e.preventDefault();
     closePopup(config.profileEditForm);
     config.profileName.textContent = config.nameInput.value;
     config.profileQuote.textContent = config.quoteInput.value;
@@ -48,8 +48,8 @@ config.elementsCloseButton.addEventListener('click', () => {
   closePopup(config.elementsAddForm);
 });
 
-config.elementsAddForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
+config.elementsAddForm.addEventListener('submit', (e) => {
+  e.preventDefault();
     closePopup(config.elementsAddForm);
     config.elementsList.prepend(createCard({
       name: config.titleInput.value,
