@@ -2,9 +2,7 @@
 
 import { initialCards } from './initial-cards.js';
 import { elementsTemplate, elementsList} from './variables.js';
-import { setImageClickEventListener } from './modal.js';
-import { openPopup, closePopup, submitPopup } from './utils.js'
-
+import { openPopup, closePopup } from './utils.js'
 
 initialCards.forEach(function(item) {
   elementsList.prepend(createCard(item));
@@ -24,28 +22,6 @@ function createCard(cardData) {
   return elementsCell;
 }
 
-// ADD NEW CARDS
-
-import { elementsAddForm, elementsAddButton, imageInput, titleInput} from './variables.js';
-
-elementsAddButton.addEventListener('click', () => {
-  openPopup(elementsAddForm);
-});
-
-elementsAddForm.addEventListener('click', (event) => {
-  closePopup(elementsAddForm, `${'popup__close-button_type_card-add'}`, event);
-});
-
-elementsAddForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-    submitPopup(elementsAddForm);
-    elementsList.prepend(createCard({
-      name: titleInput.value,
-      link: imageInput.value
-    }));
-  document.querySelector('#popup__form_type_card-add').reset();
-});
-
 // DELETE CARDS
 
 function setDeleteCardEventListener(card) {
@@ -63,3 +39,21 @@ function setLikeCardEventListener(card) {
     elementsLikeButton.classList.toggle('elements__like-button_active');
   });
 }
+
+// OPEN/CLOSE FULLSCREEN CARD IMAGE
+
+import { image } from './variables.js';
+
+export function setImageClickEventListener(name, link, card) {
+  const imageLink = card.querySelector('.elements__image');
+  imageLink.addEventListener('click', () => {
+    openPopup(image);
+    image.querySelector('.image__pic').src = link;
+    image.querySelector('.image__pic').alt = 'Фото' + ' ' + name;
+    image.querySelector('.image__title').textContent = name;
+  });
+}
+
+image.addEventListener('mousedown', (event) => {
+  closePopup(image, `${'popup__close-button_type_picture'}`, event);
+});

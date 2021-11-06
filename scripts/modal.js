@@ -1,13 +1,13 @@
-// PROFILE PHOTO EDIT
+// PROFILE PHOTO EDIT FORM
 
 import { profilePhotoEditForm, profilePhotoEditButton, photoInput} from './variables.js';
 import { openPopup, closePopup, submitPopup } from './utils.js'
 
-profilePhotoEditButton.addEventListener('click', () => {
+profilePhotoEditButton.addEventListener('mousedown', () => {
   openPopup(profilePhotoEditForm);
 });
 
-profilePhotoEditForm.addEventListener('click', (event) => {
+profilePhotoEditForm.addEventListener('mousedown', (event) => {
   closePopup(profilePhotoEditForm, `${'popup__close-button_type_photo'}`, event);
 });
 
@@ -19,17 +19,17 @@ profilePhotoEditForm.addEventListener('submit', (evt) => {
 
 });
 
-// PROFILE EDIT
+// PROFILE EDIT FROM
 
 import { profileEditForm, profileEditButton, nameInput, quoteInput, profileName, profileQuote} from './variables.js';
 
-profileEditButton.addEventListener('click', () => {
+profileEditButton.addEventListener('mousedown', () => {
   nameInput.value = profileName.textContent;
   quoteInput.value = profileQuote.textContent;
   openPopup(profileEditForm);
 });
 
-profileEditForm.addEventListener('click', (event) => {
+profileEditForm.addEventListener('mousedown', (event) => {
   closePopup(profileEditForm, `${'popup__close-button_type_profile'}`, event);
 });
 
@@ -40,20 +40,26 @@ profileEditForm.addEventListener('submit', (evt) => {
     profileQuote.textContent = quoteInput.value;
 });
 
-// OPEN/CLOSE CARD IMAGE
+// ADD NEW CARDS FROM
 
-import { image } from './variables.js';
+import { elementsAddForm, elementsAddButton, imageInput, titleInput} from './variables.js';
 
-export function setImageClickEventListener(name, link, card) {
-  const imageLink = card.querySelector('.elements__image');
-  imageLink.addEventListener('click', () => {
-    openPopup(image);
-    image.querySelector('.image__pic').src = link;
-    image.querySelector('.image__pic').alt = 'Фото' + ' ' + name;
-    image.querySelector('.image__title').textContent = name;
-  });
-}
-
-image.addEventListener('click', (event) => {
-  closePopup(image, `${'popup__close-button_type_picture'}`, event);
+elementsAddButton.addEventListener('mousedown', () => {
+  openPopup(elementsAddForm);
 });
+
+elementsAddForm.addEventListener('mousedown', (event) => {
+  closePopup(elementsAddForm, `${'popup__close-button_type_card-add'}`, event);
+});
+
+elementsAddForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+    submitPopup(elementsAddForm);
+    elementsList.prepend(createCard({
+      name: titleInput.value,
+      link: imageInput.value
+    }));
+  document.querySelector('#popup__form_type_card-add').reset();
+});
+
+
