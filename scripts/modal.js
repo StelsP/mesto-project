@@ -41,7 +41,8 @@ profileEditForm.addEventListener('submit', (evt) => {
 
 // ADD NEW CARDS FORM
 
-import { elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput} from './variables.js';
+import { elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput, elementsList} from './variables.js';
+import { createCard } from './cards.js'
 
 elementsAddButton.addEventListener('click', () => {
   openPopup(elementsAddForm);

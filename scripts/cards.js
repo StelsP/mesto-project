@@ -8,7 +8,7 @@ initialCards.forEach(function(item) {
   elementsList.prepend(createCard(item));
 });
 
-function createCard(cardData) {
+export function createCard(cardData) {
   const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
 
   elementsCell.querySelector('.elements__image').src = cardData.link;
