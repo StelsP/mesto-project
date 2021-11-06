@@ -30,6 +30,15 @@ const titleInput = document.querySelector('.popup__input_type_title');
 
 const image = document.querySelector('.popup_type_picture');
 
+// VALIDATION CONFIG
+
+export const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  buttonSelector: '.popup__submit-button',
+  inputErrorClass: 'popup__input_error',
+}
+
 export {
   profilePhotoEditForm,
   profilePhotoEditButton,

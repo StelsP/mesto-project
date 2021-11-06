@@ -1,9 +1,4 @@
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  buttonSelector: '.popup__submit-button',
-  inputErrorClass: 'popup__input_error',
-};
+import { validationConfig as config } from "./variables.js";
 
 const isFormValid = (inputList) => {
   return inputList.every(inputElement => inputElement.validity.valid);
