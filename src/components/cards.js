@@ -1,15 +1,15 @@
-// ADD START 6 CARDS
-
 import { initialCards } from './initial-cards.js';
-import { elementsTemplate, elementsList } from './var.js';
+import { config } from './var.js';
 import { openPopup, closePopup } from './utils.js'
 
+// ADD START 6 CARDS
+
 initialCards.forEach(function(item) {
-  elementsList.prepend(createCard(item));
+  config.elementsList.prepend(createCard(item));
 });
 
 export function createCard(cardData) {
-  const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
+  const elementsCell = config.elementsTemplate.querySelector('.elements__cell').cloneNode(true);
 
   elementsCell.querySelector('.elements__image').src = cardData.link;
   elementsCell.querySelector('.elements__image').alt = 'Фото' + ' ' + cardData.name;
@@ -34,7 +34,7 @@ function setDeleteCardEventListener(card) {
 // LIKE CARDS
 
 function setLikeCardEventListener(card) {
-  const elementsLikeButton = card.querySelector('.elements__like-button')
+  const elementsLikeButton = card.querySelector('.elements__like-button');
   elementsLikeButton.addEventListener('click', () => {
     elementsLikeButton.classList.toggle('elements__like-button_active');
   });
@@ -42,20 +42,18 @@ function setLikeCardEventListener(card) {
 
 // OPEN/CLOSE FULLSCREEN CARD IMAGE
 
-import { image, imageCloseButton } from './var.js';
-
 function setImageClickEventListener(name, link, card) {
   const imageLink = card.querySelector('.elements__image');
   imageLink.addEventListener('click', () => {
-    openPopup(image);
-    image.querySelector('.image__pic').src = link;
-    image.querySelector('.image__pic').alt = 'Фото' + ' ' + name;
-    image.querySelector('.image__title').textContent = name;
+    openPopup(config.image);
+    config.image.querySelector('.image__pic').src = link;
+    config.image.querySelector('.image__pic').alt = 'Фото' + ' ' + name;
+    config.image.querySelector('.image__title').textContent = name;
   });
 }
 
-imageCloseButton.addEventListener('mousedown', () => {
-  closePopup(image);
+config.imageCloseButton.addEventListener('mousedown', () => {
+  closePopup(config.image);
 });
 
 

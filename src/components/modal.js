@@ -1,63 +1,59 @@
 // PROFILE PHOTO EDIT FORM
 
-import { profilePhotoEditForm, profilePhotoEditButton, profilePhotoCloseButton, photoInput} from './var.js';
+import { config } from './var.js';
 import { openPopup, closePopup } from './utils.js'
+import { createCard } from './cards.js'
 
-profilePhotoEditButton.addEventListener('click', () => {
-  openPopup(profilePhotoEditForm);
+config.profilePhotoEditButton.addEventListener('click', () => {
+  openPopup(config.profilePhotoEditForm);
 });
 
-profilePhotoCloseButton.addEventListener('click', () => {
-  closePopup(profilePhotoEditForm);
+config.profilePhotoCloseButton.addEventListener('click', () => {
+  closePopup(config.profilePhotoEditForm);
 });
 
-profilePhotoEditForm.addEventListener('submit', (evt) => {
+config.profilePhotoEditForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-    closePopup(profilePhotoEditForm);
-    profilePhotoEditButton.src = photoInput.value;
+    closePopup(config.profilePhotoEditForm);
+    config.profilePhotoEditButton.src = config.photoInput.value;
     document.querySelector('#popup__form_type_photo').reset();
 });
 
 // PROFILE EDIT FORM
 
-import { profileEditForm, profileEditButton, profileCloseButton, nameInput, quoteInput, profileName, profileQuote} from './var.js';
-
-profileEditButton.addEventListener('click', () => {
-  nameInput.value = profileName.textContent;
-  quoteInput.value = profileQuote.textContent;
-  openPopup(profileEditForm);
+config.profileEditButton.addEventListener('click', () => {
+  config.nameInput.value = config.profileName.textContent;
+  config.quoteInput.value = config.profileQuote.textContent;
+  openPopup(config.profileEditForm);
 });
 
-profileCloseButton.addEventListener('click', () => {
-  closePopup(profileEditForm);
+config.profileCloseButton.addEventListener('click', () => {
+  closePopup(config.profileEditForm);
 });
 
-profileEditForm.addEventListener('submit', (evt) => {
+config.profileEditForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-    closePopup(profileEditForm);
-    profileName.textContent = nameInput.value;
-    profileQuote.textContent = quoteInput.value;
+    closePopup(config.profileEditForm);
+    config.profileName.textContent = config.nameInput.value;
+    config.profileQuote.textContent = config.quoteInput.value;
 });
 
 // ADD NEW CARDS FORM
 
-import { elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput, elementsList} from './var.js';
-import { createCard } from './cards.js'
-
-elementsAddButton.addEventListener('click', () => {
-  openPopup(elementsAddForm);
+config.elementsAddButton.addEventListener('click', () => {
+  openPopup(config.elementsAddForm);
 });
 
-elementsCloseButton.addEventListener('click', () => {
-  closePopup(elementsAddForm);
+config.elementsCloseButton.addEventListener('click', () => {
+  closePopup(config.elementsAddForm);
 });
 
-elementsAddForm.addEventListener('submit', (evt) => {
+config.elementsAddForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
-    closePopup(elementsAddForm);
-    elementsList.prepend(createCard({
-      name: titleInput.value,
-      link: imageInput.value
+    closePopup(config.elementsAddForm);
+    config.elementsList.prepend(createCard({
+      name: config.titleInput.value,
+      link: config.imageInput.value
     }));
   document.querySelector('#popup__form_type_card-add').reset();
 });

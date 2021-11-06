@@ -1,4 +1,4 @@
-import { validationConfig as config } from "./var.js";
+import { config } from "./var.js";
 
 const isFormValid = (inputList) => {
   return inputList.every(inputElement => inputElement.validity.valid);
