@@ -23,6 +23,11 @@
   cursor: pointer;
 }
 
+.popup__submit-button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
 @media (min-width: 768px) {
   .popup__submit-button {
     margin-bottom: 37px;
