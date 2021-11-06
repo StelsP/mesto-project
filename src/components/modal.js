@@ -1,6 +1,6 @@
 // PROFILE PHOTO EDIT FORM
 
-import { profilePhotoEditForm, profilePhotoEditButton, profilePhotoCloseButton, photoInput} from './variables.js';
+import { profilePhotoEditForm, profilePhotoEditButton, profilePhotoCloseButton, photoInput} from './var.js';
 import { openPopup, closePopup } from './utils.js'
 
 profilePhotoEditButton.addEventListener('click', () => {
@@ -20,7 +20,7 @@ profilePhotoEditForm.addEventListener('submit', (evt) => {
 
 // PROFILE EDIT FORM
 
-import { profileEditForm, profileEditButton, profileCloseButton, nameInput, quoteInput, profileName, profileQuote} from './variables.js';
+import { profileEditForm, profileEditButton, profileCloseButton, nameInput, quoteInput, profileName, profileQuote} from './var.js';
 
 profileEditButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
@@ -41,7 +41,7 @@ profileEditForm.addEventListener('submit', (evt) => {
 
 // ADD NEW CARDS FORM
 
-import { elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput, elementsList} from './variables.js';
+import { elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput, elementsList} from './var.js';
 import { createCard } from './cards.js'
 
 elementsAddButton.addEventListener('click', () => {

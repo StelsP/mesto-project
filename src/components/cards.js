@@ -1,7 +1,7 @@
 // ADD START 6 CARDS
 
 import { initialCards } from './initial-cards.js';
-import { elementsTemplate, elementsList } from './variables.js';
+import { elementsTemplate, elementsList } from './var.js';
 import { openPopup, closePopup } from './utils.js'
 
 initialCards.forEach(function(item) {
@@ -42,7 +42,7 @@ function setLikeCardEventListener(card) {
 
 // OPEN/CLOSE FULLSCREEN CARD IMAGE
 
-import { image, imageCloseButton } from './variables.js';
+import { image, imageCloseButton } from './var.js';
 
 function setImageClickEventListener(name, link, card) {
   const imageLink = card.querySelector('.elements__image');
