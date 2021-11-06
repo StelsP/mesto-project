@@ -42,9 +42,9 @@ function setLikeCardEventListener(card) {
 
 // OPEN/CLOSE FULLSCREEN CARD IMAGE
 
-import { image } from './variables.js';
+import { image, imageCloseButton } from './variables.js';
 
-export function setImageClickEventListener(name, link, card) {
+function setImageClickEventListener(name, link, card) {
   const imageLink = card.querySelector('.elements__image');
   imageLink.addEventListener('click', () => {
     openPopup(image);
@@ -54,6 +54,9 @@ export function setImageClickEventListener(name, link, card) {
   });
 }
 
-image.addEventListener('mousedown', (event) => {
-  closePopup(image, `${'popup__close-button_type_picture'}`, event);
+imageCloseButton.addEventListener('mousedown', () => {
+  closePopup(image);
 });
+
+
+

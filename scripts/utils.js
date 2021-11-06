@@ -1,58 +1,31 @@
 // OPEN/CLOSE/SUBMIT POPUP
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('click', closePopupWidthOverlayClick);
+  document.addEventListener('keydown', closePopupWidthEscape);
 }
 
-function closePopup(popup, btn, event) {
-  const isCloseButtonClicked = event.target.classList.contains(btn);
-  const isOverlayClicked = event.target.classList.contains('popup');
+export function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('click', closePopupWidthOverlayClick);
+  document.removeEventListener('keydown', closePopupWidthEscape);
+}
+
+const closePopupWidthEscape = (e) => {
+  if (e.key === "Escape") {
+  const popup = document.querySelector('.popup_opened');
+  closePopup(popup);
+  }
+}
+
+const closePopupWidthOverlayClick = (e) => {
+
+  const isCloseButtonClicked = e.target.classList.contains('.popup__close-button');
+  const isOverlayClicked = e.target.classList.contains('.popup');
 
   if (isCloseButtonClicked || isOverlayClicked) {
     submitPopup(popup);
   }
 }
-// (тут точно надо переименовывать или переделывать);
-function submitPopup(popup) {
-  popup.classList.remove('popup_opened');
-}
 
-const closeWithClick = (e) => {
-
-}
-
-const  closeWithEscape = (e) => {
-
-}
-
-
-export { openPopup, closePopup, submitPopup }
-
-// ESC CLOSE POPUP (тут точно надо переделать);
-
-// import { submitPopup } from './utils.js';
-// import { profilePhotoEditForm,  profileEditForm, elementsAddForm, image} from './variables.js';
-
-// document.addEventListener('keydown', function (evt) {
-//   if (evt.key === 'Escape') {
-//     submitPopup(profilePhotoEditForm);
-//   }
-// });
-
-// document.addEventListener('keydown', function (evt) {
-//   if (evt.key === 'Escape') {
-//     submitPopup(profileEditForm);
-//   }
-// });
-
-// document.addEventListener('keydown', function (evt) {
-//   if (evt.key === 'Escape') {
-//     submitPopup(elementsAddForm);
-//   }
-// });
-
-// document.addEventListener('keydown', function (evt) {
-//   if (evt.key === 'Escape') {
-//     submitPopup(image);
-//   }
-// });

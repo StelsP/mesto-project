@@ -2,12 +2,15 @@
 
 const profilePhotoEditForm = document.querySelector('.popup_type_photo');
 const profilePhotoEditButton = document.querySelector('.profile__photo');
+export const profilePhotoCloseButton = document.querySelector('.popup__close-button_type_photo');
+
 const photoInput = document.querySelector('.popup__input_type_photo');
 
 // PROFILE EDIT
 
 const profileEditForm = document.querySelector('.popup_type_profile');
 const profileEditButton = document.querySelector('.profile__edit-button');
+export const profileCloseButton = document.querySelector('.popup__close-button_type_profile');
 const nameInput = document.querySelector('.popup__input_type_name');
 const quoteInput = document.querySelector('.popup__input_type_quote');
 const profileName = document.querySelector('.profile__name');
@@ -22,6 +25,7 @@ const elementsList = document.querySelector('.elements__list');
 
 const elementsAddForm = document.querySelector('.popup_type_card-add');
 const elementsAddButton = document.querySelector('.profile__add-button');
+export const elementsCloseButton = document.querySelector('.popup__close-button_type_card-add');
 const imageInput = document.querySelector('.popup__input_type_image');
 const titleInput = document.querySelector('.popup__input_type_title');
 
@@ -29,6 +33,8 @@ const titleInput = document.querySelector('.popup__input_type_title');
 // OPEN/CLOSE CARD IMAGE
 
 const image = document.querySelector('.popup_type_picture');
+export const imageCloseButton = document.querySelector('.popup__close-button_type_picture');
+
 
 // VALIDATION CONFIG
 
