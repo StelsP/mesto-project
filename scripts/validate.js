@@ -1,5 +1,3 @@
-console.log('test');
-
 const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -69,8 +67,7 @@ const setEventListeners = (formElement) => {
     toggleButtonState(submitButton, inputList);
   });
 };
-
-const enableValidation = () => {
+export const enableValidation = () => {
   // find all forms
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   // set event listeners for each form
