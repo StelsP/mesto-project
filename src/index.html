@@ -4,17 +4,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Maesto</title>
 </head>
 <body class="body">
   <header class="header">
-    <img src="./images/logo_light.svg" alt="Проект Место" class="header__logo">
+    <img src="<%=require('./images/logo_light.svg')%>" alt="Проект Место" class="header__logo">
   </header>
   <main class="main">
     <section class="profile">
       <div class="profile__container">
-        <img src="./images/profile__photo.jpg" alt="Фото Жак-Ив Кусто" class="profile__photo">
+        <img src="<%=require('./images/profile__photo.jpg')%>" alt="Фото Жак-Ив Кусто" class="profile__photo">
         <div class="profile__text-container">
           <div class="profile__name-container">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -96,6 +95,5 @@
     </li>
   </template>
 
-  <script type="module" src="../src/index.js"></script>
 </body>
 </html>
