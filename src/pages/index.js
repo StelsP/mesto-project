@@ -2,8 +2,6 @@ import { config } from '../components/var.js';
 import { openPopup, closePopup } from '../components/modal.js'
 import { initialCards } from '../components/initial-cards.js';
 import { createCard } from '../components/cards.js';
-import '../components/modal';
-import '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
 import './index.css';
 

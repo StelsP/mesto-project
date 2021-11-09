@@ -22,7 +22,7 @@ export const config = {
   elementsCloseButton: document.querySelector('.popup__close-button_type_card-add'),
   imageInput: document.querySelector('.popup__input_type_image'),
   titleInput: document.querySelector('.popup__input_type_title'),
-  elementsForm: document.querySelector('#popup__form_type_photo'),
+  elementsForm: document.querySelector('#popup__form_type_card-add'),
 
 // OPEN/CLOSE CARD IMAGE
   image: document.querySelector('.popup_type_picture'),
