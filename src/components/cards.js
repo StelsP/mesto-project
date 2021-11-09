@@ -1,19 +1,17 @@
-import { initialCards } from './initial-cards.js';
+
 import { config } from './var.js';
-import { openPopup, closePopup } from './utils.js'
+import { openPopup } from './modal.js'
 
-// ADD START 6 CARDS
-
-initialCards.forEach(function(item) {
-  config.elementsList.prepend(createCard(item));
-});
+// CREATE START 6 CARDS
 
 export function createCard(cardData) {
   const elementsCell = config.elementsTemplate.querySelector('.elements__cell').cloneNode(true);
+  const elementsImage = elementsCell.querySelector('.elements__image');
+  const elementsName = elementsCell.querySelector('.elements__name');
 
-  elementsCell.querySelector('.elements__image').src = cardData.link;
-  elementsCell.querySelector('.elements__image').alt = 'Фото' + ' ' + cardData.name;
-  elementsCell.querySelector('.elements__name').textContent = cardData.name;
+  elementsImage.src = cardData.link;
+  elementsImage.alt = 'Фото' + ' ' + cardData.name;
+  elementsName.textContent = cardData.name;
 
   setDeleteCardEventListener(elementsCell);
   setLikeCardEventListener(elementsCell);
@@ -40,21 +38,19 @@ function setLikeCardEventListener(card) {
   });
 }
 
-// OPEN/CLOSE FULLSCREEN CARD IMAGE
+// OPEN FULLSCREEN CARD IMAGE
 
 function setImageClickEventListener(name, link, card) {
   const imageLink = card.querySelector('.elements__image');
   imageLink.addEventListener('click', () => {
     openPopup(config.image);
-    config.image.querySelector('.image__pic').src = link;
-    config.image.querySelector('.image__pic').alt = 'Фото' + ' ' + name;
-    config.image.querySelector('.image__title').textContent = name;
+    config.imagePic.src = link;
+    config.imagePic.alt = 'Фото' + ' ' + name;
+    config.imageTitle.textContent = name;
   });
 }
 
-config.imageCloseButton.addEventListener('mousedown', () => {
-  closePopup(config.image);
-});
+
 
 
 

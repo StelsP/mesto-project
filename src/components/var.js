@@ -4,6 +4,7 @@ export const config = {
   profilePhotoEditButton: document.querySelector('.profile__photo'),
   profilePhotoCloseButton: document.querySelector('.popup__close-button_type_photo'),
   photoInput: document.querySelector('.popup__input_type_photo'),
+  profilePhotoForm: document.querySelector('#popup__form_type_photo'),
 // PROFILE EDIT
   profileEditForm: document.querySelector('.popup_type_profile'),
   profileEditButton: document.querySelector('.profile__edit-button'),
@@ -21,13 +22,17 @@ export const config = {
   elementsCloseButton: document.querySelector('.popup__close-button_type_card-add'),
   imageInput: document.querySelector('.popup__input_type_image'),
   titleInput: document.querySelector('.popup__input_type_title'),
+  elementsForm: document.querySelector('#popup__form_type_photo'),
+
 // OPEN/CLOSE CARD IMAGE
   image: document.querySelector('.popup_type_picture'),
   imageCloseButton: document.querySelector('.popup__close-button_type_picture'),
-// VALIDATION CONFIG
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  buttonSelector: '.popup__submit-button',
-  inputErrorClass: 'popup__input_error',
+  imagePic: document.querySelector('.image__pic'),
+  imageTitle: document.querySelector('.image__title'),
+// // VALIDATION CONFIG
+//   formSelector: '.popup__form',
+//   inputSelector: '.popup__input',
+//   buttonSelector: '.popup__submit-button',
+//   inputErrorClass: 'popup__input_error',
 }
 

@@ -1,4 +1,4 @@
-import { config } from "./var.js";
+// import { config } from "./var.js";
 
 const isFormValid = (inputList) => {
   return inputList.every(inputElement => inputElement.validity.valid);
@@ -46,9 +46,9 @@ const setEventListeners = (formElement) => {
     e.preventDefault();
   });
   // find all inputs
-  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   // find submit button
-  const submitButton = formElement.querySelector(config.buttonSelector);
+  const submitButton = formElement.querySelector(buttonSelector);
 
   inputList.forEach(inputElement => {
     // add event listeners for each input
@@ -64,7 +64,7 @@ const setEventListeners = (formElement) => {
 };
 export const enableValidation = () => {
   // find all forms
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  const formList = Array.from(document.querySelectorAll(formSelector));
   // set event listeners for each form
   formList.forEach(formElement => {
     setEventListeners(formElement);
