@@ -1,17 +1,15 @@
-// import { config } from "./var.js";
-
 const isFormValid = (inputList) => {
   return inputList.every(inputElement => inputElement.validity.valid);
 };
 
-const hideInputError = (inputElement) => {
+const hideInputError = (inputElement, config) => {
   const errorElement = document.querySelector(`#${inputElement.name}-error`);
 
   errorElement.textContent = '';
   inputElement.classList.remove(config.inputErrorClass);
 };
 
-const showInputError = (inputElement) => {
+const showInputError = (inputElement, config) => {
   const errorElement = document.querySelector(`#${inputElement.name}-error`);
 
   errorElement.textContent = inputElement.validationMessage;
@@ -19,55 +17,42 @@ const showInputError = (inputElement) => {
 };
 
 const toggleButtonState = (buttonElement, inputList) => {
-  // if form valid enable button else disable
   if (isFormValid(inputList)) {
-    // enable button
     buttonElement.disabled = false;
   } else {
-    // disable button
     buttonElement.disabled = true;
   }
 };
 
-const checkInputValidity = (inputElement) => {
-  // if valid, hide error else show error
+const checkInputValidity = (inputElement, config) => {
   if (inputElement.validity.valid) {
-    // hide error
-    hideInputError(inputElement);
+    hideInputError(inputElement, config);
   } else {
-    // show error
-    showInputError(inputElement);
+    showInputError(inputElement, config);
   }
 };
 
-const setEventListeners = (formElement) => {
-  // prevent page reload on form sumbit
+const setEventListeners = (formElement, config) => {
   formElement.addEventListener('submit', e => {
     e.preventDefault();
+    // buttonElement.disabled = true;
   });
-  // find all inputs
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-  // find submit button
-  const submitButton = formElement.querySelector(buttonSelector);
+
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  const submitButton = formElement.querySelector(config.buttonSelector);
 
   inputList.forEach(inputElement => {
-    // add event listeners for each input
     inputElement.addEventListener('input', () => {
-      // check each input is valid
       checkInputValidity(inputElement);
-      // toggle button state
       toggleButtonState(submitButton, inputList);
     });
-    // set initial button state
     toggleButtonState(submitButton, inputList);
   });
 };
-export const enableValidation = () => {
-  // find all forms
-  const formList = Array.from(document.querySelectorAll(formSelector));
-  // set event listeners for each form
+export const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach(formElement => {
-    setEventListeners(formElement);
+    setEventListeners(formElement, config);
   });
 };
 
