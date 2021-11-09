@@ -22,7 +22,7 @@ initialCards.forEach(function(item) {
 });
 
 // CLOSE FULLSCREEN CARD IMAGE
-imageCloseButton.addEventListener('mousedown', () => {
+imageCloseButton.addEventListener('click', () => {
   closePopup(image);
 });
 
