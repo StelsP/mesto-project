@@ -75,10 +75,9 @@ config.elementsAddForm.addEventListener('submit', (e) => {
   config.elementsForm.reset();
 });
 
-
 enableValidation({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   buttonSelector: '.popup__submit-button',
-  inputErrorClass: 'popup__input_error'
+  inputErrorClass: 'popup__input_error',
 });

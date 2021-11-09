@@ -29,10 +29,5 @@ export const config = {
   imageCloseButton: document.querySelector('.popup__close-button_type_picture'),
   imagePic: document.querySelector('.image__pic'),
   imageTitle: document.querySelector('.image__title'),
-// // VALIDATION CONFIG
-//   formSelector: '.popup__form',
-//   inputSelector: '.popup__input',
-//   buttonSelector: '.popup__submit-button',
-//   inputErrorClass: 'popup__input_error',
 }
 
