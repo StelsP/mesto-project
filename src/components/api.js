@@ -1,12 +1,12 @@
 // PATCH USER DATA
-import { profileName, profileQuote, profilePhotoEditButton, nameInput, quoteInput } from './var.js'
+import { profileName, profileQuote, profilePhotoEditButton } from './var.js'
 
 export function patchProfileInfo(name, quote) {
   fetch('https://mesto.nomoreparties.co/v1/plus-cohort-3/users/me', {
     method: 'PATCH',
     headers: {
     authorization: 'bb5f0ee9-ef64-4836-93fe-6fc2439d86be',
-    'Content-Type': 'application/json; charset=UTF-8'
+    'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       name: name.value,
@@ -15,14 +15,12 @@ export function patchProfileInfo(name, quote) {
   })
 }
 
-patchProfileInfo(nameInput, quoteInput);
-
 // GET USER DATA
 export function addProfileInfo() {
   fetch('https://mesto.nomoreparties.co/v1/plus-cohort-3/users/me', {
   headers: {
     authorization: 'bb5f0ee9-ef64-4836-93fe-6fc2439d86be',
-    'Content-Type': 'application/json; charset=UTF-8'
+    'Content-Type': 'application/json'
     }
   })
   .then(res => res.json())
@@ -45,7 +43,6 @@ export function createInitialCards() {
 })
   .then(res => res.json())
   .then((res) => {
-    console.log(res);
     res.forEach(function(item) {
       elementsList.prepend(createCard(item));
     });

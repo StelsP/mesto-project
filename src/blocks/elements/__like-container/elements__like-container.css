@@ -1,6 +1,7 @@
-.elements__cell-container {
-  margin: 0 20px 0 21px;
+.elements__like-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+  margin: 21px 0;
 }
