@@ -11,7 +11,7 @@ import {
   elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput, elementsForm,
   } from '../components/var.js';
 
-import { createInitialCards, addProfileInfo } from '../components/api.js';
+import { createInitialCards, addProfileInfo, patchProfileInfo } from '../components/api.js';
 
 import { openPopup, closePopup } from '../components/modal.js';
 import { createCard } from '../components/cards.js';
@@ -24,6 +24,7 @@ addProfileInfo();
 
 // ADD START CARDS
 createInitialCards();
+
 
 // CLOSE FULLSCREEN CARD IMAGE
 imageCloseButton.addEventListener('click', () => {
@@ -60,8 +61,8 @@ profileCloseButton.addEventListener('click', () => {
 profileEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
     closePopup(profileEditForm);
-    profileName.textContent = nameInput.value;
-    profileQuote.textContent = quoteInput.value;
+    patchProfileInfo(nameInput, quoteInput);
+    addProfileInfo();
 });
 
 // ADD NEW CARDS FORM
