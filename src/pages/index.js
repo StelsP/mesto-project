@@ -17,10 +17,10 @@ import { createCard } from '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
 import './index.css';
 
-// ADD START 6 CARDS
-initialCards.forEach(function(item) {
-  elementsList.prepend(createCard(item));
-});
+// // ADD START CARDS
+// initialCards.forEach(function(item) {
+//   elementsList.prepend(createCard(item));
+// });
 
 // CLOSE FULLSCREEN CARD IMAGE
 imageCloseButton.addEventListener('click', () => {
@@ -86,3 +86,5 @@ enableValidation({
   buttonSelector: '.popup__submit-button',
   inputErrorClass: 'popup__input_error',
 });
+
+
