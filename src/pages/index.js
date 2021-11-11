@@ -11,6 +11,7 @@ import {
   // ADD NEW CARDS FORM
   elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput, elementsForm,
   } from '../components/var.js';
+import '../components/api.js';
 import { openPopup, closePopup } from '../components/modal.js';
 import { createCard } from '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
