@@ -13,7 +13,8 @@
 // GET CARDS DATA
 import { elementsList } from "./var";
 import { createCard } from "./cards";
-export function getInitialCards() {
+
+export function createInitialCards() {
   fetch('https://mesto.nomoreparties.co/v1/plus-cohort-3/cards', {
   headers: {
     authorization: 'bb5f0ee9-ef64-4836-93fe-6fc2439d86be',
@@ -28,7 +29,6 @@ export function getInitialCards() {
   });
 }
 
-getInitialCards();
 
 
 

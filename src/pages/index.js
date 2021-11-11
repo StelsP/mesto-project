@@ -1,4 +1,3 @@
-import { initialCards } from '../components/initial-cards.js';
 import {
   // ADD START 6 CARDS
   elementsList,
@@ -11,16 +10,16 @@ import {
   // ADD NEW CARDS FORM
   elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput, elementsForm,
   } from '../components/var.js';
-import '../components/api.js';
+
+import { createInitialCards } from '../components/api.js';
+
 import { openPopup, closePopup } from '../components/modal.js';
 import { createCard } from '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
 import './index.css';
 
-// // ADD START CARDS
-// initialCards.forEach(function(item) {
-//   elementsList.prepend(createCard(item));
-// });
+// ADD START CARDS
+createInitialCards();
 
 // CLOSE FULLSCREEN CARD IMAGE
 imageCloseButton.addEventListener('click', () => {
@@ -86,5 +85,6 @@ enableValidation({
   buttonSelector: '.popup__submit-button',
   inputErrorClass: 'popup__input_error',
 });
+
 
 
