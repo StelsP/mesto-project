@@ -11,12 +11,16 @@ import {
   elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput, elementsForm,
   } from '../components/var.js';
 
-import { createInitialCards } from '../components/api.js';
+import { createInitialCards, addProfileInfo } from '../components/api.js';
 
 import { openPopup, closePopup } from '../components/modal.js';
 import { createCard } from '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
 import './index.css';
+
+
+// ADD PROFILE INFO
+addProfileInfo();
 
 // ADD START CARDS
 createInitialCards();
