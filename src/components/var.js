@@ -12,9 +12,9 @@ export const nameInput = document.querySelector('.popup__input_type_name');
 export const quoteInput = document.querySelector('.popup__input_type_quote');
 export const profileName = document.querySelector('.profile__name');
 export const profileQuote = document.querySelector('.profile__quote');
-// ADD START 6 CARDS
+// ADD START CARDS
 export const elementsList = document.querySelector('.elements__list');
-// CREATE START 6 CARDS
+// CREATE START CARDS
 export const elementsTemplate = document.querySelector('#elements__template').content;
 // ADD NEW CARDS FORM
 export const elementsAddForm = document.querySelector('.popup_type_card-add');
@@ -29,5 +29,6 @@ export const imageCloseButton = document.querySelector('.popup__close-button_typ
 // CLOSE FULLSCREEN CARD IMAGE
 export const imagePic = document.querySelector('.image__pic');
 export const imageTitle = document.querySelector('.image__title');
+
 
 

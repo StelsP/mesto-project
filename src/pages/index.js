@@ -11,20 +11,22 @@ import {
   elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput, elementsForm,
   } from '../components/var.js';
 
-import { createInitialCards, addProfileInfo, patchProfileInfo } from '../components/api.js';
+import {
+  createInitialCards,
+  addProfileInfo,
+  patchProfileInfo,
+  postNewCards } from '../components/api.js';
 
 import { openPopup, closePopup } from '../components/modal.js';
-import { createCard } from '../components/cards.js';
+// import { createCard } from '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
 import './index.css';
-
 
 // ADD PROFILE INFO
 addProfileInfo();
 
 // ADD START CARDS
 createInitialCards();
-
 
 // CLOSE FULLSCREEN CARD IMAGE
 imageCloseButton.addEventListener('click', () => {
@@ -77,11 +79,8 @@ elementsCloseButton.addEventListener('click', () => {
 elementsAddForm.addEventListener('submit', (e) => {
   e.preventDefault();
     closePopup(elementsAddForm);
-    elementsList.prepend(createCard({
-      name: titleInput.value,
-      link: imageInput.value
-    }));
-  elementsForm.reset();
+    postNewCards(titleInput, imageInput);
+    elementsForm.reset();
 });
 
 enableValidation({

@@ -2,7 +2,7 @@ import { elementsTemplate, imagePic, imageTitle, image } from '../components/var
 import { openPopup } from './modal.js';
 
 // CREATE START CARDS
-export function createCard(cardData) {
+export function createCard(cardData, cell) {
   const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
   const elementsImage = elementsCell.querySelector('.elements__image');
   const elementsName = elementsCell.querySelector('.elements__name');
