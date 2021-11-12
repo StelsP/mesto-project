@@ -68,9 +68,18 @@ export const postNewCards = (name, link) => {
 }
 
 // PUT LIKE
-export const putLike = (likes) => {
-  return fetch(`${config.baseUrl}/cards/likes/cardId`, {
+export const likeHandler = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
     method: 'PUT',
+    headers: config.headers,
+  })
+  .then(checkRes)
+}
+
+// DELETE LIKE
+export const deleteHandler = (cardId) => {
+  return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
+    method: 'DELETE',
     headers: config.headers,
   })
   .then(checkRes)
