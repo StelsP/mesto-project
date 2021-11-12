@@ -29,6 +29,7 @@ export const imageCloseButton = document.querySelector('.popup__close-button_typ
 // CLOSE FULLSCREEN CARD IMAGE
 export const imagePic = document.querySelector('.image__pic');
 export const imageTitle = document.querySelector('.image__title');
+export const elementsLikeButtonActive = ('elements__like-button_active');
 
 
 

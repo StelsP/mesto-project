@@ -112,15 +112,13 @@ elementsAddForm.addEventListener('submit', (e) => {
   e.preventDefault();
     closePopup(elementsAddForm);
     postNewCards(titleInput, imageInput)
-      .then((res) => {
-        elementsList.append(createCard({
-          name: res.name,
-          link: res.link
-        }));
-      })
       .catch((err) => {
         console.log(err);
       });
+      elementsList.append(createCard({
+        name: nameInput.value,
+        link: quoteInput.value
+      }));
     elementsForm.reset();
 });
 

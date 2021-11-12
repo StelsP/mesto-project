@@ -1,10 +1,7 @@
-import { elementsTemplate, imagePic, imageTitle, image } from '../components/var.js';
+import { elementsTemplate, imagePic, imageTitle, image, elementsLikeButtonActive } from '../components/var.js';
 import { openPopup } from './modal.js';
-import { likeHandler, deleteHandler, getProfileInfo } from './api.js';
-getProfileInfo()
-  .then((res) => {
-    console.log(res._id);
-  })
+import { likeHandler, deleteLikeHandler, deleteCardHandler } from './api.js';
+
 // CREATE START CARDS
 export function createCard(cardData) {
   const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
@@ -16,11 +13,11 @@ export function createCard(cardData) {
   elementsImage.alt = 'Фото' + ' ' + cardData.name;
   elementsName.textContent = cardData.name;
 
-  if (cardData.likes.some((el) => el._id != cardData.owner._id)) {
+  if (cardData.likes.some((card) => card._id != cardData.owner._id)) {
     elementsCell.querySelector('.elements__delete-button').style.display = "none";
   }
 
-  setDeleteCardEventListener(elementsCell);
+  setDeleteCardEventListener(cardData, elementsCell);
   setLikeCardEventListener(cardData, elementsCell);
   setImageClickEventListener(cardData.name, cardData.link, elementsCell);
 
@@ -28,10 +25,16 @@ export function createCard(cardData) {
 };
 
 // DELETE CARDS
-function setDeleteCardEventListener(card) {
+function setDeleteCardEventListener(cardData, card) {
   const elementsDeleteButton = card.querySelector('.elements__delete-button');
   elementsDeleteButton.addEventListener('click', () => {
-    card.remove();
+    deleteCardHandler(cardData._id)
+      .then(() => {
+        card.remove();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
 };
 
@@ -41,30 +44,32 @@ function setLikeCardEventListener(cardData, card) {
   const elementsLikeButton = card.querySelector('.elements__like-button');
   elementsLikeCounter.textContent = cardData.likes.length.toString();
   if (cardData.likes.some((el) => el._id == cardData.owner._id)) {
-    elementsLikeButton.classList.add('elements__like-button_active');
+    elementsLikeButton.classList.add(elementsLikeButtonActive);
   }
-
   elementsLikeButton.addEventListener('click', () => {
-    if (!elementsLikeButton.classList.contains('elements__like-button_active')) {
+    if (!elementsLikeButton.classList.contains(elementsLikeButtonActive)) {
       likeHandler(cardData._id)
-      .then((res) => {
-        elementsLikeButton.classList.add('elements__like-button_active');
-        cardData.likes = res.likes;
-        elementsLikeCounter.textContent = cardData.likes.length.toString();
-
-      })
+        .then((res) => {
+          elementsLikeButton.classList.add(elementsLikeButtonActive);
+          cardData.likes = res.likes;
+          elementsLikeCounter.textContent = cardData.likes.length.toString();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
-      deleteHandler(cardData._id)
-      .then((res) => {
-        elementsLikeButton.classList.remove('elements__like-button_active');
-        cardData.likes = res.likes;
-        elementsLikeCounter.textContent = cardData.likes.length.toString();
-
-      })
+      deleteLikeHandler(cardData._id)
+        .then((res) => {
+          elementsLikeButton.classList.remove(elementsLikeButtonActive);
+          cardData.likes = res.likes;
+          elementsLikeCounter.textContent = cardData.likes.length.toString();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   });
 };
-
 
 // OPEN FULLSCREEN CARD IMAGE
 function setImageClickEventListener(name, link, card) {
