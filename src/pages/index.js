@@ -1,5 +1,5 @@
 import {
-  // ADD START 6 CARDS
+  // ADD START CARDS
   elementsList,
   // CLOSE FULLSCREEN CARD IMAGE
   image, imageCloseButton,
@@ -12,21 +12,38 @@ import {
   } from '../components/var.js';
 
 import {
-  createInitialCards,
-  addProfileInfo,
+  getInitialCards,
+  getProfileInfo,
   patchProfileInfo,
   postNewCards } from '../components/api.js';
 
 import { openPopup, closePopup } from '../components/modal.js';
-// import { createCard } from '../components/cards.js';
+import { createCard } from '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
 import './index.css';
 
 // ADD PROFILE INFO
-addProfileInfo();
+getProfileInfo()
+  .then((res) => {
+    profileName.textContent = res.name;
+    profileQuote.textContent = res.about;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 
 // ADD START CARDS
-createInitialCards();
+getInitialCards()
+  .then((res) => {
+    console.log(res)
+    res.forEach(function(item) {
+      elementsList.append(createCard(item));
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // CLOSE FULLSCREEN CARD IMAGE
 imageCloseButton.addEventListener('click', () => {
@@ -64,7 +81,14 @@ profileEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
     closePopup(profileEditForm);
     patchProfileInfo(nameInput, quoteInput);
-    addProfileInfo();
+    getProfileInfo()
+      .then((res) => {
+        profileName.textContent = res.name;
+        profileQuote.textContent = res.about;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 });
 
 // ADD NEW CARDS FORM
@@ -79,7 +103,16 @@ elementsCloseButton.addEventListener('click', () => {
 elementsAddForm.addEventListener('submit', (e) => {
   e.preventDefault();
     closePopup(elementsAddForm);
-    postNewCards(titleInput, imageInput);
+    postNewCards(titleInput, imageInput)
+      .then((res) => {
+        elementsList.append(createCard({
+          name: res.name,
+          link: res.link
+        }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     elementsForm.reset();
 });
 

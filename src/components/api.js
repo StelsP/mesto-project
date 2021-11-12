@@ -1,73 +1,68 @@
-// GET USER DATA
-export function addProfileInfo() {
-  fetch('https://mesto.nomoreparties.co/v1/plus-cohort-3/users/me', {
+const config = {
+  baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-3',
   headers: {
     authorization: 'bb5f0ee9-ef64-4836-93fe-6fc2439d86be',
-    'Content-Type': 'application/json; charset=UTF-8'
-    }
-  })
-  .then(res => res.json())
-  .then((res) => {
-    profileName.textContent = res.name;
-    profileQuote.textContent = res.about;
-  });
-}
-const elementsDeleteButtons = Array.from(document.querySelectorAll('.elements__delete-button'));
-// GET CARDS DATA
-import { elementsList } from "./var";
-import { createCard } from "./cards";
-export function createInitialCards() {
-  fetch('https://mesto.nomoreparties.co/v1/plus-cohort-3/cards', {
-  headers: {
-    authorization: 'bb5f0ee9-ef64-4836-93fe-6fc2439d86be',
-    'Content-Type': 'application/json; charset=UTF-8'
+    'Content-Type': 'application/json'
   }
+}
+
+const checkRes = (res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка: ${res.status + " - " + res.statusText}`);
+}
+
+// GET USER DATA
+export const getProfileInfo = () => {
+  return fetch(`${config.baseUrl}/users/me`, {
+    headers: config.headers,
   })
-  .then(res => res.json())
-  .then((res) => {
-    res.forEach(function(item) {
-      elementsList.append(createCard(item));
-    });
+  .then(checkRes)
+}
+
+// GET CARDS DATA
+export const getInitialCards = () => {
+  return fetch(`${config.baseUrl}/cards`, {
+    headers: config.headers,
   })
+  .then(checkRes)
 }
 
 // PATCH USER DATA
-import { profileName, profileQuote } from './var.js'
-
-export function patchProfileInfo(name, quote) {
-  fetch('https://mesto.nomoreparties.co/v1/plus-cohort-3/users/me', {
+export const patchProfileInfo = (name, quote) => {
+  return fetch(`${config.baseUrl}/users/me`, {
     method: 'PATCH',
-    headers: {
-    authorization: 'bb5f0ee9-ef64-4836-93fe-6fc2439d86be',
-    'Content-Type': 'application/json; charset=UTF-8'
-    },
+    headers: config.headers,
     body: JSON.stringify({
       name: name.value,
       about: quote.value
-    })
+    }),
   })
+  .then(checkRes)
 }
 
 // POST NEW CARD
-export function postNewCards(name, link) {
-  fetch('https://mesto.nomoreparties.co/v1/plus-cohort-3/cards', {
+export const postNewCards = (name, link) => {
+  return fetch(`${config.baseUrl}/cards`, {
     method: 'POST',
-    headers: {
-    authorization: 'bb5f0ee9-ef64-4836-93fe-6fc2439d86be',
-    'Content-Type': 'application/json; charset=UTF-8'
-    },
+    headers: config.headers,
     body: JSON.stringify({
       name: name.value,
       link: link.value
-    })
+    }),
   })
-  .then(res => res.json())
-  .then((res) => {
-    elementsList.append(createCard({
-      name: res.name,
-      link: res.link
-    }));
-  });
+  .then(checkRes)
 }
+
+// PUT LIKE
+export const putLike = (likes) => {
+  return fetch(`${config.baseUrl}/cards/likes/cardId`, {
+    method: 'PUT',
+    headers: config.headers,
+  })
+  .then(checkRes)
+}
+
 
 

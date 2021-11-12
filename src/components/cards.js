@@ -1,8 +1,9 @@
 import { elementsTemplate, imagePic, imageTitle, image } from '../components/var.js';
 import { openPopup } from './modal.js';
+import { putLike } from './api.js';
 
 // CREATE START CARDS
-export function createCard(cardData, cell) {
+export function createCard(cardData) {
   const elementsCell = elementsTemplate.querySelector('.elements__cell').cloneNode(true);
   const elementsImage = elementsCell.querySelector('.elements__image');
   const elementsName = elementsCell.querySelector('.elements__name');
@@ -31,6 +32,7 @@ function setLikeCardEventListener(card) {
   const elementsLikeButton = card.querySelector('.elements__like-button');
   elementsLikeButton.addEventListener('click', () => {
     elementsLikeButton.classList.toggle('elements__like-button_active');
+    putLike();
   });
 };
 
