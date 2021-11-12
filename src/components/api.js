@@ -42,6 +42,18 @@ export const patchProfileInfo = (name, quote) => {
   .then(checkRes)
 }
 
+// PATCH USER AVATAR
+export const patchProfilePhoto = (image) => {
+  return fetch(`${config.baseUrl}/users/me/avatar`, {
+    method: 'PATCH',
+    headers: config.headers,
+    body: JSON.stringify({
+      avatar: image.value,
+    }),
+  })
+  .then(checkRes)
+}
+
 // POST NEW CARD
 export const postNewCards = (name, link) => {
   return fetch(`${config.baseUrl}/cards`, {

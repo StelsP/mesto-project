@@ -15,7 +15,8 @@ import {
   getInitialCards,
   getProfileInfo,
   patchProfileInfo,
-  postNewCards } from '../components/api.js';
+  postNewCards,
+  patchProfilePhoto } from '../components/api.js';
 
 import { openPopup, closePopup } from '../components/modal.js';
 import { createCard } from '../components/cards.js';
@@ -25,13 +26,13 @@ import './index.css';
 // ADD PROFILE INFO
 getProfileInfo()
   .then((res) => {
+    profilePhotoEditButton.src = res.avatar;
     profileName.textContent = res.name;
     profileQuote.textContent = res.about;
   })
   .catch((err) => {
     console.log(err);
   });
-
 
 // ADD START CARDS
 getInitialCards()
@@ -62,7 +63,14 @@ profilePhotoCloseButton.addEventListener('click', () => {
 profilePhotoEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
     closePopup(profilePhotoEditForm);
-    profilePhotoEditButton.src = photoInput.value;
+    patchProfilePhoto(photoInput);
+    getProfileInfo()
+      .then(res => {
+        profilePhotoEditButton.src = res.avatar;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     profilePhotoForm.reset();
 });
 
