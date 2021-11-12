@@ -1,6 +1,6 @@
 import { elementsTemplate, imagePic, imageTitle, image, elementsLikeButtonActive } from '../components/var.js';
 import { openPopup } from './modal.js';
-import { likeHandler, deleteLikeHandler, deleteCardHandler } from './api.js';
+import { likeHandler, deleteCardHandler } from './api.js';
 
 // CREATE START CARDS
 export function createCard(cardData) {
@@ -47,7 +47,7 @@ function setLikeCardEventListener(cardData, card) {
   }
   elementsLikeButton.addEventListener('click', () => {
     if (!elementsLikeButton.classList.contains(elementsLikeButtonActive)) {
-      likeHandler(cardData._id)
+      likeHandler(cardData._id, 'PUT')
         .then((res) => {
           elementsLikeButton.classList.add(elementsLikeButtonActive);
           cardData.likes = res.likes;
@@ -57,7 +57,7 @@ function setLikeCardEventListener(cardData, card) {
           console.log(err);
         });
     } else {
-      deleteLikeHandler(cardData._id)
+      likeHandler(cardData._id, 'DELETE')
         .then((res) => {
           elementsLikeButton.classList.remove(elementsLikeButtonActive);
           cardData.likes = res.likes;

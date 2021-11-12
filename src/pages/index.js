@@ -115,15 +115,25 @@ elementsAddForm.addEventListener('submit', (e) => {
   e.preventDefault();
     closePopup(elementsAddForm);
     postNewCards(titleInput, imageInput)
+      .then((res) => {
+        // console.log(res)
+        elementsList.prepend(createCard(res));
+      })
       .catch((err) => {
         console.log(err);
       });
-      elementsList.append(createCard({
-        name: nameInput.value,
-        link: quoteInput.value,
-      }));
+
     elementsForm.reset();
 });
+
+
+function renderLoading(isLoading, form) {
+  const submitButton = form.querySelector('.popup__submit-button')
+  if (isLoading) {
+    submitButton.textContent('Сохранение...')
+  }
+};
+
 
 enableValidation({
   formSelector: '.popup__form',
