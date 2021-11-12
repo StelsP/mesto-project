@@ -8,12 +8,11 @@ export function createCard(cardData) {
   const elementsImage = elementsCell.querySelector('.elements__image');
   const elementsName = elementsCell.querySelector('.elements__name');
 
-
   elementsImage.src = cardData.link;
   elementsImage.alt = 'Фото' + ' ' + cardData.name;
   elementsName.textContent = cardData.name;
 
-  if (cardData.likes.some((card) => card._id != cardData.owner._id)) {
+  if (cardData.owner._id != 'c0c6ac37cc305347921373a8') {
     elementsCell.querySelector('.elements__delete-button').style.display = "none";
   }
 
@@ -43,7 +42,7 @@ function setLikeCardEventListener(cardData, card) {
   const elementsLikeCounter = card.querySelector('.elements__like-counter');
   const elementsLikeButton = card.querySelector('.elements__like-button');
   elementsLikeCounter.textContent = cardData.likes.length.toString();
-  if (cardData.likes.some((el) => el._id == cardData.owner._id)) {
+  if (cardData.likes.some((el) => el._id == 'c0c6ac37cc305347921373a8')) {
     elementsLikeButton.classList.add(elementsLikeButtonActive);
   }
   elementsLikeButton.addEventListener('click', () => {
@@ -52,7 +51,7 @@ function setLikeCardEventListener(cardData, card) {
         .then((res) => {
           elementsLikeButton.classList.add(elementsLikeButtonActive);
           cardData.likes = res.likes;
-          elementsLikeCounter.textContent = cardData.likes.length.toString();
+          elementsLikeCounter.textContent = res.likes.length.toString();
         })
         .catch((err) => {
           console.log(err);
@@ -62,7 +61,7 @@ function setLikeCardEventListener(cardData, card) {
         .then((res) => {
           elementsLikeButton.classList.remove(elementsLikeButtonActive);
           cardData.likes = res.likes;
-          elementsLikeCounter.textContent = cardData.likes.length.toString();
+          elementsLikeCounter.textContent = res.likes.length.toString();
         })
         .catch((err) => {
           console.log(err);

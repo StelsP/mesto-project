@@ -26,6 +26,8 @@ import './index.css';
 // ADD PROFILE INFO
 getProfileInfo()
   .then((res) => {
+    console.log(res)
+
     profilePhotoEditButton.src = res.avatar;
     profileName.textContent = res.name;
     profileQuote.textContent = res.about;
@@ -38,6 +40,7 @@ getProfileInfo()
 getInitialCards()
   .then((res) => {
     console.log(res)
+
     res.forEach(function(item) {
       elementsList.append(createCard(item));
     });
@@ -117,7 +120,7 @@ elementsAddForm.addEventListener('submit', (e) => {
       });
       elementsList.append(createCard({
         name: nameInput.value,
-        link: quoteInput.value
+        link: quoteInput.value,
       }));
     elementsForm.reset();
 });

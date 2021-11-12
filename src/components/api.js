@@ -61,7 +61,7 @@ export const postNewCards = (name, link) => {
     headers: config.headers,
     body: JSON.stringify({
       name: name.value,
-      link: link.value
+      link: link.value,
     }),
   })
   .then(checkRes)
