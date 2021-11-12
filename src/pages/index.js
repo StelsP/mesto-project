@@ -65,6 +65,7 @@ profilePhotoCloseButton.addEventListener('click', () => {
 
 profilePhotoEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  renderLoading(true, profilePhotoEditForm);
     closePopup(profilePhotoEditForm);
     patchProfilePhoto(photoInput);
     getProfileInfo()
@@ -73,7 +74,10 @@ profilePhotoEditForm.addEventListener('submit', (e) => {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => {
+        renderLoading(false, profilePhotoEditForm);
+      })
     profilePhotoForm.reset();
 });
 
@@ -90,6 +94,7 @@ profileCloseButton.addEventListener('click', () => {
 
 profileEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  renderLoading(true, profileEditForm);
     closePopup(profileEditForm);
     patchProfileInfo(nameInput, quoteInput);
     getProfileInfo()
@@ -99,7 +104,10 @@ profileEditForm.addEventListener('submit', (e) => {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => {
+        renderLoading(false, profileEditForm);
+      })
 });
 
 // ADD NEW CARDS FORM
@@ -113,6 +121,7 @@ elementsCloseButton.addEventListener('click', () => {
 
 elementsAddForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  renderLoading(true, elementsAddForm);
     closePopup(elementsAddForm);
     postNewCards(titleInput, imageInput)
       .then((res) => {
@@ -121,16 +130,17 @@ elementsAddForm.addEventListener('submit', (e) => {
       })
       .catch((err) => {
         console.log(err);
-      });
-
+      })
+      .finally(() => {
+        renderLoading(false, elementsAddForm);
+      })
     elementsForm.reset();
 });
-
 
 function renderLoading(isLoading, form) {
   const submitButton = form.querySelector('.popup__submit-button')
   if (isLoading) {
-    submitButton.textContent('Сохранение...')
+    submitButton.textContent = 'Сохранение...';
   }
 };
 
