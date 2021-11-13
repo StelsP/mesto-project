@@ -1,3 +1,4 @@
+let userId = '';
 import {
   // ADD START CARDS
   elementsList,
@@ -23,31 +24,24 @@ import { createCard } from '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
 import './index.css';
 
-// ADD PROFILE INFO
-getProfileInfo()
-  .then((res) => {
-    console.log(res)
-
-    profilePhotoEditButton.src = res.avatar;
-    profileName.textContent = res.name;
-    profileQuote.textContent = res.about;
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// GET PROFILE/CARDS INFO
+Promise.all([getProfileInfo(), getInitialCards()]).then(([userData, cardData]) => {
+  profilePhotoEditButton.src = userData.avatar;
+  profileName.textContent = userData.name;
+  profileQuote.textContent = userData.about;
+  userId = userData._id;
+  addInitialCards(cardData);
+})
+.catch((err) => {
+  console.log(err);
+});
 
 // ADD START CARDS
-getInitialCards()
-  .then((res) => {
-    console.log(res)
-
-    res.forEach(function(item) {
-      elementsList.append(createCard(item));
-    });
-  })
-  .catch((err) => {
-    console.log(err);
+const addInitialCards = (cardData) => {
+  cardData.forEach(function(card) {
+    elementsList.append(createCard(card));
   });
+}
 
 // CLOSE FULLSCREEN CARD IMAGE
 imageCloseButton.addEventListener('click', () => {
@@ -66,11 +60,11 @@ profilePhotoCloseButton.addEventListener('click', () => {
 profilePhotoEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
   renderLoading(true, profilePhotoEditForm);
-    closePopup(profilePhotoEditForm);
     patchProfilePhoto(photoInput);
     getProfileInfo()
       .then(res => {
         profilePhotoEditButton.src = res.avatar;
+        closePopup(profilePhotoEditForm);
       })
       .catch((err) => {
         console.log(err);
@@ -95,12 +89,12 @@ profileCloseButton.addEventListener('click', () => {
 profileEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
   renderLoading(true, profileEditForm);
-    closePopup(profileEditForm);
     patchProfileInfo(nameInput, quoteInput);
     getProfileInfo()
       .then((res) => {
         profileName.textContent = res.name;
         profileQuote.textContent = res.about;
+        closePopup(profileEditForm);
       })
       .catch((err) => {
         console.log(err);
@@ -122,11 +116,10 @@ elementsCloseButton.addEventListener('click', () => {
 elementsAddForm.addEventListener('submit', (e) => {
   e.preventDefault();
   renderLoading(true, elementsAddForm);
-    closePopup(elementsAddForm);
     postNewCards(titleInput, imageInput)
       .then((res) => {
-        // console.log(res)
         elementsList.prepend(createCard(res));
+        closePopup(elementsAddForm);
       })
       .catch((err) => {
         console.log(err);

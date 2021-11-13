@@ -35,7 +35,7 @@ const checkInputValidity = (inputElement, config) => {
 const setEventListeners = (formElement, config) => {
   formElement.addEventListener('submit', (e) => {
     e.preventDefault();
-    submitButton.disabled = true;
+    // submitButton.disabled = true;
   });
 
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
