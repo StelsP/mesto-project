@@ -1,4 +1,4 @@
-let userId = '';
+export let userId;
 import {
   // ADD START CARDS
   elementsList,
@@ -11,7 +11,6 @@ import {
   // ADD NEW CARDS FORM
   elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput, elementsForm,
   } from '../components/var.js';
-
 import {
   getInitialCards,
   getProfileInfo,
@@ -60,19 +59,18 @@ profilePhotoCloseButton.addEventListener('click', () => {
 profilePhotoEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
   renderLoading(true, profilePhotoEditForm);
-    patchProfilePhoto(photoInput);
-    getProfileInfo()
+    patchProfilePhoto(photoInput)
       .then(res => {
         profilePhotoEditButton.src = res.avatar;
         closePopup(profilePhotoEditForm);
+        profilePhotoForm.reset();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        renderLoading(false, profilePhotoEditForm);
-      })
-    profilePhotoForm.reset();
+        renderLoading(false, profilePhotoEditForm, 'Сохранить', true);
+      });
 });
 
 // PROFILE EDIT FORM
@@ -89,8 +87,7 @@ profileCloseButton.addEventListener('click', () => {
 profileEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
   renderLoading(true, profileEditForm);
-    patchProfileInfo(nameInput, quoteInput);
-    getProfileInfo()
+    patchProfileInfo(nameInput, quoteInput)
       .then((res) => {
         profileName.textContent = res.name;
         profileQuote.textContent = res.about;
@@ -100,8 +97,8 @@ profileEditForm.addEventListener('submit', (e) => {
         console.log(err);
       })
       .finally(() => {
-        renderLoading(false, profileEditForm);
-      })
+        renderLoading(false, profileEditForm, 'Сохранить', true);
+      });
 });
 
 // ADD NEW CARDS FORM
@@ -120,23 +117,24 @@ elementsAddForm.addEventListener('submit', (e) => {
       .then((res) => {
         elementsList.prepend(createCard(res));
         closePopup(elementsAddForm);
+        elementsForm.reset();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        renderLoading(false, elementsAddForm);
-      })
-    elementsForm.reset();
+        renderLoading(false, elementsAddForm, 'Создать', true);
+      });
 });
 
-function renderLoading(isLoading, form) {
+function renderLoading(isLoading, form, text, disabled) {
   const submitButton = form.querySelector('.popup__submit-button')
+  submitButton.disabled = disabled;
+  submitButton.textContent = `${text}`;
   if (isLoading) {
     submitButton.textContent = 'Сохранение...';
   }
 };
-
 
 enableValidation({
   formSelector: '.popup__form',

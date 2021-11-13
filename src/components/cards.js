@@ -1,4 +1,5 @@
 import { elementsTemplate, imagePic, imageTitle, image, elementsLikeButtonActive } from '../components/var.js';
+import { userId } from '../pages/index.js'
 import { openPopup } from './modal.js';
 import { likeHandler, deleteCardHandler } from './api.js';
 
@@ -12,7 +13,7 @@ export function createCard(cardData) {
   elementsImage.alt = 'Фото' + ' ' + cardData.name;
   elementsName.textContent = cardData.name;
 
-  if (cardData.owner._id != 'c0c6ac37cc305347921373a8') {
+  if (cardData.owner._id != userId) {
     elementsCell.querySelector('.elements__delete-button').style.display = "none";
   }
 
@@ -42,7 +43,7 @@ function setLikeCardEventListener(cardData, card) {
   const elementsLikeCounter = card.querySelector('.elements__like-counter');
   const elementsLikeButton = card.querySelector('.elements__like-button');
   elementsLikeCounter.textContent = cardData.likes.length.toString();
-  if (cardData.likes.some((el) => el._id == 'c0c6ac37cc305347921373a8')) {
+  if (cardData.likes.some((el) => el._id == userId)) {
     elementsLikeButton.classList.add(elementsLikeButtonActive);
   }
   elementsLikeButton.addEventListener('click', () => {

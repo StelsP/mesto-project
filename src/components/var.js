@@ -16,6 +16,7 @@ export const profileQuote = document.querySelector('.profile__quote');
 export const elementsList = document.querySelector('.elements__list');
 // CREATE START CARDS
 export const elementsTemplate = document.querySelector('#elements__template').content;
+export const elementsLikeButtonActive = ('elements__like-button_active');
 // ADD NEW CARDS FORM
 export const elementsAddForm = document.querySelector('.popup_type_card-add');
 export const elementsAddButton = document.querySelector('.profile__add-button');
@@ -29,7 +30,8 @@ export const imageCloseButton = document.querySelector('.popup__close-button_typ
 // CLOSE FULLSCREEN CARD IMAGE
 export const imagePic = document.querySelector('.image__pic');
 export const imageTitle = document.querySelector('.image__title');
-export const elementsLikeButtonActive = ('elements__like-button_active');
+
+
 
 
 
