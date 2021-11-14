@@ -3,13 +3,28 @@ import {
   // ADD START CARDS
   elementsList,
   // CLOSE FULLSCREEN CARD IMAGE
-  image, imageCloseButton,
+  image,
+  imageCloseButton,
   // PROFILE PHOTO EDIT FORM
-  profilePhotoEditForm, profilePhotoEditButton, profilePhotoCloseButton, photoInput, profilePhotoForm,
+  profilePhotoEditForm,
+  profilePhotoEditButton,
+  profilePhotoCloseButton,
+  photoInput,
+  profilePhotoForm,
   // PROFILE EDIT FORM
-  profileEditForm, profileEditButton, profileCloseButton, nameInput, quoteInput, profileName, profileQuote,
+  profileEditForm,
+  profileEditButton,
+  profileCloseButton,
+  nameInput, quoteInput,
+  profileName,
+  profileQuote,
   // ADD NEW CARDS FORM
-  elementsAddForm, elementsAddButton, elementsCloseButton, imageInput, titleInput, elementsForm,
+  elementsAddForm,
+  elementsAddButton,
+  elementsCloseButton,
+  imageInput,
+  titleInput,
+  elementsForm,
   } from '../components/var.js';
 import {
   getInitialCards,
@@ -17,7 +32,6 @@ import {
   patchProfileInfo,
   postNewCards,
   patchProfilePhoto } from '../components/api.js';
-
 import { openPopup, closePopup } from '../components/modal.js';
 import { createCard } from '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
