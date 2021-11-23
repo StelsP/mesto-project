@@ -1,3 +1,6 @@
+import { Api } from './api.js';
+
+
 // PROFILE PHOTO EDIT FORM
 export const profilePhotoEditForm = document.querySelector('.popup_type_photo');
 export const profilePhotoEditButton =  document.querySelector('.profile__photo');
@@ -37,7 +40,7 @@ export const config = {
     'Content-Type': 'application/json'
   }
 }
-const api = new Api(config);
+export const api = new Api(config);
 
 
 

@@ -24,7 +24,7 @@ import {
   elementsCloseButton,
   imageInput,
   titleInput,
-  elementsForm,
+  elementsForm, api
   } from '../components/var.js';
 import {
   getInitialCards,
@@ -38,7 +38,7 @@ import { enableValidation } from '../components/validate.js';
 import './index.css';
 
 // GET PROFILE/CARDS INFO
-Promise.all([getProfileInfo(), getInitialCards()]).then(([userData, cardData]) => {
+Promise.all([api.getProfileInfo(), api.getInitialCards()]).then(([userData, cardData]) => {
   profilePhotoEditButton.src = userData.avatar;
   profileName.textContent = userData.name;
   profileQuote.textContent = userData.about;
@@ -73,7 +73,7 @@ profilePhotoCloseButton.addEventListener('click', () => {
 profilePhotoEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
   renderLoading(true, profilePhotoEditForm);
-    patchProfilePhoto(photoInput)
+    api.patchProfilePhoto(photoInput)
       .then(res => {
         profilePhotoEditButton.src = res.avatar;
         closePopup(profilePhotoEditForm);
@@ -101,7 +101,7 @@ profileCloseButton.addEventListener('click', () => {
 profileEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
   renderLoading(true, profileEditForm);
-    patchProfileInfo(nameInput, quoteInput)
+    api.patchProfileInfo(nameInput, quoteInput)
       .then((res) => {
         profileName.textContent = res.name;
         profileQuote.textContent = res.about;
@@ -127,7 +127,7 @@ elementsCloseButton.addEventListener('click', () => {
 elementsAddForm.addEventListener('submit', (e) => {
   e.preventDefault();
   renderLoading(true, elementsAddForm);
-    postNewCards(titleInput, imageInput)
+    api.postNewCards(titleInput, imageInput)
       .then((res) => {
         elementsList.prepend(createCard(res));
         closePopup(elementsAddForm);

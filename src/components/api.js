@@ -1,6 +1,6 @@
-import { config } from './var.js'
+import { config } from './var.js';
 
-export default class Api {
+export class Api {
   constructor(config) {
     this.config = config;
   }
@@ -18,7 +18,7 @@ export default class Api {
     return fetch(`${this.config.baseUrl}/users/me`, {
       headers: this.config.headers,
     })
-    .then(checkRes)
+    .then(this.checkRes)
   }
 
   // GET CARDS DATA
@@ -26,7 +26,7 @@ export default class Api {
     return fetch(`${this.config.baseUrl}/cards`, {
       headers: this.config.headers,
     })
-    .then(checkRes)
+    .then(this.checkRes)
   }
 
   // PATCH USER DATA
@@ -39,7 +39,7 @@ export default class Api {
         about: quote.value
       }),
     })
-    .then(checkRes)
+    .then(this.checkRes)
   }
 
   // PATCH USER AVATAR
@@ -51,38 +51,38 @@ export default class Api {
         avatar: image.value,
       }),
     })
-    .then(checkRes)
+    .then(this.checkRes)
   }
 
   // POST NEW CARD
   exporpostNewCards(name, link) {
-    return fetch(`${config.baseUrl}/cards`, {
+    return fetch(`${this.config.baseUrl}/cards`, {
       method: 'POST',
-      headers: config.headers,
+      headers: this.config.headers,
       body: JSON.stringify({
         name: name.value,
         link: link.value,
       }),
     })
-    .then(checkRes)
+    .then(this.checkRes)
   }
 
   // DELETE CARD
   deleteCardHandler(cardId) {
-    return fetch(`${config.baseUrl}/cards/${cardId}`, {
+    return fetch(`${this.config.baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: config.headers,
+      headers: this.config.headers,
     })
-    .then(checkRes)
+    .then(this.checkRes)
   }
 
   // PUT LIKE
   likeHandler(cardId, method) {
-    return fetch(`${config.baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${this.config.baseUrl}/cards/likes/${cardId}`, {
       method: method,
-      headers: config.headers,
+      headers: this.config.headers,
     })
-    .then(checkRes)
+    .then(this.checkRes)
   }
 
 }
