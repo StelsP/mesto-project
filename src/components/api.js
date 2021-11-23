@@ -6,7 +6,7 @@ export class Api {
   }
 
   // CHECK RESULT
-  checkRes(res) {
+  _checkRes(res) {
     if (res.ok) {
       return res.json();
     }
@@ -18,7 +18,7 @@ export class Api {
     return fetch(`${this.config.baseUrl}/users/me`, {
       headers: this.config.headers,
     })
-    .then(this.checkRes)
+    .then(this._checkRes)
   }
 
   // GET CARDS DATA
@@ -26,7 +26,7 @@ export class Api {
     return fetch(`${this.config.baseUrl}/cards`, {
       headers: this.config.headers,
     })
-    .then(this.checkRes)
+    .then(this._checkRes)
   }
 
   // PATCH USER DATA
@@ -39,7 +39,7 @@ export class Api {
         about: quote.value
       }),
     })
-    .then(this.checkRes)
+    .then(this._checkRes)
   }
 
   // PATCH USER AVATAR
@@ -51,11 +51,11 @@ export class Api {
         avatar: image.value,
       }),
     })
-    .then(this.checkRes)
+    .then(this._checkRes)
   }
 
   // POST NEW CARD
-  exporpostNewCards(name, link) {
+  postNewCards(name, link) {
     return fetch(`${this.config.baseUrl}/cards`, {
       method: 'POST',
       headers: this.config.headers,
@@ -64,7 +64,7 @@ export class Api {
         link: link.value,
       }),
     })
-    .then(this.checkRes)
+    .then(this._checkRes)
   }
 
   // DELETE CARD
@@ -73,7 +73,7 @@ export class Api {
       method: 'DELETE',
       headers: this.config.headers,
     })
-    .then(this.checkRes)
+    .then(this._checkRes)
   }
 
   // PUT LIKE
@@ -82,7 +82,7 @@ export class Api {
       method: method,
       headers: this.config.headers,
     })
-    .then(this.checkRes)
+    .then(this._checkRes)
   }
 
 }
