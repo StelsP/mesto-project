@@ -30,6 +30,14 @@ export const imageCloseButton = document.querySelector('.popup__close-button_typ
 // CLOSE FULLSCREEN CARD IMAGE
 export const imagePic = document.querySelector('.image__pic');
 export const imageTitle = document.querySelector('.image__title');
+export const config = {
+  baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-3',
+  headers: {
+    authorization: 'bb5f0ee9-ef64-4836-93fe-6fc2439d86be',
+    'Content-Type': 'application/json'
+  }
+}
+const api = new Api(config);
 
 
 
