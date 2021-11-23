@@ -1,4 +1,6 @@
 import { Api } from './api.js';
+import { Popup } from './popup.js';
+
 
 
 // PROFILE PHOTO EDIT FORM
@@ -41,6 +43,13 @@ export const config = {
   }
 }
 export const api = new Api(config);
+export const profilePhotoEditPopup = new Popup(profilePhotoEditForm);
+export const profileEditPopup = new Popup(profileEditForm);
+export const elementsAddPopup = new Popup(elementsAddForm);
+export const imagePopup = new Popup(image);
+
+
+
 
 
 

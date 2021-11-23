@@ -1,7 +1,7 @@
-import { elementsTemplate, imagePic, imageTitle, image, elementsLikeButtonActive, api } from '../components/var.js';
-import { userId } from '../pages/index.js'
-import { openPopup } from './modal.js';
-import { likeHandler, deleteCardHandler, Api} from './api.js';
+import { elementsTemplate, imagePic, imageTitle, image, elementsLikeButtonActive, api, imagePopup } from '../components/var.js';
+import { userId } from '../pages/index.js';
+import { Popup } from './popup.js';
+
 
 // CREATE START CARDS
 export function createCard(cardData) {
@@ -75,7 +75,7 @@ function setLikeCardEventListener(cardData, card) {
 function setImageClickEventListener(name, link, card) {
   const imageLink = card.querySelector('.elements__image');
   imageLink.addEventListener('click', () => {
-    openPopup(image);
+    imagePopup.openPopup(image);
     imagePic.src = link;
     imagePic.alt = 'Фото' + ' ' + name;
     imageTitle.textContent = name;

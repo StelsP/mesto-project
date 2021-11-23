@@ -24,15 +24,13 @@ import {
   elementsCloseButton,
   imageInput,
   titleInput,
-  elementsForm, api
+  elementsForm,
+  api,
+  profilePhotoEditPopup,
+  profileEditPopup,
+  elementsAddPopup,
+  imagePopup,
   } from '../components/var.js';
-import {
-  getInitialCards,
-  getProfileInfo,
-  patchProfileInfo,
-  postNewCards,
-  patchProfilePhoto } from '../components/api.js';
-import { openPopup, closePopup } from '../components/modal.js';
 import { createCard } from '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
 import './index.css';
@@ -58,25 +56,25 @@ const addInitialCards = (cardData) => {
 
 // CLOSE FULLSCREEN CARD IMAGE
 imageCloseButton.addEventListener('click', () => {
-  closePopup(image);
+  imagePopup.closePopup(image);
 });
 
 // PROFILE PHOTO EDIT FORM
 profilePhotoEditButton.addEventListener('click', () => {
-  openPopup(profilePhotoEditForm);
+  profilePhotoEditPopup.openPopup(profilePhotoEditForm);
 });
 
 profilePhotoCloseButton.addEventListener('click', () => {
-  closePopup(profilePhotoEditForm);
+  profilePhotoEditPopup.closePopup(profilePhotoEditForm);
 });
 
 profilePhotoEditForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  renderLoading(true, profilePhotoEditForm);
+  renderLoading(true, profilePhotoEditPopup);
     api.patchProfilePhoto(photoInput)
       .then(res => {
         profilePhotoEditButton.src = res.avatar;
-        closePopup(profilePhotoEditForm);
+        profilePhotoEditPopup.closePopup(profilePhotoEditForm);
         profilePhotoForm.reset();
       })
       .catch((err) => {
@@ -91,11 +89,11 @@ profilePhotoEditForm.addEventListener('submit', (e) => {
 profileEditButton.addEventListener('click', () => {
   nameInput.value = profileName.textContent;
   quoteInput.value = profileQuote.textContent;
-  openPopup(profileEditForm);
+  profileEditPopup.openPopup(profileEditForm);
 });
 
 profileCloseButton.addEventListener('click', () => {
-  closePopup(profileEditForm);
+  profileEditPopup.closePopup(profileEditForm);
 });
 
 profileEditForm.addEventListener('submit', (e) => {
@@ -105,7 +103,7 @@ profileEditForm.addEventListener('submit', (e) => {
       .then((res) => {
         profileName.textContent = res.name;
         profileQuote.textContent = res.about;
-        closePopup(profileEditForm);
+        profileEditPopup.closePopup(profileEditForm);
       })
       .catch((err) => {
         console.log(err);
@@ -117,11 +115,11 @@ profileEditForm.addEventListener('submit', (e) => {
 
 // ADD NEW CARDS FORM
 elementsAddButton.addEventListener('click', () => {
-  openPopup(elementsAddForm);
+  elementsAddPopup.openPopup(elementsAddForm);
 });
 
 elementsCloseButton.addEventListener('click', () => {
-  closePopup(elementsAddForm);
+  elementsAddPopup.closePopup(elementsAddForm);
 });
 
 elementsAddForm.addEventListener('submit', (e) => {
@@ -130,7 +128,7 @@ elementsAddForm.addEventListener('submit', (e) => {
     api.postNewCards(titleInput, imageInput)
       .then((res) => {
         elementsList.prepend(createCard(res));
-        closePopup(elementsAddForm);
+        elementsAddPopup.closePopup(elementsAddForm);
         elementsForm.reset();
       })
       .catch((err) => {
