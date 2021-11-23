@@ -31,3 +31,13 @@ export class Popup {
 }
 
 
+class PopupWithForm extends Popup {
+  constructor(popup) {
+    super(popup);
+  }
+  openPopup(src) {
+
+  }
+
+}
+
