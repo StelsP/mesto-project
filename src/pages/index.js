@@ -30,10 +30,12 @@ import {
   profileEditPopup,
   elementsAddPopup,
   imagePopup,
+  elementsTemplate,
   } from '../components/var.js';
-import { createCard } from '../components/cards.js';
+// import { createCard } from '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
 import './index.css';
+import { Card } from '../components/cards.js';
 
 // GET PROFILE/CARDS INFO
 Promise.all([api.getProfileInfo(), api.getInitialCards()]).then(([userData, cardData]) => {
@@ -50,7 +52,8 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()]).then(([userData, card
 // ADD START CARDS
 const addInitialCards = (cardData) => {
   cardData.forEach(function(card) {
-    elementsList.append(createCard(card));
+    const initialCard = new Card(card, elementsTemplate);
+    elementsList.append(initialCard.createCard());
   });
 }
 
@@ -127,7 +130,8 @@ elementsAddForm.addEventListener('submit', (e) => {
   renderLoading(true, elementsAddForm);
     api.postNewCards(titleInput, imageInput)
       .then((res) => {
-        elementsList.prepend(createCard(res));
+        const newCard = new Card(res, elementsTemplate);
+        elementsList.prepend(newCard.createCard());
         elementsAddPopup.closePopup(elementsAddForm);
         elementsForm.reset();
       })

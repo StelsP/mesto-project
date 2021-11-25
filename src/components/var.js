@@ -1,5 +1,6 @@
 import { Api } from './api.js';
 import { Popup } from './popup.js';
+import { Card } from './cards.js';
 
 
 
