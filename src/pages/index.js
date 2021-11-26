@@ -1,4 +1,5 @@
 export let userId;
+let data;
 import {
   // ADD START CARDS
   elementsList,
@@ -32,30 +33,53 @@ import {
   imagePopup,
   elementsTemplate,
   } from '../components/var.js';
-// import { createCard } from '../components/cards.js';
 import { enableValidation } from '../components/validate.js';
 import './index.css';
 import { Card } from '../components/cards.js';
+import { Section } from '../components/section.js';
 
 // GET PROFILE/CARDS INFO
-Promise.all([api.getProfileInfo(), api.getInitialCards()]).then(([userData, cardData]) => {
+Promise.all([api.getProfileInfo(), api.getInitialCards()])
+
+.then(([userData, cardData]) => {
   profilePhotoEditButton.src = userData.avatar;
   profileName.textContent = userData.name;
   profileQuote.textContent = userData.about;
   userId = userData._id;
-  addInitialCards(cardData);
+
+  const addInitialCards = new Section({
+    cardData,
+    renderer: (item) => {
+      const card = new Card(item, elementsTemplate);
+
+      const cardElement = card.createCard();
+
+      addInitialCards.addItem(cardElement);
+    }
+
+  },
+  elementsList
+  )
+
+  addInitialCards.renderItems();
+
 })
 .catch((err) => {
   console.log(err);
 });
 
+console.log(data)
+
+
+
 // ADD START CARDS
-const addInitialCards = (cardData) => {
-  cardData.forEach(function(card) {
-    const initialCard = new Card(card, elementsTemplate);
-    elementsList.append(initialCard.createCard());
-  });
-}
+// const addInitialCards = (cardData) => {
+//   cardData.forEach(function(card) {
+//     const initialCard = new Card(card, elementsTemplate);
+//     elementsList.append(initialCard.createCard());
+//   });
+// }
+
 
 // CLOSE FULLSCREEN CARD IMAGE
 imageCloseButton.addEventListener('click', () => {
@@ -158,6 +182,7 @@ enableValidation({
   buttonSelector: '.popup__submit-button',
   inputErrorClass: 'popup__input_error',
 });
+
 
 
 
