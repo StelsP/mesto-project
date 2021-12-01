@@ -1,5 +1,5 @@
 import { Popup } from './popup.js'
-import { imagePic, imageTitle } from './var.js'
+// import { imagePic, imageTitle } from './var.js'
 
 
 export class PopupWithImage extends Popup {
