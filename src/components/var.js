@@ -1,8 +1,5 @@
 import { Api } from './api.js';
 import { Popup } from './popup.js';
-import { Card } from './cards.js';
-
-
 
 // PROFILE PHOTO EDIT FORM
 export const profilePhotoEditForm = document.querySelector('.popup_type_photo');
@@ -43,6 +40,7 @@ export const config = {
     'Content-Type': 'application/json'
   }
 }
+
 export const configElementsValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',

@@ -1,5 +1,5 @@
 export let userId;
-let data;
+
 import {
   // ADD START CARDS
   elementsList,
@@ -34,11 +34,10 @@ import {
   elementsTemplate,
   configElementsValidation,
   } from '../components/var.js';
-import { enableValidation } from '../components/validate.js';
 import './index.css';
 import { Card } from '../components/cards.js';
 import { Section } from '../components/section.js';
-import {FormValidator} from '../components/validate';
+import { FormValidator } from '../components/validate';
 
 // GET PROFILE/CARDS INFO
 Promise.all([api.getProfileInfo(), api.getInitialCards()])
@@ -73,7 +72,6 @@ imageCloseButton.addEventListener('click', () => {
 profilePhotoEditButton.addEventListener('click', () => {
   const getValidProfilePhotoEditForm = new FormValidator(configElementsValidation, profilePhotoEditForm);
   getValidProfilePhotoEditForm.enableValidation();
-  console.log(getValidProfilePhotoEditForm);
   profilePhotoEditPopup.openPopup(profilePhotoEditForm);
 });
 
