@@ -9,8 +9,6 @@ export class Card {
     this.likes = likes,
     this._id = _id,
     this.selector = selector
-    // подумать! TODO
-    // this.card = selector.querySelector('.elements__cell').cloneNode(true) //решение найдено в методе _гетЭлемент
   }
 
   //приватный метод получения карточки
@@ -21,21 +19,20 @@ export class Card {
     return cardElement;
   }
 
+  generateCard() {
+    this._card = this._getElement();
+    this._setHandlers();
 
-  createCard() {
-    const elementsImage = this.card.querySelector('.elements__image');
-    const elementsName = this.card.querySelector('.elements__name');
-
-    elementsImage.src = this.link;
-    elementsImage.alt = 'Фото' + ' ' + this.name;
-    elementsName.textContent = this.name;
-
+    const cardsImage = this._card.querySelector('.elements__image');
+    const cardsName = this._card.querySelector('.elements__name');
+    cardsImage.src = this.link;
+    cardsImage.alt = 'Фото' + ' ' + this.name;
+    cardsName.textContent = this.name;
     if (this.owner._id != userId) {
-      this.card.querySelector('.elements__delete-button').style.display = "none";
+      this._card.querySelector('.elements__delete-button').style.display = "none";
     }
-    this._setHandlers()
 
-    return this.card;
+    return this._card;
   }
 
   _setHandlers() {

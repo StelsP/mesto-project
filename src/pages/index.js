@@ -42,26 +42,27 @@ import {FormValidator} from '../components/validate';
 
 // GET PROFILE/CARDS INFO
 Promise.all([api.getProfileInfo(), api.getInitialCards()])
-
 .then(([userData, cardData]) => {
   profilePhotoEditButton.src = userData.avatar;
   profileName.textContent = userData.name;
   profileQuote.textContent = userData.about;
   userId = userData._id;
 
-
+  const addInitialCards = new Section({
+    items: cardData,
+    renderer: (item) => {
+      const card = new Card(item, elementsTemplate);
+      const cardElement = card.generateCard();
+      addInitialCards.addItem(cardElement);
+    }
+  },
+    elementsList
+);
+addInitialCards.renderingItems();
+})
 .catch((err) => {
   console.log(err);
 });
-
-// ADD START CARDS
-// const addInitialCards = (cardData) => {
-//   cardData.forEach(function(card) {
-//     const initialCard = new Card(card, elementsTemplate);
-//     elementsList.append(initialCard.createCard());
-//   });
-// }
-
 
 // CLOSE FULLSCREEN CARD IMAGE
 imageCloseButton.addEventListener('click', () => {
@@ -141,7 +142,7 @@ elementsAddForm.addEventListener('submit', (e) => {
     api.postNewCards(titleInput, imageInput)
       .then((res) => {
         const newCard = new Card(res, elementsTemplate);
-        elementsList.prepend(newCard.createCard());
+        elementsList.prepend(newCard.generateCard());
         elementsAddPopup.closePopup(elementsAddForm);
         elementsForm.reset();
       })
@@ -162,12 +163,6 @@ function renderLoading(isLoading, form, text, disabled) {
   }
 };
 
-// enableValidation({
-//   formSelector: '.popup__form',
-//   inputSelector: '.popup__input',
-//   buttonSelector: '.popup__submit-button',
-//   inputErrorClass: 'popup__input_error',
-// });
 
 
 
