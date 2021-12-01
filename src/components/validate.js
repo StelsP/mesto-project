@@ -6,7 +6,7 @@ export class FormValidator {
 
   enableValidation() {
     const formList = Array.from(document.querySelectorAll(this.config.formSelector));
-    formList.forEach(formElement => {
+    formList.forEach(() => {
       this._setEventListeners();
     });
   };
@@ -19,7 +19,7 @@ export class FormValidator {
     const errorElement = document.querySelector(`#${inputElement.name}-error`);
 
     errorElement.textContent = '';
-    inputElement.classList.remove(config.inputErrorClass);
+    inputElement.classList.remove(this.config.inputErrorClass);
   }
 
   _showInputError(inputElement) {

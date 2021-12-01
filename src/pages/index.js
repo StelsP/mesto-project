@@ -99,6 +99,8 @@ profilePhotoEditForm.addEventListener('submit', (e) => {
 
 // PROFILE EDIT FORM
 profileEditButton.addEventListener('click', () => {
+  const getValidProfileEditForm = new FormValidator(configElementsValidation, profileEditForm);
+  getValidProfileEditForm.enableValidation();
   nameInput.value = profileName.textContent;
   quoteInput.value = profileQuote.textContent;
   profileEditPopup.openPopup(profileEditForm);
@@ -127,6 +129,8 @@ profileEditForm.addEventListener('submit', (e) => {
 
 // ADD NEW CARDS FORM
 elementsAddButton.addEventListener('click', () => {
+  const getValidelementsAddForm = new FormValidator(configElementsValidation, elementsAddForm);
+  getValidelementsAddForm.enableValidation();
   elementsAddPopup.openPopup(elementsAddForm);
 });
 
