@@ -1,6 +1,5 @@
 import { imagePic, imageTitle, image, elementsLikeButtonActive, api, imagePopup } from '../components/var.js';
 import { userId } from '../pages/index.js';
-import { Popup } from './popup.js';
 
 export class Card {
   constructor({name, link, owner, _id, likes}, selector) {
