@@ -4,27 +4,27 @@ export class Popup {
     this.popup = popup;
   }
 
-  openPopup() {
+  open() {
     this.popup.classList.add('popup_opened');
-    document.addEventListener('mousedown', this._closePopupWidthOverlayClick);
-    document.addEventListener('keydown', this._closePopupWidthEscape);
+    document.addEventListener('mousedown', this._closeWidthOverlayClick);
+    document.addEventListener('keydown', this._closeWidthEscape);
   };
 
-  closePopup() {
+  close() {
     this.popup.classList.remove('popup_opened');
-    document.removeEventListener('mousedown', this._closePopupWidthOverlayClick);
-    document.removeEventListener('keydown', this._closePopupWidthEscape);
+    document.removeEventListener('mousedown', this._closeWidthOverlayClick);
+    document.removeEventListener('keydown', this._closeWidthEscape);
   };
 
-  _closePopupWidthEscape = (e) => {
+  _closeWidthEscape = (e) => {
     if (e.key === "Escape") {
-      this.closePopup();
+      this.close();
     };
   };
 
-  _closePopupWidthOverlayClick = (e) => {
+  _closeWidthOverlayClick = (e) => {
     if (e.target.classList.contains('popup')) {
-      this.closePopup();
+      this.close();
     };
   };
 }

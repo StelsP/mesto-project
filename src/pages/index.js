@@ -66,18 +66,18 @@ addInitialCards.renderingItems();
 
 // CLOSE FULLSCREEN CARD IMAGE
 imageCloseButton.addEventListener('click', () => {
-  imagePopup.closePopup(image);
+  imagePopup.close(image);
 });
 
 // PROFILE PHOTO EDIT FORM
 profilePhotoEditButton.addEventListener('click', () => {
   const getValidProfilePhotoEditForm = new FormValidator(configElementsValidation, profilePhotoEditForm);
   getValidProfilePhotoEditForm.enableValidation();
-  profilePhotoEditPopup.openPopup(profilePhotoEditForm);
+  profilePhotoEditPopup.open(profilePhotoEditForm);
 });
 
 profilePhotoCloseButton.addEventListener('click', () => {
-  profilePhotoEditPopup.closePopup(profilePhotoEditForm);
+  profilePhotoEditPopup.close(profilePhotoEditForm);
 });
 
 profilePhotoEditForm.addEventListener('submit', (e) => {
@@ -87,7 +87,7 @@ profilePhotoEditForm.addEventListener('submit', (e) => {
     api.patchProfilePhoto(photoInput)
       .then(res => {
         profilePhotoEditButton.src = res.avatar;
-        profilePhotoEditPopup.closePopup(profilePhotoEditForm);
+        profilePhotoEditPopup.close(profilePhotoEditForm);
         profilePhotoForm.reset();
       })
       .catch((err) => {
@@ -104,11 +104,11 @@ profileEditButton.addEventListener('click', () => {
   getValidProfileEditForm.enableValidation();
   nameInput.value = profileName.textContent;
   quoteInput.value = profileQuote.textContent;
-  profileEditPopup.openPopup(profileEditForm);
+  profileEditPopup.open(profileEditForm);
 });
 
 profileCloseButton.addEventListener('click', () => {
-  profileEditPopup.closePopup(profileEditForm);
+  profileEditPopup.close(profileEditForm);
 });
 
 profileEditForm.addEventListener('submit', (e) => {
@@ -118,7 +118,7 @@ profileEditForm.addEventListener('submit', (e) => {
       .then((res) => {
         profileName.textContent = res.name;
         profileQuote.textContent = res.about;
-        profileEditPopup.closePopup(profileEditForm);
+        profileEditPopup.close(profileEditForm);
       })
       .catch((err) => {
         console.log(err);
@@ -132,11 +132,11 @@ profileEditForm.addEventListener('submit', (e) => {
 elementsAddButton.addEventListener('click', () => {
   const getValidelementsAddForm = new FormValidator(configElementsValidation, elementsAddForm);
   getValidelementsAddForm.enableValidation();
-  elementsAddPopup.openPopup(elementsAddForm);
+  elementsAddPopup.open(elementsAddForm);
 });
 
 elementsCloseButton.addEventListener('click', () => {
-  elementsAddPopup.closePopup(elementsAddForm);
+  elementsAddPopup.close(elementsAddForm);
 });
 
 elementsAddForm.addEventListener('submit', (e) => {
@@ -146,7 +146,7 @@ elementsAddForm.addEventListener('submit', (e) => {
       .then((res) => {
         const newCard = new Card(res, elementsTemplate);
         elementsList.prepend(newCard.generateCard());
-        elementsAddPopup.closePopup(elementsAddForm);
+        elementsAddPopup.close(elementsAddForm);
         elementsForm.reset();
       })
       .catch((err) => {
