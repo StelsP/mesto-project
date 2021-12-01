@@ -18,14 +18,13 @@ export class Popup {
 
   _closePopupWidthEscape = (e) => {
     if (e.key === "Escape") {
-    const popup = document.querySelector('.popup_opened');
-    closePopup(popup);
+      this.closePopup();
     };
   };
 
   _closePopupWidthOverlayClick = (e) => {
     if (e.target.classList.contains('popup')) {
-      closePopup(e.target);
+      this.closePopup();
     };
   };
 }

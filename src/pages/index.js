@@ -1,5 +1,5 @@
 export let userId;
-let data;
+
 import {
   // ADD START CARDS
   elementsList,
@@ -34,34 +34,35 @@ import {
   elementsTemplate,
   configElementsValidation,
   } from '../components/var.js';
-import { enableValidation } from '../components/validate.js';
 import './index.css';
 import { Card } from '../components/cards.js';
 import { Section } from '../components/section.js';
-import {FormValidator} from '../components/validate';
+import { FormValidator } from '../components/validate.js';
+// import { UserInfo } from '../components/UserInfo.js';
 
 // GET PROFILE/CARDS INFO
 Promise.all([api.getProfileInfo(), api.getInitialCards()])
-
 .then(([userData, cardData]) => {
   profilePhotoEditButton.src = userData.avatar;
   profileName.textContent = userData.name;
   profileQuote.textContent = userData.about;
   userId = userData._id;
 
-
+  const addInitialCards = new Section({
+    items: cardData,
+    renderer: (item) => {
+      const card = new Card(item, elementsTemplate);
+      const cardElement = card.generateCard();
+      addInitialCards.addItem(cardElement);
+    }
+  },
+    elementsList
+);
+addInitialCards.renderingItems();
+})
 .catch((err) => {
   console.log(err);
 });
-
-// ADD START CARDS
-// const addInitialCards = (cardData) => {
-//   cardData.forEach(function(card) {
-//     const initialCard = new Card(card, elementsTemplate);
-//     elementsList.append(initialCard.createCard());
-//   });
-// }
-
 
 // CLOSE FULLSCREEN CARD IMAGE
 imageCloseButton.addEventListener('click', () => {
@@ -72,7 +73,6 @@ imageCloseButton.addEventListener('click', () => {
 profilePhotoEditButton.addEventListener('click', () => {
   const getValidProfilePhotoEditForm = new FormValidator(configElementsValidation, profilePhotoEditForm);
   getValidProfilePhotoEditForm.enableValidation();
-  console.log(getValidProfilePhotoEditForm);
   profilePhotoEditPopup.openPopup(profilePhotoEditForm);
 });
 
@@ -83,7 +83,7 @@ profilePhotoCloseButton.addEventListener('click', () => {
 profilePhotoEditForm.addEventListener('submit', (e) => {
 
   e.preventDefault();
-  renderLoading(true, profilePhotoEditPopup);
+  renderLoading(true, profilePhotoEditForm);
     api.patchProfilePhoto(photoInput)
       .then(res => {
         profilePhotoEditButton.src = res.avatar;
@@ -100,6 +100,8 @@ profilePhotoEditForm.addEventListener('submit', (e) => {
 
 // PROFILE EDIT FORM
 profileEditButton.addEventListener('click', () => {
+  const getValidProfileEditForm = new FormValidator(configElementsValidation, profileEditForm);
+  getValidProfileEditForm.enableValidation();
   nameInput.value = profileName.textContent;
   quoteInput.value = profileQuote.textContent;
   profileEditPopup.openPopup(profileEditForm);
@@ -128,6 +130,8 @@ profileEditForm.addEventListener('submit', (e) => {
 
 // ADD NEW CARDS FORM
 elementsAddButton.addEventListener('click', () => {
+  const getValidelementsAddForm = new FormValidator(configElementsValidation, elementsAddForm);
+  getValidelementsAddForm.enableValidation();
   elementsAddPopup.openPopup(elementsAddForm);
 });
 
@@ -141,7 +145,7 @@ elementsAddForm.addEventListener('submit', (e) => {
     api.postNewCards(titleInput, imageInput)
       .then((res) => {
         const newCard = new Card(res, elementsTemplate);
-        elementsList.prepend(newCard.createCard());
+        elementsList.prepend(newCard.generateCard());
         elementsAddPopup.closePopup(elementsAddForm);
         elementsForm.reset();
       })
@@ -162,12 +166,6 @@ function renderLoading(isLoading, form, text, disabled) {
   }
 };
 
-// enableValidation({
-//   formSelector: '.popup__form',
-//   inputSelector: '.popup__input',
-//   buttonSelector: '.popup__submit-button',
-//   inputErrorClass: 'popup__input_error',
-// });
 
 
 
