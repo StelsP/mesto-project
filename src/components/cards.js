@@ -8,10 +8,19 @@ export class Card {
     this.owner = owner,
     this.likes = likes,
     this._id = _id,
-    this.selector = selector,
+    this.selector = selector
     // подумать! TODO
-    this.card = selector.querySelector('.elements__cell').cloneNode(true)
+    // this.card = selector.querySelector('.elements__cell').cloneNode(true) //решение найдено в методе _гетЭлемент
   }
+
+  //приватный метод получения карточки
+  _getElement() {
+    const cardElement = this.selector
+    .querySelector('.elements__cell')
+    .cloneNode(true)
+    return cardElement;
+  }
+
 
   createCard() {
     const elementsImage = this.card.querySelector('.elements__image');
@@ -24,20 +33,30 @@ export class Card {
     if (this.owner._id != userId) {
       this.card.querySelector('.elements__delete-button').style.display = "none";
     }
-    this._handlers()
+    this._setHandlers()
 
     return this.card;
   }
 
-  _handlers() {
+  _setHandlers() {
     this._likeCard()
     this._deleteCard()
     this._openFullscreen()
   }
 
+  _openFullscreen() {
+    const imageLink = this._card.querySelector('.elements__image');
+    imageLink.addEventListener('click', () => {
+      imagePopup.openPopup(image);
+      imagePic.src = this.link;
+      imagePic.alt = 'Фото' + ' ' + this.name;
+      imageTitle.textContent = this.name;
+    });
+  }
+
   _likeCard() {
-    const elementsLikeCounter = this.card.querySelector('.elements__like-counter');
-    const elementsLikeButton = this.card.querySelector('.elements__like-button');
+    const elementsLikeCounter = this._card.querySelector('.elements__like-counter');
+    const elementsLikeButton = this._card.querySelector('.elements__like-button');
     elementsLikeCounter.textContent = this.likes.length;
     if (this.likes.some((el) => el._id == userId)) {
       elementsLikeButton.classList.add(elementsLikeButtonActive);
@@ -68,25 +87,15 @@ export class Card {
   }
 
   _deleteCard() {
-    const elementsDeleteButton = this.card.querySelector('.elements__delete-button');
+    const elementsDeleteButton = this._card.querySelector('.elements__delete-button');
     elementsDeleteButton.addEventListener('click', () => {
       api.deleteCardHandler(this._id)
         .then(() => {
-          this.card.remove();
+          this._card.remove();
         })
         .catch((err) => {
           console.log(err);
         });
-    });
-  }
-
-  _openFullscreen() {
-    const imageLink = this.card.querySelector('.elements__image');
-    imageLink.addEventListener('click', () => {
-      imagePopup.openPopup(image);
-      imagePic.src = this.link;
-      imagePic.alt = 'Фото' + ' ' + this.name;
-      imageTitle.textContent = this.name;
     });
   }
 }

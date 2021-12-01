@@ -43,13 +43,18 @@ export const config = {
     'Content-Type': 'application/json'
   }
 }
+export const configElementsValidation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  buttonSelector: '.popup__submit-button',
+  inputErrorClass: 'popup__input_error',
+}
+
 export const api = new Api(config);
 export const profilePhotoEditPopup = new Popup(profilePhotoEditForm);
 export const profileEditPopup = new Popup(profileEditForm);
 export const elementsAddPopup = new Popup(elementsAddForm);
 export const imagePopup = new Popup(image);
-
-
 
 
 

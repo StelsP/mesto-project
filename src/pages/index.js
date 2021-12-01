@@ -32,11 +32,13 @@ import {
   elementsAddPopup,
   imagePopup,
   elementsTemplate,
+  configElementsValidation,
   } from '../components/var.js';
 import { enableValidation } from '../components/validate.js';
 import './index.css';
 import { Card } from '../components/cards.js';
 import { Section } from '../components/section.js';
+import {FormValidator} from '../components/validate';
 
 // GET PROFILE/CARDS INFO
 Promise.all([api.getProfileInfo(), api.getInitialCards()])
@@ -47,30 +49,10 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
   profileQuote.textContent = userData.about;
   userId = userData._id;
 
-  const addInitialCards = new Section({
-    cardData,
-    renderer: (item) => {
-      const card = new Card(item, elementsTemplate);
 
-      const cardElement = card.createCard();
-
-      addInitialCards.addItem(cardElement);
-    }
-
-  },
-  elementsList
-  )
-
-  addInitialCards.renderItems();
-
-})
 .catch((err) => {
   console.log(err);
 });
-
-console.log(data)
-
-
 
 // ADD START CARDS
 // const addInitialCards = (cardData) => {
@@ -88,6 +70,9 @@ imageCloseButton.addEventListener('click', () => {
 
 // PROFILE PHOTO EDIT FORM
 profilePhotoEditButton.addEventListener('click', () => {
+  const getValidProfilePhotoEditForm = new FormValidator(configElementsValidation, profilePhotoEditForm);
+  getValidProfilePhotoEditForm.enableValidation();
+  console.log(getValidProfilePhotoEditForm);
   profilePhotoEditPopup.openPopup(profilePhotoEditForm);
 });
 
@@ -96,6 +81,7 @@ profilePhotoCloseButton.addEventListener('click', () => {
 });
 
 profilePhotoEditForm.addEventListener('submit', (e) => {
+
   e.preventDefault();
   renderLoading(true, profilePhotoEditPopup);
     api.patchProfilePhoto(photoInput)
@@ -176,12 +162,12 @@ function renderLoading(isLoading, form, text, disabled) {
   }
 };
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  buttonSelector: '.popup__submit-button',
-  inputErrorClass: 'popup__input_error',
-});
+// enableValidation({
+//   formSelector: '.popup__form',
+//   inputSelector: '.popup__input',
+//   buttonSelector: '.popup__submit-button',
+//   inputErrorClass: 'popup__input_error',
+// });
 
 
 
