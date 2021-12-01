@@ -37,7 +37,8 @@ import {
 import './index.css';
 import { Card } from '../components/cards.js';
 import { Section } from '../components/section.js';
-import { FormValidator } from '../components/validate';
+import { FormValidator } from '../components/validate.js';
+// import { UserInfo } from '../components/UserInfo.js';
 
 // GET PROFILE/CARDS INFO
 Promise.all([api.getProfileInfo(), api.getInitialCards()])
@@ -82,7 +83,7 @@ profilePhotoCloseButton.addEventListener('click', () => {
 profilePhotoEditForm.addEventListener('submit', (e) => {
 
   e.preventDefault();
-  renderLoading(true, profilePhotoEditPopup);
+  renderLoading(true, profilePhotoEditForm);
     api.patchProfilePhoto(photoInput)
       .then(res => {
         profilePhotoEditButton.src = res.avatar;
