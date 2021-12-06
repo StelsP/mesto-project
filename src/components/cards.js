@@ -44,7 +44,7 @@ export class Card {
   _openFullscreen() {
     const imageLink = this._card.querySelector('.elements__image');
     imageLink.addEventListener('click', () => {
-      imagePopup.openPopup(image);
+      imagePopup.open(image);
       imagePic.src = this.link;
       imagePic.alt = 'Фото' + ' ' + this.name;
       imageTitle.textContent = this.name;
