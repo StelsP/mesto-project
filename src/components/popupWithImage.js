@@ -1,22 +1,17 @@
-import { Popup } from './popup.js'
-// import { imagePic, imageTitle } from './var.js'
+import {Popup} from './popup.js';
 
+export class PopupWithImage extends Popup{
+  constructor(selector) {
+    super(selector);
 
-export class PopupWithImage extends Popup {
-  contructor(popup, link, name) {
-    super(popup);
-    this.link = link;
-    this.name = name;
-
+    this.popupImage = this.popup.querySelector('.image__pic');
+    this.popupTitle = this.popup.querySelector('.image__title');
   }
 
-  openPopup() {
+  openPopup({link, name}) {
     super.openPopup();
-  }
-
-  handleCardClick() {
-    imagePic.src = this.link;
-    imagePic.alt = 'Фото' + ' ' + this.name;
-    imageTitle.textContent = this.name;
+    this.popupImage.src = link;
+    this.popupImage.alt = name;
+    this.popupTitle.textContent = name;
   }
 }
