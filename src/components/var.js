@@ -1,4 +1,7 @@
 import { Api } from './api.js';
+import { Popup } from './popup.js';
+//BLABLA
+import { UserInfo } from './UserInfo.js';
 
 // PROFILE PHOTO EDIT FORM
 export const profilePhotoEditForm = document.querySelector('.popup_type_photo');
