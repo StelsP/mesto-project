@@ -1,6 +1,6 @@
-import { imagePic, imageTitle, image, elementsLikeButtonActive, api, imagePopup } from '../components/var.js';
+import { imagePic, imageTitle, image, elementsLikeButtonActive, api } from '../components/var.js';
 import { userId } from '../pages/index.js';
-
+import {imagePopup} from '../pages/index.js';
 export class Card {
   constructor({name, link, owner, _id, likes}, selector) {
     this.name = name,
@@ -44,10 +44,8 @@ export class Card {
   _openFullscreen() {
     const imageLink = this._card.querySelector('.elements__image');
     imageLink.addEventListener('click', () => {
-      imagePopup.open(image);
-      imagePic.src = this.link;
-      imagePic.alt = 'Фото' + ' ' + this.name;
-      imageTitle.textContent = this.name;
+      const data = {link: this.link, name: this.name}
+      imagePopup.openPopup(data);
     });
   }
 

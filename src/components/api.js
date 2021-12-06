@@ -35,8 +35,8 @@ export class Api {
       method: 'PATCH',
       headers: this.config.headers,
       body: JSON.stringify({
-        name: name.value,
-        about: quote.value
+        name: name,
+        about: quote,
       }),
     })
     .then(this._checkRes)
@@ -48,7 +48,7 @@ export class Api {
       method: 'PATCH',
       headers: this.config.headers,
       body: JSON.stringify({
-        avatar: image.value,
+        avatar: image,
       }),
     })
     .then(this._checkRes)
@@ -86,7 +86,3 @@ export class Api {
   }
 
 }
-
-
-
-
