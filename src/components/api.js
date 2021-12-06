@@ -1,5 +1,3 @@
-import { config } from './var.js';
-
 export class Api {
   constructor(config) {
     this.config = config;
@@ -60,8 +58,8 @@ export class Api {
       method: 'POST',
       headers: this.config.headers,
       body: JSON.stringify({
-        name: name.value,
-        link: link.value,
+        name: name,
+        link: link,
       }),
     })
     .then(this._checkRes)
