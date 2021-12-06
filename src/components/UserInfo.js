@@ -1,16 +1,25 @@
-// import {api} from './var.js'
+export class UserInfo {
+  //АВАТАР НУЖЕН????УТОЧНИТЬ
+  constructor(userName, userQuote) {
+    //Принимает в конструктор объект с
+    //селекторами (!!!!!!!!!!!) двух элементов
+    // со слака: Данные пользователя  должны
+    //браться или из DOM элементов или из поля класса
+    this._userName = userName;
+    this._userQuote = userQuote;
+  }
 
-// export class UserInfo {
-//   constructor({name, quote, inputName, inputQuote}) {
-//     this.name = name;
-//     this.quote = quote;
-//     this.inputName = inputName;
-//     this.inputQuote = inputQuote;
-//   }
+  getUserInfo() {
+    // который возвращает объект (!!!!!!) с данными пользователя.
+    const userInfo = {
+      name: this._userName.textContent,
+      quote: this._userQuote.textContent,
+    }
+    return userInfo;
+  }
 
-//   getUserInfo() {
-//     this.inputName.value = this.name.textContent;
-//     this.inputQuote.value = this.quote.textContent;
-//   }
-
-// }
+  setUserInfo(name, quote) {
+    this._userName.textContent = name;
+    this._userQuote.textContent = quote;
+  }
+}
