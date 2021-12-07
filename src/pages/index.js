@@ -23,6 +23,8 @@ import {
   api,
   elementsTemplate,
   configElementsValidation,
+  editPhotoButton,
+  buttonProfilePhotoEdit
   } from '../components/var.js';
 import './index.css';
 import { Card } from '../components/cards.js';
@@ -158,3 +160,13 @@ export function renderLoading(isLoading, form, text, disabled) {
     submitButton.textContent = 'Сохранение...';
   }
 };
+
+//кнопка редактирования изображения профайла
+editPhotoButton.addEventListener('mouseover', (evt) => {
+  if (evt.target.classList.contains('profile__edit-photo') || evt.target.classList.contains('profile__edit-photo-button')) buttonProfilePhotoEdit.style.visibility = 'visible';
+})
+
+editPhotoButton.addEventListener('mouseout', (evt) => {
+  if (evt.target.classList.contains('profile__edit-photo') || evt.target.classList.contains('profile__edit-photo-button'))
+  buttonProfilePhotoEdit.style.visibility = 'hidden';
+})
