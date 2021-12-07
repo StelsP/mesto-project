@@ -17,9 +17,6 @@ import {
   // ADD NEW CARDS FORM
   elementsAddForm,
   elementsAddButton,
-  imageInput,
-  titleInput,
-  elementsForm,
   api,
   elementsTemplate,
   configElementsValidation,
@@ -35,7 +32,6 @@ import { UserInfo } from '../components/UserInfo.js';
 import { PopupWithImage } from '../components/popupWithImage.js';
 import { Popup } from '../components/popup.js';
 import { PopupWithForm } from '../components/popupWithform.js';
-
 const userInform = new UserInfo(profileName, profileQuote);
 // GET PROFILE/CARDS INFO
 Promise.all([api.getProfileInfo(), api.getInitialCards()])
@@ -47,7 +43,9 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
   const addInitialCards = new Section({
     items: cardData,
     renderer: (item) => {
-      const card = new Card(item, elementsTemplate);
+      const card = new Card(item, elementsTemplate, () => {
+        imagePopup.openPopup(item);
+        });
       const cardElement = card.generateCard();
       addInitialCards.addItem(cardElement);
     }
@@ -98,7 +96,6 @@ profilePhotoEditPopup.setEventListeners();
 profileEditButton.addEventListener('click', () => {
   const getValidProfileEditForm = new FormValidator(configElementsValidation, profileEditForm);
   getValidProfileEditForm.enableValidation();
-  //blabla
   const editUserInfo = userInform.getUserInfo();
   nameInput.value = editUserInfo.name;
   quoteInput.value = editUserInfo.quote;
@@ -126,7 +123,7 @@ profileEditPopup.setEventListeners();
 
 
 //СДЕЛАТЬ
-export const elementsAddPopup = new Popup(elementsAddForm);
+
 // ADD NEW CARDS FORM
 elementsAddButton.addEventListener('click', () => {
   const getValidelementsAddForm = new FormValidator(configElementsValidation, elementsAddForm);
@@ -134,15 +131,17 @@ elementsAddButton.addEventListener('click', () => {
   elementsAddPopup.openPopup(elementsAddForm);
 });
 
-elementsAddForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+const elementsAddPopup = new PopupWithForm ({
+  popup: elementsAddForm,
+  formSubmitHandler: data => {
   renderLoading(true, elementsAddForm);
-    api.postNewCards(titleInput, imageInput)
+  api.postNewCards(data.input_title, data.input_image)
       .then((res) => {
-        const newCard = new Card(res, elementsTemplate);
+        const newCard = new Card(res, elementsTemplate, () => {
+          imagePopup.openPopup(res);
+        });
         elementsList.prepend(newCard.generateCard());
-        elementsAddPopup.closePopup(elementsAddForm);
-        elementsForm.reset();
+        elementsAddPopup.closePopup();
       })
       .catch((err) => {
         console.log(err);
@@ -150,7 +149,9 @@ elementsAddForm.addEventListener('submit', (e) => {
       .finally(() => {
         renderLoading(false, elementsAddForm, 'Создать', true);
       });
+    }
 });
+elementsAddPopup.setEventListeners();
 
 export function renderLoading(isLoading, form, text, disabled) {
   const submitButton = form.querySelector('.popup__submit-button')

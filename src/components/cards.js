@@ -1,14 +1,14 @@
-import { imagePic, imageTitle, image, elementsLikeButtonActive, api } from '../components/var.js';
+import { elementsLikeButtonActive, api } from '../components/var.js';
 import { userId } from '../pages/index.js';
-import {imagePopup} from '../pages/index.js';
 export class Card {
-  constructor({name, link, owner, _id, likes}, selector) {
-    this.name = name,
-    this.link = link,
-    this.owner = owner,
-    this.likes = likes,
-    this._id = _id,
-    this.selector = selector
+  constructor({name, link, owner, _id, likes}, selector, handleCardClick) {
+    this.name = name;
+    this.link = link;
+    this.owner = owner;
+    this.likes = likes;
+    this._id = _id;
+    this.selector = selector;
+    this.handleCardClick = handleCardClick;
   }
 
   //приватный метод получения карточки
@@ -43,10 +43,7 @@ export class Card {
 
   _openFullscreen() {
     const imageLink = this._card.querySelector('.elements__image');
-    imageLink.addEventListener('click', () => {
-      const data = {link: this.link, name: this.name}
-      imagePopup.openPopup(data);
-    });
+    imageLink.addEventListener('click', this.handleCardClick);
   }
 
   _likeCard() {
