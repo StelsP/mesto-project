@@ -1,0 +1,24 @@
+.profile__edit-photo-button {
+  all: unset;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-image: url(../../../images/logo-edit-photo.svg);
+  width: 26px;
+  height: 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+.profile__edit-photo-button:hover {
+  opacity: .6;
+  transition: opacity .5s ease-in-out;
+}
+
+
