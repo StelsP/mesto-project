@@ -1,5 +1,5 @@
 import { Api } from './api.js';
-//BLABLA
+
 export const buttonProfilePhotoEdit = document.querySelector('.profile__edit-photo-button');
 export const editPhotoButton = document.querySelector('.profile__edit-photo');
 // PROFILE PHOTO EDIT FORM
