@@ -67,7 +67,7 @@ imagePopup.setEventListeners();
 
 // PROFILE PHOTO EDIT FORM
 
-profilePhotoEditButton.addEventListener('click', () => {
+buttonProfilePhotoEdit.addEventListener('click', () => {
   const getValidProfilePhotoEditForm = new FormValidator(configElementsValidation, profilePhotoEditForm);
   getValidProfilePhotoEditForm.enableValidation();
   profilePhotoEditPopup.openPopup();
