@@ -1,5 +1,5 @@
-import { Popup } from './popup.js';
-import { configElementsValidation } from './var.js'
+import { Popup } from './Popup.js';
+import { configElementsValidation } from '../utils/var.js'
 export class PopupWithForm extends Popup {
   //Кроме селектора попапа принимает в
   //конструктор колбэк сабмита формы.

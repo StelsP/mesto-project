@@ -13,14 +13,14 @@ export class FormValidator {
   }
 
   _hideInputError(inputElement) {
-    const errorElement = document.querySelector(`#${inputElement.name}-error`);
+    const errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
 
     errorElement.textContent = '';
     inputElement.classList.remove(this._config.inputErrorClass);
   }
 
   _showInputError(inputElement) {
-    const errorElement = document.querySelector(`#${inputElement.name}-error`);
+    const errorElement = this._formElement.querySelector(`#${inputElement.name}-error`);
     errorElement.textContent = inputElement.validationMessage;
     inputElement.classList.add(this._config.inputErrorClass);
   }
@@ -35,9 +35,9 @@ export class FormValidator {
 
   _checkInputValidity(inputElement) {
     if (inputElement.validity.valid) {
-      this._hideInputError(inputElement, this._config);
+      this._hideInputError(inputElement);
     } else {
-      this._showInputError(inputElement, this._config);
+      this._showInputError(inputElement);
     }
   }
 

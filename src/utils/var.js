@@ -1,4 +1,4 @@
-import { Api } from './api.js';
+import { Api } from '../components/Api.js';
 
 export const buttonProfilePhotoEdit = document.querySelector('.profile__edit-photo-button');
 export const editPhotoButton = document.querySelector('.profile__edit-photo');

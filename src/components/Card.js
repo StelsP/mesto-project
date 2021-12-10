@@ -19,7 +19,6 @@ export class Card {
     .cloneNode(true)
     return cardElement;
   }
-
   generateCard() {
     this._card = this._getElement();
     this._setHandlers();

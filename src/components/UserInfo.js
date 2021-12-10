@@ -1,14 +1,12 @@
 export class UserInfo {
-  constructor(userName, userQuote, userAvatar, userId) {
+  constructor(userName, userQuote, userAvatar) {
     //Принимает в конструктор объект с
     //селекторами (!!!!!!!!!!!) двух элементов
     // со слака: Данные пользователя  должны
     //браться или из DOM элементов или из поля класса
     this._userName = userName;
     this._userQuote = userQuote;
-    this._userId = userId;
     this._userAvatar = userAvatar;
-    console.log(userName)
   }
 
   getUserInfo() {
@@ -20,10 +18,13 @@ export class UserInfo {
     return userInfo;
   }
 
+  setUserAvatar(userData) {
+    this._userAvatar.src = userData.avatar;
+  }
+
   setUserInfo(userData) {
     this._userName.textContent = userData.name;
     this._userQuote.textContent = userData.about;
-    this._userId = userData._id;
-    this._userAvatar.src = userData.avatar;
+    this.userId = userData._id;
   }
 }
