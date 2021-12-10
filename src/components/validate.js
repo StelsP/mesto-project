@@ -5,10 +5,7 @@ export class FormValidator {
   }
 
   enableValidation() {
-    const formList = Array.from(document.querySelectorAll(this._config.formSelector));
-    formList.forEach(() => {
-      this._setEventListeners();
-    });
+    this._setEventListeners();
   }
 
   _isFormValid(inputList) {

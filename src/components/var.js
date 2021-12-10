@@ -19,7 +19,7 @@ export const profileQuote = document.querySelector('.profile__quote');
 // ADD START CARDS
 export const elementsList = document.querySelector('.elements__list');
 // CREATE START CARDS
-export const elementsTemplate = document.querySelector('#elements__template').content;
+export const elementsTemplate = '#elements__template';
 export const elementsLikeButtonActive = ('elements__like-button_active');
 // ADD NEW CARDS FORM
 export const elementsAddForm = document.querySelector('.popup_type_card-add');

@@ -1,15 +1,15 @@
-import { elementsLikeButtonActive, api } from '../components/var.js';
-import { userId } from '../pages/index.js';
-
 export class Card {
-  constructor({name, link, owner, _id, likes}, selector, handleCardClick) {
+  constructor({name, link, owner, _id, likes}, selector, handleCardClick, userId, elementsLikeButtonActive, api) {
     this._name = name;
     this._link = link;
     this._owner = owner;
     this._likes = likes;
     this._id = _id;
-    this._selector = selector;
+    this._selector = document.querySelector(selector).content;
     this.handleCardClick = handleCardClick;
+    this._userId = userId;
+    this._elementsLikeButtonActive = elementsLikeButtonActive;
+    this._api = api;
   }
 
   //приватный метод получения карточки
@@ -29,10 +29,9 @@ export class Card {
     cardsImage.src = this._link;
     cardsImage.alt = 'Фото' + ' ' + this._name;
     cardsName.textContent = this._name;
-    if (this._owner._id != userId) {
+    if (this._owner._id != this._userId) {
       this._card.querySelector('.elements__delete-button').style.display = 'none';
     }
-
     return this._card;
   }
 
@@ -51,14 +50,14 @@ export class Card {
     const elementsLikeCounter = this._card.querySelector('.elements__like-counter');
     const elementsLikeButton = this._card.querySelector('.elements__like-button');
     elementsLikeCounter.textContent = this._likes.length;
-    if (this._likes.some((el) => el._id == userId)) {
-      elementsLikeButton.classList.add(elementsLikeButtonActive);
+    if (this._likes.some((el) => el._id == this._userId)) {
+      elementsLikeButton.classList.add(this._elementsLikeButtonActive);
     }
     elementsLikeButton.addEventListener('click', () => {
-      if (!elementsLikeButton.classList.contains(elementsLikeButtonActive)) {
-        api.likeHandler(this._id, 'PUT')
+      if (!elementsLikeButton.classList.contains(this._elementsLikeButtonActive)) {
+        this._api.likeHandler(this._id, 'PUT')
           .then((res) => {
-            elementsLikeButton.classList.add(elementsLikeButtonActive);
+            elementsLikeButton.classList.add(this._elementsLikeButtonActive);
             this._likes = res.likes;
             elementsLikeCounter.textContent = res.likes.length;
           })
@@ -66,9 +65,9 @@ export class Card {
             console.log(err);
           });
       } else {
-        api.likeHandler(this._id, 'DELETE')
+        this._api.likeHandler(this._id, 'DELETE')
           .then((res) => {
-            elementsLikeButton.classList.remove(elementsLikeButtonActive);
+            elementsLikeButton.classList.remove(this._elementsLikeButtonActive);
             this._likes = res.likes;
             elementsLikeCounter.textContent = res.likes.length;
           })
@@ -82,7 +81,7 @@ export class Card {
   _deleteCard() {
     const elementsDeleteButton = this._card.querySelector('.elements__delete-button');
     elementsDeleteButton.addEventListener('click', () => {
-      api.deleteCardHandler(this._id)
+      this._api.deleteCardHandler(this._id)
         .then(() => {
           this._card.remove();
         })

@@ -21,7 +21,8 @@ import {
   elementsTemplate,
   configElementsValidation,
   editPhotoButton,
-  buttonProfilePhotoEdit
+  buttonProfilePhotoEdit,
+  elementsLikeButtonActive
   } from '../components/var.js';
 import './index.css';
 import { Card } from '../components/cards.js';
@@ -41,29 +42,27 @@ editPhotoButton.addEventListener('mouseout', (evt) => {
   buttonProfilePhotoEdit.style.visibility = 'hidden';
 })
 
-export const imagePopup = new PopupWithImage(image);
+export const imagePopup = new PopupWithImage('.popup_type_picture');
 imagePopup.setEventListeners();
 
-const userInform = new UserInfo(profileName, profileQuote);
+const userInform = new UserInfo(profileName, profileQuote, profilePhotoEditButton, userId);
 
 // GET PROFILE/CARDS INFO
 Promise.all([api.getProfileInfo(), api.getInitialCards()])
   .then(([userData, cardData]) => {
-    userInform.setUserInfo(userData.name, userData.about);
-    profilePhotoEditButton.src = userData.avatar;
-    userId = userData._id;
+    userInform.setUserInfo(userData);
 
     const addInitialCards = new Section({
       items: cardData,
       renderer: (item) => {
         const card = new Card(item, elementsTemplate, () => {
           imagePopup.open(item);
-          });
+          }, userId, elementsLikeButtonActive, api);
         const cardElement = card.generateCard();
         addInitialCards.addItem(cardElement);
       }
     },
-      elementsList
+      '.elements__list'
   );
   addInitialCards.renderingItems();
   })
@@ -81,9 +80,9 @@ buttonProfilePhotoEdit.addEventListener('click', () => {
 profileEditButton.addEventListener('click', () => {
   const getValidProfileEditForm = new FormValidator(configElementsValidation, profileEditForm);
   getValidProfileEditForm.enableValidation();
-  const editUserInfo = userInform.getUserInfo();
-  nameInput.value = editUserInfo.name;
-  quoteInput.value = editUserInfo.quote;
+  const { name, quote } = userInform.getUserInfo();
+  nameInput.value = name;
+  quoteInput.value = quote;
   profileEditPopup.open();
 });
 // ADD NEW CARDS FORM
@@ -94,7 +93,7 @@ elementsAddButton.addEventListener('click', () => {
 });
 //ПОПАП РЕДАКТИРОВАНИЕ ФОТО ПРОФИЛЯ
 const profilePhotoEditPopup = new PopupWithForm({
-  selector: profilePhotoEditForm,
+  selector: '.popup_type_photo',
   formSubmitHandler: data => {
     renderLoading(true, profilePhotoEditForm);
       api.patchProfilePhoto(data.input_photo)
@@ -113,12 +112,12 @@ const profilePhotoEditPopup = new PopupWithForm({
 profilePhotoEditPopup.setEventListeners();
 //ПОПАП РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 const profileEditPopup = new PopupWithForm({
-  selector: profileEditForm,
+  selector: '.popup_type_profile',
   formSubmitHandler: data => {
   renderLoading(true, profileEditForm);
   api.patchProfileInfo(data.input_name, data.input_quote)
       .then((res) => {
-        userInform.setUserInfo(res.name, res.about);
+        userInform.setUserInfo(res);
         profileEditPopup.close();
       })
       .catch((err) => {
@@ -132,14 +131,14 @@ const profileEditPopup = new PopupWithForm({
 profileEditPopup.setEventListeners();
 // ADD NEW CARDS FORM
 const elementsAddPopup = new PopupWithForm ({
-  selector: elementsAddForm,
+  selector: '.popup_type_card-add',
   formSubmitHandler: data => {
   renderLoading(true, elementsAddForm);
   api.postNewCards(data.input_title, data.input_image)
       .then((res) => {
         const newCard = new Card(res, elementsTemplate, () => {
           imagePopup.open(res);
-        });
+        }, userId, elementsLikeButtonActive, api);
         elementsList.prepend(newCard.generateCard());
         elementsAddPopup.close();
       })
