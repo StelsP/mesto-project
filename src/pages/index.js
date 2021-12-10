@@ -114,7 +114,7 @@ const profilePhotoEditPopup = new PopupWithForm({
           renderLoading(false, profilePhotoEditForm, 'Сохранить', true);
         });
   }
-});
+}, configElementsValidation);
 profilePhotoEditPopup.setEventListeners();
 //ПОПАП РЕДАКТИРОВАНИЯ ПРОФИЛЯ
 const profileEditPopup = new PopupWithForm({
@@ -133,7 +133,7 @@ const profileEditPopup = new PopupWithForm({
         renderLoading(false, profileEditForm, 'Сохранить', true);
       });
     }
-});
+}, configElementsValidation);
 profileEditPopup.setEventListeners();
 // ADD NEW CARDS FORM
 const elementsAddPopup = new PopupWithForm ({
@@ -155,7 +155,7 @@ const elementsAddPopup = new PopupWithForm ({
         renderLoading(false, elementsAddForm, 'Создать', true);
       });
     }
-});
+}, configElementsValidation);
 elementsAddPopup.setEventListeners();
 
 export function renderLoading(isLoading, form, text, disabled) {

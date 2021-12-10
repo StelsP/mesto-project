@@ -1,14 +1,12 @@
 import { Popup } from './Popup.js';
-import { configElementsValidation } from '../utils/var.js'
 export class PopupWithForm extends Popup {
-  //Кроме селектора попапа принимает в
-  //конструктор колбэк сабмита формы.
-  constructor({selector, formSubmitHandler}) {
+  constructor({selector, formSubmitHandler}, configElementsValidation) {
     super(selector);
 
     this._form = this._popup.querySelector(configElementsValidation.formSelector);
     this._formButton = this._form.querySelector(configElementsValidation.buttonSelector);
     this.formSubmitHandler = formSubmitHandler;
+    this._elements = this._form.querySelectorAll('.popup__input');
   }
 
   close() {
@@ -17,8 +15,6 @@ export class PopupWithForm extends Popup {
   };
 
   setEventListeners() {
-    //но и добавлять обработчик сабмита формы.
-    //обработчик сабмита формы.
     this._form.addEventListener('submit', this._handler.bind(this));
     super.setEventListeners();
   };
@@ -28,10 +24,7 @@ export class PopupWithForm extends Popup {
     this.formSubmitHandler(this._getInputValues());
   };
 
-  //Содержит приватный метод _getInputValues,
-  //который собирает данные всех полей формы.
   _getInputValues() {
-    this._elements = this._form.querySelectorAll('.popup__input');
     this._inputValues = {};
     this._elements.forEach(el => {
       this._inputValues[el.name] = el.value;
