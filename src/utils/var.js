@@ -1,3 +1,7 @@
+import { Api } from '../components/Api.js';
+
+export const buttonProfilePhotoEdit = document.querySelector('.profile__edit-photo-button');
+export const editPhotoButton = document.querySelector('.profile__edit-photo');
 // PROFILE PHOTO EDIT FORM
 export const profilePhotoEditForm = document.querySelector('.popup_type_photo');
 export const profilePhotoEditButton =  document.querySelector('.profile__photo');
@@ -15,7 +19,7 @@ export const profileQuote = document.querySelector('.profile__quote');
 // ADD START CARDS
 export const elementsList = document.querySelector('.elements__list');
 // CREATE START CARDS
-export const elementsTemplate = document.querySelector('#elements__template').content;
+export const elementsTemplate = '#elements__template';
 export const elementsLikeButtonActive = ('elements__like-button_active');
 // ADD NEW CARDS FORM
 export const elementsAddForm = document.querySelector('.popup_type_card-add');
@@ -30,6 +34,23 @@ export const imageCloseButton = document.querySelector('.popup__close-button_typ
 // CLOSE FULLSCREEN CARD IMAGE
 export const imagePic = document.querySelector('.image__pic');
 export const imageTitle = document.querySelector('.image__title');
+export const config = {
+  baseUrl: 'https://mesto.nomoreparties.co/v1/plus-cohort-3',
+  headers: {
+    authorization: 'bb5f0ee9-ef64-4836-93fe-6fc2439d86be',
+    'Content-Type': 'application/json'
+  }
+}
+
+export const configElementsValidation = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  buttonSelector: '.popup__submit-button',
+  inputErrorClass: 'popup__input_error',
+}
+
+export const api = new Api(config);
+
 
 
 

@@ -5,12 +5,7 @@
   display: block;
   margin: 0 auto 26px;
   cursor: pointer;
-  transition: opacity .3s;
   object-fit: cover;
-}
-
-.profile__photo:hover {
-  opacity: .6;
 }
 
 @media (min-width: 1024px) {
